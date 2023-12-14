@@ -1,13 +1,14 @@
 import { defineConfig } from "astro/config";
-import vue from "@astrojs/vue";
 import tailwind from "@astrojs/tailwind";
-
 import vercel from "@astrojs/vercel/serverless";
+import sitemap from "@astrojs/sitemap";
+
+import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
-  // Enable Vue to support Vue components.
-  integrations: [vue(), tailwind()],
+  site: "https://dev.nickleslie.dev",
+  integrations: [tailwind(), sitemap(), robotsTxt()],
   output: "server",
   adapter: vercel({
     webAnalytics: {

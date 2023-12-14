@@ -1,33 +1,47 @@
 ---
-// Component Imports
-import Counter from '../components/Counter.vue';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+import Layout from "../layout/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Navbar from "../components/Navbar.astro";
+import Projects from "../components/Projects.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<Counter client:visible>
-				<h1>Hello, Vue!</h1>
-			</Counter>
-		</main>
-	</body>
-</html>
+<Layout title={"Nick Leslie - Portfolio"}>
+  <Navbar
+    links={[
+      {
+        title: "Projects",
+        link: "#projects",
+        icon: "mdi:card-bulleted-settings",
+        alt: "See Nick's projects",
+      },
+      {
+        title: "Résumé",
+        link: "#resume",
+        icon: "mdi:resume",
+        alt: "Check out Nick's Résumé",
+      },
+      {
+        title: "Contact",
+        link: "#contact",
+        icon: "mdi:email",
+        alt: "Contact Nick",
+      },
+      {
+        title: "LinkedIn",
+        link: "https://linkedin.com",
+        icon: "mdi:linkedin",
+        alt: "Navigate to Nick's LinkedIn",
+      },
+    ]}
+  />
+  <Hero />
+  <div
+    class="mx-8 flex h-screen flex-col justify-center md:ml-32"
+    id="projects"
+  >
+    <h3 class="mb-8 text-6xl">Projects</h3>
+    <Projects />
+  </div>
+  <div class="h-screen" id="resume">Résumé</div>
+  <div class="h-screen" id="contact">Contact me</div>
+</Layout>

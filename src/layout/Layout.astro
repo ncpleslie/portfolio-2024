@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div id="blob"></div>
+    <div id="blur"></div>
+    <main class="absolute z-10">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script lang="ts">
+const blob = document.getElementById("blob");
+
+window.onpointermove = (event) => {
+  const { clientX, clientY } = event;
+
+  blob?.animate(
+    {
+      left: `${clientX}px`,
+      top: `${clientY}px`,
+    },
+    { duration: 3000, fill: "forwards" },
+  );
+};
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+
+    50% {
+      scale: 1 1.5;
+    }
+
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  #blob {
+    background-color: white;
+    height: 50vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+  }
+
+  #blur {
+    height: 200%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+  }
+</style>

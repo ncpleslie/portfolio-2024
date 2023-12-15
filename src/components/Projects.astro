@@ -1,52 +1,21 @@
 ---
-// import Project from "./Project.astro";
-import { Icon } from "astro-icon";
+import Project from "./Project.astro";
+import useProjects from "../hooks/useProjects.hook";
+
+const project = useProjects();
+const projects = project.getProjects(4);
 ---
 
-<div class="flex-grow">
-  <!-- <Project /> -->
-  <article
-    class="flex flex-row flex-wrap justify-between gap-4 border-b-2 pb-4"
-  >
-    <div class="flex flex-col gap-4">
-      <p class="text-4xl">WMATA Train Tracker</p>
-      <p class="max-w-prose">
-        A WMATA train tracking application for monitoring train arrival times at
-        your station in the DMV area. Built to run on the Raspberry Pi so you
-        can place it in convenient location and see relevant station information
-        at a glance.
-      </p>
-      <div class="flex">
-        <p class="border-2 p-2 font-bold uppercase not-italic">Go</p>
-        <p class="border-2 p-2 font-bold uppercase">Wails</p>
-        <p class="border-2 p-2 font-bold uppercase">Nuxt 3</p>
-        <p class="border-2 p-2 font-bold uppercase">tRPC</p>
-        <p class="border-2 p-2 font-bold uppercase">TypeScript</p>
-      </div>
-    </div>
-    <div class="flex items-end gap-2">
-      <a
-        href="https://github.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="See this project on GitHub"
-        class="flex h-fit items-center justify-center gap-4 rounded-xl border-2 p-2 text-xl transition-all hover:gap-8 hover:bg-gray-50"
-        >See on GitHub<Icon
-          class="h-10 w-10 hover:animate-pulse"
-          name="simple-icons:github"
-        /></a
-      >
-      <a
-        href="https://github.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="See this project in action"
-        class="flex h-fit items-center justify-center gap-4 rounded-xl border-2 p-2 text-xl transition-all hover:gap-8 hover:bg-gray-50"
-        >See this project<Icon
-          class="h-10 w-10 hover:animate-pulse"
-          name="ic:round-computer"
-        /></a
-      >
-    </div>
-  </article>
+<div class="flex flex-grow flex-col gap-16">
+  {
+    projects.map((project, index) => {
+      return (
+        <>
+          <Project project={project} />
+          <hr />
+        </>
+      );
+    })
+  }
+  <a href="/projects">See more</a>
 </div>

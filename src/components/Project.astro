@@ -1,28 +1,55 @@
-<!-- <article
-  class="grid-rows-10 grid h-full grid-cols-1 lg:grid-cols-3 lg:grid-rows-3"
->
-  <div
-    class="row-span-5 row-start-1 h-full border-black lg:col-span-2 lg:row-span-2"
-  >
-    <img
-      class="h-full w-full object-cover"
-      src="https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Ftrain_tracker_showcase.jpg?alt=media&token=b455d0df-78a1-493a-a66c-97b62188b69a"
-    />
-  </div>
-  <div
-    class="row-span-2 h-full border-l-2 border-t-2 border-black p-8 md:p-16 lg:row-span-2 lg:border-t-0"
-  >
-    <p>
-      A WMATA train tracking application for monitoring train arrival times at
-      your station in the DMV area. Built to run on the Raspberry Pi so you can
-      place it in convenient location and see relevant station information at a
-      glance.
+---
+import { Icon } from "astro-icon";
+import { type Project } from "../hooks/useProjects.hook";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="grid grid-rows-2 gap-8">
+  <img
+    class="row-span-1 aspect-video h-full w-full rounded-xl object-contain"
+    height="316"
+    src={project.imageUrl}
+  />
+  <div class="row-span-1 flex flex-col gap-2">
+    <p class="text-xl">{project.title}</p>
+    <div class="flex flex-wrap gap-2 text-sm">
+      {
+        project.technologies.map((tech) => (
+          <p class="rounded-xl border-2 p-2 font-bold uppercase">{tech}</p>
+        ))
+      }
+    </div>
+    <p class="max-w-prose">
+      {project.description}
     </p>
+    <div class="items-flex-wrap flex w-full flex-wrap gap-2">
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="See this project on GitHub"
+        class="flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl transition-all hover:scale-105 hover:bg-gray-50"
+        >GitHub<Icon
+          class="h-10 w-10 hover:animate-pulse"
+          name="simple-icons:github"
+        /></a
+      >
+      <a
+        href={project.projectUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="See this project in action"
+        class="flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl transition-all hover:scale-105 hover:bg-gray-50"
+        >View site<Icon
+          class="h-10 w-10 hover:animate-pulse"
+          name="ic:round-computer"
+        /></a
+      >
+    </div>
   </div>
-  <div
-    class="row-span-2 row-start-3 h-full border-t-2 border-black p-8 text-4xl md:p-16 lg:col-span-2"
-  >
-    WMATA Train Tracker
-  </div>
-  <div class="h-full border-l-2 border-t-2 border-black">Next project</div>
-</article> -->
+</article>

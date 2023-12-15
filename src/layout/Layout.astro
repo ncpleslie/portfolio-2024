@@ -17,9 +17,13 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div id="blob"></div>
-    <div id="blur"></div>
-    <main class="absolute z-10">
+    <!-- <div class="z-0">
+      <div id="blob"></div>
+      <div id="blur"></div>
+    </div> -->
+    <main
+      class="absolute z-10 mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+    >
       <slot />
     </main>
   </body>
@@ -70,15 +74,21 @@ window.onpointermove = (event) => {
     translate: -50% -50%;
     border-radius: 50%;
     background: linear-gradient(to right, aquamarine, mediumpurple);
+    /* background: radial-gradient(
+      600px at 600px 600px,
+      rgba(29, 78, 216, 0.15),
+      transparent 80%
+    ); */
     animation: rotate 20s infinite;
     opacity: 0.8;
   }
 
   #blur {
-    height: 200%;
+    height: 100%;
     width: 100%;
     position: absolute;
     z-index: 2;
     backdrop-filter: blur(12vmax);
+    transform: translate3d(0, 0, 0);
   }
 </style>

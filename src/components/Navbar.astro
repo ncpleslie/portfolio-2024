@@ -15,17 +15,15 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<div
-  class="fixed z-10 hidden h-screen flex-col items-start justify-center gap-16 md:flex"
->
+<div class="flex h-screen flex-row items-start justify-center gap-16">
   {
     links.map((link) => (
       <a
         title={link.alt}
-        class="flex items-center justify-center gap-0 rounded-xl -indent-32 text-xl transition-all duration-200 hover:gap-8 hover:bg-white/90 hover:pl-8 hover:indent-0"
+        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-transparent transition-all duration-200 hover:px-8 hover:pb-4 hover:pt-8 hover:indent-0 hover:text-black"
         href={link.link}
       >
-        {link.title} <Icon class="h-20 w-20" name={link.icon} />
+        {link.title} <Icon class="h-10 w-10 text-black" name={link.icon} />
       </a>
     ))
   }

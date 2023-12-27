@@ -1,12 +1,6 @@
 ---
-import { Icon } from "astro-icon";
-
-type Link = {
-  link: string;
-  title: string;
-  icon: string;
-  alt: string;
-};
+import { Icon } from "astro-preload/components";
+import { type Link } from "../types/link";
 
 interface Props {
   links: Link[];
@@ -15,16 +9,62 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<div class="flex h-screen flex-row items-start justify-center gap-16">
+<div class="flex w-full flex-row items-start justify-center gap-16">
   {
     links.map((link) => (
       <a
+        id={`${link.id}_nav`}
         title={link.alt}
-        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-transparent transition-all duration-200 hover:px-8 hover:pb-4 hover:pt-8 hover:indent-0 hover:text-black"
+        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-transparent transition-all duration-200 hover:pb-4 hover:pt-8  hover:text-black"
         href={link.link}
       >
-        {link.title} <Icon class="h-10 w-10 text-black" name={link.icon} />
+        {link.title}
+        <Icon class="h-10 w-10 text-black" name={link.icon} />
       </a>
     ))
   }
 </div>
+
+<script define:vars={{ links }}>
+// if (window.innerWidth <= 768) {
+//   // ignore on mobile
+//   return;
+// }
+
+window.onload = () => {
+  const elements = links.map((link) => document.getElementById(link.id));
+  window.addEventListener("scroll", () =>
+    handleUpdatingActiveNavItems(elements),
+  );
+  handleUpdatingActiveNavItems(elements);
+};
+
+const handleUpdatingActiveNavItems = (elements) => {
+  elements.forEach((element) => {
+    const middle = window.innerHeight / 2 + window.scrollY;
+    const scrolledToElement = document.getElementById(`${element.id}_nav`);
+    if (
+      middle > element.offsetTop &&
+      middle < element.offsetTop + element.offsetHeight
+    ) {
+      scrolledToElement.classList.remove("text-transparent");
+      scrolledToElement.classList.add(
+        "px-8",
+        "pb-4",
+        "pt-8",
+        "indent-0",
+        "text-black",
+      );
+    } else {
+      scrolledToElement.classList.add("text-transparent");
+      scrolledToElement.classList.remove(
+        "px-8",
+        "pb-4",
+        "pt-8",
+        "indent-0",
+        "text-black",
+      );
+    }
+  });
+};
+</script>

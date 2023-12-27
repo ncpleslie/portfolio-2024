@@ -1,0 +1,49 @@
+{
+  "work_history": [
+    {
+      "from": "Sept 2022",
+      "to": "Aug 2023",
+      "position_title": "Engineering People Leader",
+      "job_description": "Led and mentored a dynamic team of Software Engineers offering technical guidance, performance coaching, goal setting, and feedback. As well as partaking in pre-sales client conversations, requirements gathering, solution designs (Cloud, API and UML), software development and testing, and CI/CD pipeline development",
+      "technologies": [
+        "TypeScript",
+        "C#",
+        ".NET",
+        "xUnit",
+        "Vue 3",
+        "Azure",
+        "Azure AD",
+        "API-M",
+        "Azure Static Web Apps",
+        "GitHub Actions",
+        "Vitest",
+        "NodeJS",
+        "Tailwind",
+        "UML"
+      ],
+      "company_url": "https://jadeworld.com",
+      "company": "Jade Software Corporation",
+      "order": 1
+    },
+    {
+      "from": "Nov 2020",
+      "to": "Sept 2022",
+      "position_title": "Software Engineer",
+      "job_description": "Part of an agile work environment, using the Scrum methodology, developing cloud-native, full-stack web applications for clients from around the world",
+      "technologies": [
+        "TypeScript",
+        "Vue 3",
+        "Angular",
+        "C#",
+        ".NET",
+        "Entity Framework (EF Core)",
+        "Domain-driven design",
+        "Azure",
+        "Xamarin"
+      ],
+      "company_url": "https://jadeworld.com",
+      "company": "Jade Software Corporation",
+      "order": 2
+    }
+  ]
+}

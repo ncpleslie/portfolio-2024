@@ -1,0 +1,50 @@
+---
+import { Icon } from "astro-preload/components";
+import { type WorkHistory } from "../hooks/useWorkHistory.hook";
+
+interface Props {
+  workHistory: WorkHistory[];
+}
+
+const { workHistory } = Astro.props;
+---
+
+<ul
+  class="flex flex-grow flex-row flex-wrap justify-center gap-4 md:gap-8 lg:flex-col"
+>
+  {
+    workHistory.map((work) => (
+      <li>
+        <article class="group grid gap-4 rounded-xl p-2 shadow-md transition-all duration-300 md:grid-cols-3 md:p-4 md:shadow-none hover:md:bg-black/5 hover:md:shadow-md hover:md:drop-shadow-md">
+          <p class="mt-[0.20rem] font-mono text-sm md:col-span-1">
+            {work.from} - {work.to}
+          </p>
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <p class="font-semibold">{work.positionTitle}</p>
+            <a
+              href={work.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={work.companyUrl}
+              class="group/work flex flex-row items-center gap-2 transition-all"
+            >
+              {work.company}
+              <Icon
+                class="h-5 w-5 transition-all group-hover/work:scale-110 group-hover/work:animate-pulse"
+                name="mdi:external-link"
+              />
+            </a>
+            <p class="max-w-prose text-sm">{work.jobDescription}</p>
+            <div class="mt-2 flex flex-wrap gap-1">
+              {work.technologies.map((tech: string) => (
+                <p class="rounded border-2 p-2 text-xs font-bold uppercase group-hover:bg-gray-50">
+                  {tech}
+                </p>
+              ))}
+            </div>
+          </div>
+        </article>
+      </li>
+    ))
+  }
+</ul>

@@ -1,25 +1,37 @@
 ---
+import { Icon } from "astro-preload/components";
 import Layout from "../layout/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Navbar from "../components/Navbar.astro";
 import Projects from "../components/Projects.astro";
+import WorkHistory from "../components/WorkHistory.astro";
+import useProject from "../hooks/useProjects.hook";
+import useWorkHistory from "../hooks/useWorkHistory.hook";
+
+const { getProjects } = useProject();
+const projects = getProjects(true);
+const { getWorkHistory } = useWorkHistory();
+const workHistory = getWorkHistory();
 
 const navbarLinks = [
   {
     title: "Projects",
     link: "#projects",
+    id: "projects",
     icon: "mdi:card-bulleted-settings",
     alt: "See Nick's projects",
   },
   {
     title: "Résumé",
     link: "#resume",
+    id: "resume",
     icon: "mdi:resume",
     alt: "Check out Nick's Résumé",
   },
   {
     title: "Contact",
     link: "#contact",
+    id: "contact",
     icon: "mdi:email",
     alt: "Contact Nick",
   },
@@ -33,16 +45,77 @@ const navbarLinks = [
 ---
 
 <Layout title={"Nick Leslie - Portfolio"}>
-  <div class="mt-32 grid grid-cols-2">
-    <Hero class="grid-span-1 fixed col-start-1">
+  <div class="mt-32 grid grid-cols-1 gap-16 md:gap-8 lg:grid-cols-2">
+    <Hero class="grid-span-1 col-start-1 lg:fixed">
       <Navbar links={navbarLinks} />
     </Hero>
-    <div class="grid-span-1 col-start-2">
-      <div class="ml-8 flex flex-col justify-center" id="projects">
-        <Projects />
+    <div class="grid-span-1 col-start-1 lg:col-start-2">
+      <div class="mb-12 flex h-80 w-full flex-col items-center">
+        <div class="flex max-w-prose flex-col gap-4">
+          <p>
+            Hi, I'm Nick. I'm a Software Engineer from New Zealand living in
+            Washington, D.C.
+          </p>
+          <p>
+            I specialise in building applications using web technologies. With
+            proven, commercial experience delivering quality applications for
+            many clients.
+          </p>
+          <p>
+            These include <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.airnewzealand.com/"
+            >
+              Air New Zealand</a
+            >, <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.dbcargo.com/">DB Cargo</a
+            >, <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.jadeworld.com/">Jade Software Corporation</a
+            >, and <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.skipton.co.uk/">Skipton Building Society</a
+            >.
+          </p>
+          <p>
+            Check out some of my personal projects for a little taste of what I
+            can do.
+          </p>
+        </div>
       </div>
+      <div class="flex flex-col justify-center gap-8" id="projects">
+        <Projects projects={projects} />
+
+        <a
+          class="group/back flex flex-row items-center gap-2 transition-all"
+          title="See more projects"
+          href="/projects"
+        >
+          See more projects including corporate projects<Icon
+            class="h-5 w-5 transition-all group-hover/back:translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
+            name="ep:right"
+          /></a
+        >
+      </div>
+      <div class="mt-16 flex flex-col justify-center gap-8" id="resume">
+        <WorkHistory workHistory={workHistory} />
+        <a
+          class="group/back mt-8 flex flex-row items-center gap-2 transition-all"
+          title="See Résumé"
+          href="/resume"
+        >
+          Full résumé available here<Icon
+            class="h-5 w-5 transition-all group-hover/back:translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
+            name="ep:right"
+          /></a
+        >
+      </div>
+      <div class="mt-16 h-screen" id="contact">Contact me</div>
     </div>
-    <div class="h-screen" id="resume">Résumé</div>
-    <div class="h-screen" id="contact">Contact me</div>
   </div>
 </Layout>

@@ -6,18 +6,19 @@
       "githubUrl": "https://github.com/ncpleslie/wmata-train-tracking",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Ftrain_tracker_showcase.jpg?alt=media&token=b455d0df-78a1-493a-a66c-97b62188b69a",
       "order": 10,
-      "projectUrl": "https://wmata-train-tracking.vercel.app/",
+      "projectUrl": "https://traintracking.nickleslie.dev",
       "technologies": ["Nuxt 3", "tRPC", "TypeScript", "Zod", "Wails", "Go"],
       "title": "WMATA Train Tracker",
       "id": "wmata_train_tracker",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": true
     },
     {
-      "description": "A collection of useful and reusabled GitHub Actions. Deploy websites to Azure, set up infrastructure, test and lint your application, and a whole lot more. ",
+      "description": "A collection of useful and reusable GitHub Actions. Deploy websites to Azure, set up infrastructure, test and lint your application, and a whole lot more.",
       "excludeExample": false,
       "githubUrl": "https://github.com/ncpleslie/github-actions-workflows",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Fgithub_actions_showcase.jpg?alt=media&token=4440b596-04ed-4dcb-9fd1-df9e78688930",
-      "order": "9",
+      "order": 9,
       "technologies": [
         "GitHub Actions",
         "Azure",
@@ -27,7 +28,8 @@
       ],
       "title": "GitHub Actions Workflows",
       "id": "github_actions_workflows",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": false
     },
     {
       "description": "A GitHub Action to effortlessly set up the infrastructure and deploy an application on Azure Static Web Apps with ARM templates. A focus on enterprise standards with separate environments and infrastructure separation",
@@ -38,7 +40,8 @@
       "technologies": ["Azure", "GitHub Actions", "ARM template"],
       "title": "Azure and GitHub Actions",
       "id": "static_web_app_github_action",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": false
     },
     {
       "description": "Draw For Them is an ephemeral image sharing and drawing application that allows users to share their creations with other users. Built with NextJS, this application has real-time updates when users share images, add new friends, delete friends, update your profile, and view previous images sent to each other. Using a neumorphic design",
@@ -59,7 +62,8 @@
       ],
       "title": "Draw For Them",
       "id": "draw_for_them",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": true
     },
     {
       "description": "A REST API for retrieving public holidays in New Zealand. Leveraging serverless edge functions with Cloudflare Workers and PlanetScale for the database",
@@ -67,7 +71,7 @@
       "githubUrl": "https://github.com/ncpleslie/nz-public-holidays",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Fnz-public-holidays.jpg?alt=media&token=9c0dbf1e-713b-4f19-8bf4-1b53f03fb2bb",
       "order": 6,
-      "projectUrl": "https://nz-public-holidays.nickleslie.workers.dev/",
+      "projectUrl": "https://nz-public-holidays.nickleslie.workers.dev",
       "technologies": [
         "Cloudflare Workers",
         "PlanetScale",
@@ -76,8 +80,9 @@
         "TypeScript"
       ],
       "title": "NZ Public Holidays API",
-      "id": "nz_public_holdiays",
-      "isVideo": false
+      "id": "nz_public_holidays",
+      "isVideo": false,
+      "showcase": false
     },
     {
       "description": "A NextJS website for the podcast, 'This One Time At Summer Camp'. Built with NextJS and React with an amazing ThreeJS parallax hero element",
@@ -85,11 +90,12 @@
       "githubUrl": "https://github.com/ncpleslie/camp-pod",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Fpodcast_showcase.jpg?alt=media&token=3fdba3d6-cd38-465a-9575-62e88d2fd0d6",
       "order": 5,
-      "projectUrl": "https://camp-pod.vercel.app/",
+      "projectUrl": "https://camp-pod.nickleslie.dev",
       "technologies": ["React", "NextJS", "ThreeJS", "TypeScript", "Tailwind"],
       "title": "A Podcast Website",
       "id": "camp_pod_website",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": true
     },
     {
       "description": "Another wordle clone because I liked the game so much that playing it once a day wasn't enough",
@@ -97,11 +103,12 @@
       "githubUrl": "https://github.com/ncpleslie/wordle-clone",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Fwordle_showcase.jpg?alt=media&token=d39530cf-91af-4d93-8c91-052fc98f9736",
       "order": 4,
-      "projectUrl": "https://ncpleslie.github.io/wordle-clone/",
+      "projectUrl": "https://ncpleslie.github.io/wordle-clone",
       "technologies": ["React", "TypeScript", "Tailwind", "MobX", "Jest"],
       "title": "Another Wordle Clone",
       "id": "another_wordle_clone",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": true
     },
     {
       "description": "Created a multi-AZ WordPress website on AWS. Effectively separating the web-tier from the data-tier with no public facing instances. Data is shared across EC2 instances by utilizing EBS",
@@ -112,20 +119,23 @@
       "projectUrl": "",
       "technologies": ["AWS", "CloudFormation"],
       "title": "AWS Multi-AZ WordPress Website",
-      "id": "aws_mutli-az_wordpress_website",
-      "isVideo": false
+      "id": "aws_multi-az_wordpress_website",
+      "isVideo": false,
+      "showcase": false
     },
     {
-      "description": "Enchancing the accessibility of a Coffee Machine to include voice controls, for Jade Software. Showcased at the Noel Leeming Flagship store",
+      "description": "Enhancing the accessibility of a Coffee Machine to include voice controls, for Jade Software. Showcased at the Noel Leeming Flagship store",
       "excludeExample": false,
       "githubUrl": "",
-      "imageUrl": "https://www.youtube.com/embed/yoUnQg4luE8",
+      "videoUrl": "https://www.youtube.com/embed/yoUnQg4luE8",
       "order": 2,
-      "projectUrl": "https://www.jadeworld.com/resources/blog/we-built-the-worlds-first-digital-barista-but-why",
+      "projectUrl": "https://jadeworld.com/resources/blog/we-built-the-worlds-first-digital-barista-but-why",
       "technologies": ["JavaScript", "NodeJS", "Google Cloud API"],
       "title": "Bella - The Coffee Machine Assistant",
       "id": "bella_-_the_coffee_machine_assistant",
-      "isVideo": true
+      "isVideo": true,
+      "showcase": false,
+      "company": "Jade Software"
     },
     {
       "description": "Date Night is a cross-platform mobile app designed to make your relationship easier. Users enter their date ideas and an unbiased decision is returned. Other users date ideas are displayed on the home-screen",
@@ -137,7 +147,8 @@
       "technologies": ["Dart", "Flutter", "Firebase", "TypeScript", "NodeJS"],
       "title": "Date Night",
       "id": "date_night",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": false
     },
     {
       "description": "A platform game about a wizard, some cones, and an earthquake. Featuring three unique levels, an annoying soundtrack and mobile controls",
@@ -145,11 +156,12 @@
       "githubUrl": "https://github.com/ncpleslie/PlatformGame",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Fphaser_game_showcase.jpg?alt=media&token=7f0ff2a4-b3a1-4f48-a33d-3fadde7e1bcd",
       "order": 0,
-      "projectUrl": "https://ncpleslie.github.io/PlatformGame/",
+      "projectUrl": "https://ncpleslie.github.io/PlatformGame",
       "technologies": ["JavaScript", "Phaser 3"],
       "title": "Wizard Saves the City",
       "id": "wizard_saves_the_city",
-      "isVideo": false
+      "isVideo": false,
+      "showcase": false
     }
   ]
 }

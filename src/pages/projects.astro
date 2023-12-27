@@ -1,0 +1,151 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-preload/components";
+import useProjects from "../hooks/useProjects.hook";
+import Layout from "../layout/Layout.astro";
+
+const project = useProjects();
+const projects = project.getProjects();
+---
+
+<Layout title={"Nick Leslie - Projects"}>
+  <div class="mt-24">
+    <a
+      class="group/back flex flex-row items-center gap-2 transition-all"
+      title="Nick Leslie"
+      href="/"
+    >
+      <Icon
+        class="h-5 w-5 transition-all group-hover/back:-translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
+        name="ep:back"
+      />Nick Leslie</a
+    >
+    <table class="mt-4 w-full table-auto border-collapse pb-24 text-left">
+      <caption class="mb-12 w-full text-start text-4xl"
+        ><h2>All Projects</h2></caption
+      >
+      <thead class="sticky top-0 z-10 border-b px-6 py-5 backdrop-blur">
+        <tr>
+          <th class="table-cell py-4 pr-8 sm:hidden md:table-cell" scope="col"
+          ></th>
+          <th class="py-4 pr-8 text-sm font-semibold" scope="col">Project</th>
+          <th
+            class="hidden py-4 pr-8 text-sm font-semibold lg:table-cell"
+            scope="col">Company</th
+          >
+          <th
+            class="hidden py-4 pr-8 text-sm font-semibold lg:table-cell"
+            scope="col">Tech Stack</th
+          >
+          <th
+            class="hidden py-4 pr-8 text-sm font-semibold sm:table-cell"
+            scope="col">GitHub</th
+          >
+          <th
+            class="hidden py-4 pr-8 text-sm font-semibold sm:table-cell"
+            scope="col">See Project</th
+          >
+        </tr>
+      </thead>
+      <tbody class="py-8">
+        {
+          projects.map((project) => {
+            return (
+              <tr class="border-b last:border-none">
+                <td class="group/thumbnail table-cell py-4 pr-4 sm:hidden md:table-cell ">
+                  {project.imageUrl && (
+                    <a
+                      href={project.projectUrl || project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`See ${project.title}`}
+                    >
+                      <Image
+                        class="aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover/thumbnail:md:scale-110"
+                        height="310"
+                        width="552"
+                        alt=""
+                        decoding="async"
+                        loading="lazy"
+                        src={project.imageUrl}
+                      />
+                    </a>
+                  )}
+                </td>
+                <td class="py-4 pr-4 align-top font-semibold leading-tight">
+                  <span class="hidden sm:block">{project.title}</span>
+                  <span class="hidden font-normal sm:block">
+                    {project.description}
+                  </span>
+                  <span class="block sm:hidden">
+                    <a
+                      href={project.projectUrl || project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`See ${project.title}`}
+                      class="group/project flex flex-row items-center gap-2"
+                    >
+                      <span class="max-w-xs truncate text-ellipsis ">
+                        {project.title}
+                      </span>
+                      <Icon
+                        class="h-5 w-5 transition-all group-hover/project:scale-110 group-hover/project:animate-pulse"
+                        name="mdi:external-link"
+                      />
+                    </a>
+                  </span>
+                </td>
+                <td class="hidden py-4 pr-8 align-middle text-sm lg:table-cell">
+                  {project.company}
+                </td>
+                <td class="hori hidden py-4 pr-4 text-center align-middle lg:table-cell">
+                  <ul class="flex flex-row flex-wrap">
+                    {project.technologies.map((tech) => (
+                      <li class="rounded border-2 p-1 text-sm font-bold uppercase">
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+                <td class="hidden py-4 pl-2 pr-4 align-middle sm:table-cell">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={project.githubUrl}
+                      class="group/github"
+                    >
+                      <Icon
+                        class="h-5 w-5 transition-all group-hover/github:scale-110 group-hover/github:animate-pulse"
+                        name="simple-icons:github"
+                      />
+                    </a>
+                  )}
+                </td>
+                <td class="hidden text-sm sm:table-cell">
+                  <a
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={project.projectUrl}
+                    class="group/project flex flex-row items-center gap-2"
+                  >
+                    <span class="max-w-[10rem] truncate text-ellipsis lg:max-w-xs ">
+                      {project.projectUrl?.replace(/(^\w+:|^)\/\//, "") ||
+                        project.githubUrl.replace(/(^\w+:|^)\/\//, "")}
+                    </span>
+                    <Icon
+                      class="h-5 w-5 transition-all group-hover/project:translate-x-1 group-hover/project:scale-110 group-hover/project:animate-pulse"
+                      name="mdi:external-link"
+                    />
+                  </a>
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </div>
+</Layout>

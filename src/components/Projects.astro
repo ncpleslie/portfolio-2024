@@ -1,21 +1,24 @@
 ---
-import Project from "./Project.astro";
-import useProjects from "../hooks/useProjects.hook";
+import ProjectCard from "./ProjectCard.astro";
+import { type Project } from "../hooks/useProjects.hook";
 
-const project = useProjects();
-const projects = project.getProjects(4);
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
 ---
 
-<div class="flex flex-grow flex-col gap-16">
+<ul
+  class="flex flex-grow flex-row flex-wrap justify-center gap-4 md:gap-8 lg:flex-col"
+>
   {
-    projects.map((project, index) => {
+    projects.map((project) => {
       return (
-        <>
-          <Project project={project} />
-          <hr />
-        </>
+        <li>
+          <ProjectCard project={project} />
+        </li>
       );
     })
   }
-  <a href="/projects">See more</a>
-</div>
+</ul>

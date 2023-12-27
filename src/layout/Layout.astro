@@ -1,12 +1,14 @@
 ---
+import { AstroFont } from "astro-font";
+
 interface Props {
   title: string;
+  class?: string;
 }
 
-const { title } = Astro.props;
+const { title, class: className } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -15,80 +17,192 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
+    <AstroFont
+      config={[
+        // https://fonts.googleapis.com/css2?family=Monoton&family=Roboto&family=Share+Tech+Mono&display=swap)
+        {
+          name: "Monoton",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/monoton/v19/5h1aiZUrOngCibe4TkHLQg.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+        {
+          name: "Roboto",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+        {
+          name: "Share Tech Mono",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/sharetechmono/v15/J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
   </head>
   <body>
-    <!-- <div class="z-0">
-      <div id="blob"></div>
-      <div id="blur"></div>
-    </div> -->
+    <!-- <div class=" z-0">
+    <div id="blob"></div>
+  </body> -->
     <main
-      class="absolute z-10 mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+      id="swup"
+      class:list={[
+        "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 font-sans md:px-12 md:py-20 lg:px-8 lg:py-0",
+        className,
+      ]}
     >
       <slot />
     </main>
-  </body>
-</html>
+    <script lang="ts">
+      // const blob = document.getElementById("blob");
 
-<script lang="ts">
-const blob = document.getElementById("blob");
+      // window.onpointermove = (event) => {
+      //   const { clientX, clientY } = event;
 
-window.onpointermove = (event) => {
-  const { clientX, clientY } = event;
+      //   blob?.animate(
+      //     {
+      //       left: `${clientX}px`,
+      //       top: `${clientY}px`,
+      //     },
+      //     { duration: 3000, fill: "forwards" },
+      //   );
+      // };
+    </script>
 
-  blob?.animate(
-    {
-      left: `${clientX}px`,
-      top: `${clientY}px`,
-    },
-    { duration: 3000, fill: "forwards" },
-  );
-};
-</script>
+    <style is:global>
+      all: initial;
+      * {
+        all: unset;
+      }
 
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* scroll-behavior: smooth !important; */
+      }
 
-  @keyframes rotate {
-    from {
-      rotate: 0deg;
-    }
+      html.is-changing .transition-fade {
+        transition: opacity 0.25s;
+        opacity: 1;
+      }
 
-    50% {
-      scale: 1 1.5;
-    }
+      html.is-animating .transition-fade {
+        opacity: 0;
+      }
 
-    to {
-      rotate: 360deg;
-    }
-  }
+      :root {
+        --color-accent1: 255, 138, 0;
+        --color-accent2: 229, 46, 113;
+      }
 
-  #blob {
-    background-color: white;
-    height: 50vmax;
-    aspect-ratio: 1;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    border-radius: 50%;
-    background: linear-gradient(to right, aquamarine, mediumpurple);
-    /* background: radial-gradient(
+      h1 {
+        font-family: "Monoton", monospace;
+      }
+
+      h2 {
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      h3 {
+        font-family: "Roboto", sans-serif;
+      }
+
+      p {
+        font-family: "Roboto", sans-serif;
+      }
+
+      a {
+        font-family: "Roboto", sans-serif;
+      }
+
+      a:hover {
+        background: linear-gradient(
+          90deg,
+          rgb(var(--color-accent1)),
+          rgb(var(--color-accent2))
+        );
+        text-shadow: none;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 250ms;
+      }
+
+      @keyframes rotate {
+        from {
+          rotate: 0deg;
+        }
+
+        50% {
+          scale: 1 1.5;
+        }
+
+        to {
+          rotate: 360deg;
+        }
+      }
+
+      #blob {
+        background-color: white;
+        height: 50vmax;
+        aspect-ratio: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        border-radius: 50%;
+        /* background: linear-gradient(to right, aquamarine, mediumpurple); */
+        background: radial-gradient(
+          600px at center,
+          aquamarine,
+          rgb(147, 112, 216, 0.15),
+          white,
+          white 80%
+        );
+        /* background: radial-gradient(
       600px at 600px 600px,
       rgba(29, 78, 216, 0.15),
       transparent 80%
     ); */
-    animation: rotate 20s infinite;
-    opacity: 0.8;
-  }
-
-  #blur {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 2;
-    backdrop-filter: blur(12vmax);
-    transform: translate3d(0, 0, 0);
-  }
-</style>
+        animation: rotate 20s infinite;
+        opacity: 0.8;
+        /* filter: blur(64px); */
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000;
+        transform: translate3d(0, 0, 0);
+        transform: translateZ(0);
+      }
+    </style>
+  </body>
+</html>

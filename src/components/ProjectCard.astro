@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-preload/components";
+import { type Project } from "../hooks/useProjects.hook";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article
+  class="group grid transform-gpu grid-rows-2 gap-8 rounded-xl p-2 shadow-md transition-all duration-300 md:p-4 md:shadow-none hover:md:bg-gray-400/5 hover:md:shadow-md hover:md:drop-shadow-md"
+>
+  {
+    project.imageUrl && (
+      <Image
+        class="row-span-1 aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover:md:scale-110"
+        height="310"
+        width="552"
+        alt=""
+        decoding="async"
+        loading="lazy"
+        src={project.imageUrl}
+      />
+    )
+  }
+  <div class="row-span-1 flex flex-col gap-2">
+    <p class="text-xl">{project.title}</p>
+    <div class="flex flex-wrap gap-2 text-sm">
+      {
+        project.technologies.map((tech) => (
+          <p class="rounded border-2 p-2 font-bold uppercase group-hover:bg-gray-50">
+            {tech}
+          </p>
+        ))
+      }
+    </div>
+    <p class="max-w-prose">
+      {project.description}
+    </p>
+    <div
+      class="items-flex-wrap flex w-full flex-grow flex-wrap items-center gap-2"
+    >
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="See this project on GitHub"
+        class="group/github flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:!bg-white hover:shadow-xl group-hover:bg-white"
+        >GitHub<Icon
+          class="h-5 w-5 group-hover/github:animate-pulse"
+          name="simple-icons:github"
+        /></a
+      >
+      {
+        project.projectUrl && (
+          <a
+            href={project.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="See this project in action"
+            class="group/project flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl group-hover:bg-white"
+          >
+            View site
+            <Icon
+              class="h-5 w-5 group-hover/project:animate-pulse"
+              name="mdi:external-link"
+            />
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

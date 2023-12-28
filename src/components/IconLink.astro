@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-preload/components";
+
+interface Props {
+  class?: string;
+  external?: boolean;
+  icon: string;
+  href: string;
+  size?: number;
+  title: string;
+}
+
+const {
+  class: className,
+  external,
+  icon,
+  href,
+  size = 20,
+  title,
+} = Astro.props;
+---
+
+<a
+  class:list={[
+    "group flex flex-row items-center gap-2 transition-all",
+    className,
+  ]}
+  target={external ? "_blank" : ""}
+  rel={external ? "noopener noreferrer" : ""}
+  title={title || href}
+  href={href}
+>
+  <slot />
+  <Icon
+    class="transition-all group-hover:translate-x-2 group-hover:scale-110 group-hover:animate-pulse"
+    name={icon}
+    size={size}
+  />
+</a>

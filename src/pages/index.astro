@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-preload/components";
 import Layout from "../layout/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Navbar from "../components/Navbar.astro";
@@ -7,6 +6,8 @@ import Projects from "../components/Projects.astro";
 import WorkHistory from "../components/WorkHistory.astro";
 import useProject from "../hooks/useProjects.hook";
 import useWorkHistory from "../hooks/useWorkHistory.hook";
+import IconLink from "../components/IconLink.astro";
+import Contact from "../components/Contact.astro";
 
 const { getProjects } = useProject();
 const projects = getProjects(true);
@@ -42,10 +43,12 @@ const navbarLinks = [
   //   alt: "Navigate to Nick's LinkedIn",
   // },
 ];
+
+const contact = { email: "me@nickleslie.dev" };
 ---
 
 <Layout title={"Nick Leslie - Portfolio"}>
-  <div class="mt-32 grid grid-cols-1 gap-16 md:gap-8 lg:grid-cols-2">
+  <div class="my-32 grid grid-cols-1 gap-16 md:gap-8 lg:grid-cols-2">
     <Hero class="grid-span-1 col-start-1 lg:fixed">
       <Navbar links={navbarLinks} />
     </Hero>
@@ -91,31 +94,29 @@ const navbarLinks = [
       <div class="flex flex-col justify-center gap-8" id="projects">
         <Projects projects={projects} />
 
-        <a
-          class="group/back flex flex-row items-center gap-2 transition-all"
-          title="See more projects"
+        <IconLink
           href="/projects"
+          title="See more projects"
+          icon="ep:right"
+          class="pl-4"
         >
-          See more projects including corporate projects<Icon
-            class="h-5 w-5 transition-all group-hover/back:translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
-            name="ep:right"
-          /></a
-        >
+          See more projects including corporate projects
+        </IconLink>
       </div>
       <div class="mt-16 flex flex-col justify-center gap-8" id="resume">
         <WorkHistory workHistory={workHistory} />
-        <a
-          class="group/back mt-8 flex flex-row items-center gap-2 transition-all"
-          title="See Résumé"
+        <IconLink
           href="/resume"
+          title="See Résumé"
+          icon="ep:right"
+          class="pl-4"
         >
-          Full résumé available here<Icon
-            class="h-5 w-5 transition-all group-hover/back:translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
-            name="ep:right"
-          /></a
-        >
+          Full résumé available here
+        </IconLink>
       </div>
-      <div class="mt-16 h-screen" id="contact">Contact me</div>
+      <div class="mt-16 flex flex-col justify-center gap-8" id="contact">
+        <Contact email={contact.email} />
+      </div>
     </div>
   </div>
 </Layout>

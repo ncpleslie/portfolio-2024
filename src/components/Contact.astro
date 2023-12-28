@@ -1,0 +1,133 @@
+---
+import { Icon } from "astro-preload/components";
+import Card from "./Card.astro";
+
+interface Props {
+  email: string;
+}
+
+const { email } = Astro.props;
+---
+
+<Card class="group/contact">
+  <div class="flex w-full flex-col items-center justify-center py-10">
+    <p class="text-xl">Contact me</p>
+    <div class="flex flex-row gap-2">
+      <p>Contact me at</p>
+      <a href={`mailto:${email}`}>{email}</a>
+    </div>
+    <p>or give me a bell using the form below</p>
+
+    <form
+      class="m-8 flex w-full flex-col items-center justify-center gap-8 rounded border-2 border-black/5 p-8"
+      id="contact-form"
+    >
+      <div class="relative w-full">
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
+          placeholder="John Doe"
+        />
+        <label
+          for="name"
+          class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          >Name</label
+        >
+      </div>
+
+      <div class="relative w-full">
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
+          placeholder="john@doe.com"
+        />
+        <label
+          for="email"
+          class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          >Email</label
+        >
+      </div>
+
+      <div class="relative w-full">
+        <textarea
+          id="message"
+          name="message"
+          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
+          placeholder=" "></textarea>
+        <label
+          for="message"
+          class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          >Your Message</label
+        >
+      </div>
+
+      <button
+        id="submit"
+        class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white"
+        >Send
+        <Icon
+          name="iconamoon:send-fill"
+          class="group-hover/btn:animate-pulse"
+        />
+      </button>
+    </form>
+
+    <div
+      id="success-msg"
+      class="m-8 hidden w-full flex-col justify-center gap-8 rounded border-2 border-black/5 p-8 text-center"
+    >
+      <p class="w-full text-center text-3xl font-medium">
+        Thanks for contacting me!
+      </p>
+      <p class="">I'll get back to you as soon as possible</p>
+
+      <button
+        id="send-another"
+        class="group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white"
+      >
+        Want to send me another message?
+      </button>
+    </div>
+  </div>
+</Card>
+
+<script>
+  import type { ContactResponse } from "../types/contact_response";
+
+  const contactForm = document.getElementById("contact-form");
+  const contactFormBtn = document.getElementById("submit") as HTMLButtonElement;
+  const successMsg = document.getElementById("success-msg");
+  const sendAnotherBtn = document.getElementById("send-another");
+
+  sendAnotherBtn?.addEventListener("click", () => {
+    contactForm?.classList.remove("hidden");
+    contactForm?.classList.add("flex");
+    successMsg?.classList.add("hidden");
+    successMsg?.classList.remove("flex");
+  });
+
+  contactForm?.addEventListener("submit", submit);
+
+  async function submit(e: SubmitEvent) {
+    e.preventDefault();
+    contactFormBtn.disabled = true;
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: formData,
+    });
+    const data = (await response.json()) as ContactResponse;
+
+    if (data.statusCode === 200) {
+      contactForm?.classList.add("hidden");
+      contactForm?.classList.remove("flex");
+      successMsg?.classList.remove("hidden");
+      successMsg?.classList.add("flex");
+      contactFormBtn.disabled = false;
+    }
+  }
+</script>

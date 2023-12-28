@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-preload/components";
 import { type Project } from "../hooks/useProjects.hook";
+import IconLinkBtn from "./IconLinkBtn.astro";
+import Card from "./Card.astro";
 
 interface Props {
   project: Project;
@@ -10,9 +11,7 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article
-  class="group grid transform-gpu grid-rows-2 gap-8 rounded-xl p-2 shadow-md transition-all duration-300 md:p-4 md:shadow-none hover:md:bg-gray-400/5 hover:md:shadow-md hover:md:drop-shadow-md"
->
+<Card class="grid grid-rows-2">
   {
     project.imageUrl && (
       <Image
@@ -43,34 +42,29 @@ const { project } = Astro.props;
     <div
       class="items-flex-wrap flex w-full flex-grow flex-wrap items-center gap-2"
     >
-      <a
+      <IconLinkBtn
+        external
         href={project.githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
         title="See this project on GitHub"
-        class="group/github flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:!bg-white hover:shadow-xl group-hover:bg-white"
-        >GitHub<Icon
-          class="h-5 w-5 group-hover/github:animate-pulse"
-          name="simple-icons:github"
-        /></a
+        icon="simple-icons:github"
+        class="group-hover:bg-white"
       >
+        View site
+      </IconLinkBtn>
+
       {
         project.projectUrl && (
-          <a
+          <IconLinkBtn
+            external
             href={project.projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             title="See this project in action"
-            class="group/project flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl group-hover:bg-white"
+            icon="mdi:external-link"
+            class="group-hover:bg-white"
           >
             View site
-            <Icon
-              class="h-5 w-5 group-hover/project:animate-pulse"
-              name="mdi:external-link"
-            />
-          </a>
+          </IconLinkBtn>
         )
       }
     </div>
   </div>
-</article>
+</Card>

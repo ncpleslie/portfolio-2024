@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-preload/components";
+
+interface Props {
+  class?: string;
+  external?: boolean;
+  icon: string;
+  href: string;
+  size?: number;
+  title: string;
+}
+
+const {
+  class: className,
+  external,
+  icon,
+  href,
+  size = 20,
+  title,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : ""}
+  rel={external ? "noopener noreferrer" : ""}
+  title={title}
+  class:list={[
+    "group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white",
+    className,
+  ]}
+>
+  <slot />
+  <Icon class="group-hover/btn:animate-pulse" size={size} name={icon} />
+</a>

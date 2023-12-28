@@ -7,7 +7,7 @@
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Ftrain_tracker_showcase.jpg?alt=media&token=b455d0df-78a1-493a-a66c-97b62188b69a",
       "order": 10,
       "projectUrl": "https://traintracking.nickleslie.dev",
-      "technologies": ["Nuxt 3", "tRPC", "TypeScript", "Zod", "Wails", "Go"],
+      "technologies": ["Go", "Wails", "Nuxt 3", "tRPC", "TypeScript", "Zod"],
       "title": "WMATA Train Tracker",
       "id": "wmata_train_tracker",
       "isVideo": false,

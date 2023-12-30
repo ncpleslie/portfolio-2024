@@ -65,6 +65,7 @@ const { title, class: className } = Astro.props;
       ]}
     />
   </head>
+
   <body>
     <!-- <div class=" z-0">
     <div id="blob"></div>
@@ -78,130 +79,110 @@ const { title, class: className } = Astro.props;
     >
       <slot />
     </main>
-    <script lang="ts">
-      // const blob = document.getElementById("blob");
+  </body>
+  <style is:global>
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      /* scroll-behavior: smooth !important; */
+    }
 
-      // window.onpointermove = (event) => {
-      //   const { clientX, clientY } = event;
+    html.is-changing .transition-fade {
+      transition: opacity 0.25s;
+      opacity: 1;
+    }
 
-      //   blob?.animate(
-      //     {
-      //       left: `${clientX}px`,
-      //       top: `${clientY}px`,
-      //     },
-      //     { duration: 3000, fill: "forwards" },
-      //   );
-      // };
-    </script>
+    html.is-animating .transition-fade {
+      opacity: 0;
+    }
 
-    <style is:global>
-      * {
-        all: unset;
+    :root {
+      --color-accent1: 255, 138, 0;
+      --color-accent2: 229, 46, 113;
+    }
+
+    h1 {
+      font-family: "Monoton", monospace;
+    }
+
+    h2 {
+      font-family: "Share Tech Mono", monospace;
+    }
+
+    h3 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    p {
+      font-family: "Roboto", sans-serif;
+    }
+
+    a {
+      font-family: "Roboto", sans-serif;
+    }
+
+    a:hover {
+      background: linear-gradient(
+        90deg,
+        rgb(var(--color-accent1)),
+        rgb(var(--color-accent2))
+      );
+      text-shadow: none;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 250ms;
+    }
+
+    @keyframes rotate {
+      from {
+        rotate: 0deg;
       }
 
-      html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        /* scroll-behavior: smooth !important; */
+      50% {
+        scale: 1 1.5;
       }
 
-      html.is-changing .transition-fade {
-        transition: opacity 0.25s;
-        opacity: 1;
+      to {
+        rotate: 360deg;
       }
+    }
 
-      html.is-animating .transition-fade {
-        opacity: 0;
-      }
-
-      :root {
-        --color-accent1: 255, 138, 0;
-        --color-accent2: 229, 46, 113;
-      }
-
-      h1 {
-        font-family: "Monoton", monospace;
-      }
-
-      h2 {
-        font-family: "Share Tech Mono", monospace;
-      }
-
-      h3 {
-        font-family: "Roboto", sans-serif;
-      }
-
-      p {
-        font-family: "Roboto", sans-serif;
-      }
-
-      a {
-        font-family: "Roboto", sans-serif;
-      }
-
-      a:hover {
-        background: linear-gradient(
-          90deg,
-          rgb(var(--color-accent1)),
-          rgb(var(--color-accent2))
-        );
-        text-shadow: none;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition-property: all;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 250ms;
-      }
-
-      @keyframes rotate {
-        from {
-          rotate: 0deg;
-        }
-
-        50% {
-          scale: 1 1.5;
-        }
-
-        to {
-          rotate: 360deg;
-        }
-      }
-
-      #blob {
-        background-color: white;
-        height: 50vmax;
-        aspect-ratio: 1;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        translate: -50% -50%;
-        border-radius: 50%;
-        /* background: linear-gradient(to right, aquamarine, mediumpurple); */
-        background: radial-gradient(
-          600px at center,
-          aquamarine,
-          rgb(147, 112, 216, 0.15),
-          white,
-          white 80%
-        );
-        /* background: radial-gradient(
+    #blob {
+      background-color: white;
+      height: 50vmax;
+      aspect-ratio: 1;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+      border-radius: 50%;
+      /* background: linear-gradient(to right, aquamarine, mediumpurple); */
+      background: radial-gradient(
+        600px at center,
+        aquamarine,
+        rgb(147, 112, 216, 0.15),
+        white,
+        white 80%
+      );
+      /* background: radial-gradient(
       600px at 600px 600px,
       rgba(29, 78, 216, 0.15),
       transparent 80%
     ); */
-        animation: rotate 20s infinite;
-        opacity: 0.8;
-        /* filter: blur(64px); */
-        -webkit-backface-visibility: hidden;
-        -webkit-perspective: 1000;
-        -webkit-transform: translate3d(0, 0, 0);
-        -webkit-transform: translateZ(0);
-        backface-visibility: hidden;
-        perspective: 1000;
-        transform: translate3d(0, 0, 0);
-        transform: translateZ(0);
-      }
-    </style>
-  </body>
+      animation: rotate 20s infinite;
+      opacity: 0.8;
+      /* filter: blur(64px); */
+      -webkit-backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000;
+      transform: translate3d(0, 0, 0);
+      transform: translateZ(0);
+    }
+  </style>
 </html>

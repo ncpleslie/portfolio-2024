@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-preload/components";
+import { Icon } from "astro-iconify";
 import Card from "./Card.astro";
 
 interface Props {
@@ -71,6 +71,7 @@ const { email } = Astro.props;
         >Send
         <Icon
           name="iconamoon:send-fill"
+          size={24}
           class="group-hover/btn:animate-pulse"
         />
       </button>

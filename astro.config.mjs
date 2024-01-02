@@ -9,7 +9,7 @@ import compress from "astro-compress";
 export default defineConfig({
   site: "https://dev.nickleslie.dev",
   integrations: [tailwind(), sitemap(), robotsTxt(), compress()],
-  output: "hybrid",
+  output: "server",
   adapter: vercel({
     webAnalytics: {
       enabled: true,

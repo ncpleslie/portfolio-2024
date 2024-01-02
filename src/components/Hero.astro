@@ -1,23 +1,28 @@
 ---
+import type { Details } from "../hooks/useContent.hook";
+import SocialsBar from "./SocialsBar.astro";
+
 interface Props {
   class?: string;
+  details: Details;
 }
 
-const { class: className } = Astro.props;
+const { class: className, details } = Astro.props;
 ---
 
 <div
-  class:list={["flex flex-col items-center gap-8 lg:items-start", className]}
+  class:list={[
+    "flex h-full flex-col items-center gap-8 lg:items-start",
+    className,
+  ]}
 >
   <div class="flex flex-col gap-2">
     <a title="Nick Leslie" href="/">
-      <h1 class="text-7xl text-gray-800">Nick Leslie</h1>
+      <h1 class="fancy text-7xl">{details.name}</h1>
     </a>
-    <h2>Engineering People Lead and Full-Stack Software Engineer</h2>
-    <p class="max-w-[20rem]">
-      Proven, commercial experience delivering accessible, quality web
-      applications
-    </p>
+    <h2>{details.title}</h2>
+    <p class="max-w-[25rem]">{details.pitch}</p>
   </div>
   <slot />
+  <SocialsBar socials={details.socials} />
 </div>

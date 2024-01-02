@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { type Project } from "../hooks/useProjects.hook";
+import { type Project } from "../hooks/useContent.hook";
 import IconLinkBtn from "./IconLinkBtn.astro";
 import Card from "./Card.astro";
 
@@ -11,11 +11,11 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<Card class="grid grid-rows-2">
+<Card class="flex flex-col">
   {
     project.imageUrl && (
       <Image
-        class="row-span-1 aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover:md:scale-110"
+        class="aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover:md:scale-110"
         height="310"
         width="552"
         alt={`Image of the ${project.title} project`}
@@ -25,7 +25,7 @@ const { project } = Astro.props;
       />
     )
   }
-  <div class="row-span-1 flex flex-col gap-2">
+  <div class="flex flex-col gap-2">
     <p class="text-xl">{project.title}</p>
     <div class="flex flex-wrap gap-2 text-sm">
       {
@@ -42,15 +42,19 @@ const { project } = Astro.props;
     <div
       class="items-flex-wrap flex w-full flex-grow flex-wrap items-center gap-2"
     >
-      <IconLinkBtn
-        external
-        href={project.githubUrl}
-        title="See this project on GitHub"
-        icon="simple-icons:github"
-        class="group-hover:bg-white"
-      >
-        View site
-      </IconLinkBtn>
+      {
+        project.githubUrl && (
+          <IconLinkBtn
+            external
+            href={project.githubUrl || ""}
+            title="See this project on GitHub"
+            icon="simple-icons:github"
+            class="group-hover:bg-white"
+          >
+            GitHub
+          </IconLinkBtn>
+        )
+      }
 
       {
         project.projectUrl && (

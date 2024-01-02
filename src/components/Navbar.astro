@@ -9,13 +9,15 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<div class="flex w-full flex-row items-start justify-center gap-16">
+<div
+  class="flex min-h-[120px] w-full flex-row items-start justify-center gap-16"
+>
   {
     links.map((link) => (
       <a
         id={`${link.id}_nav`}
         title={link.alt}
-        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-transparent transition-all duration-200 hover:pb-4 hover:pt-8  hover:text-black"
+        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-transparent transition-all duration-200 hover:text-black active:text-black hover:md:pb-4 hover:md:pt-8"
         href={link.link}
       >
         {link.title}
@@ -26,10 +28,15 @@ const { links } = Astro.props;
 </div>
 
 <script define:vars={{ links }}>
-// if (window.innerWidth <= 768) {
-//   // ignore on mobile
-//   return;
-// }
+const hoverStyle = [
+  "lg:px-8",
+  "lg:pb-4",
+  "lg:pt-8",
+  "lg:indent-0",
+  "lg:text-black",
+];
+
+const testStyle = ["text-transparent"];
 
 window.onload = () => {
   const elements = links.map((link) => document.getElementById(link.id));
@@ -47,23 +54,11 @@ const handleUpdatingActiveNavItems = (elements) => {
       middle > element.offsetTop &&
       middle < element.offsetTop + element.offsetHeight
     ) {
-      scrolledToElement.classList.remove("text-transparent");
-      scrolledToElement.classList.add(
-        "px-8",
-        "pb-4",
-        "pt-8",
-        "indent-0",
-        "text-black",
-      );
+      scrolledToElement.classList.remove(...testStyle);
+      scrolledToElement.classList.add(...hoverStyle);
     } else {
-      scrolledToElement.classList.add("text-transparent");
-      scrolledToElement.classList.remove(
-        "px-8",
-        "pb-4",
-        "pt-8",
-        "indent-0",
-        "text-black",
-      );
+      scrolledToElement.classList.add(...testStyle);
+      scrolledToElement.classList.remove(...hoverStyle);
     }
   });
 };

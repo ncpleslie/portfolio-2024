@@ -1,0 +1,33 @@
+---
+import type { Socials } from "../hooks/useContent.hook";
+import IconLink from "./IconLink.astro";
+
+interface Props {
+  socials: Socials;
+  class?: string;
+}
+
+const { socials, class: classname } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex h-full w-full flex-row flex-wrap justify-center gap-6 justify-self-end",
+    classname,
+  ]}
+>
+  <IconLink
+    icon="simple-icons:github"
+    href={socials.github}
+    title="Check out my GitHub"
+    size={30}
+    external
+  />
+  <IconLink
+    icon="simple-icons:linkedin"
+    href={socials.linkedin}
+    title="Check out my LinkedIn"
+    size={30}
+    external
+  />
+</div>

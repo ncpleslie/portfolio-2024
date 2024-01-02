@@ -18,6 +18,8 @@ const {
   size = 20,
   title,
 } = Astro.props;
+
+const hasSlot = Astro.slots.has("default");
 ---
 
 <a
@@ -32,7 +34,10 @@ const {
 >
   <slot />
   <Icon
-    class="transition-all group-hover:translate-x-2 group-hover:scale-110 group-hover:animate-pulse"
+    class:list={[
+      "transition-all group-hover:scale-110 group-hover:animate-pulse",
+      { "group-hover:translate-x-2": hasSlot },
+    ]}
     name={icon}
     size={size}
   />

@@ -1,15 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-iconify";
-import useProjects from "../hooks/useProjects.hook";
 import Layout from "../layout/Layout.astro";
+import useContent from "../hooks/useContent.hook";
 
-const project = useProjects();
-const projects = project.getProjects();
+export const prerender = true;
+
+const { getProjects } = useContent();
+const projects = getProjects();
 ---
 
 <Layout title={"Nick Leslie - Projects"}>
-  <div class="mt-24">
+  <div class="md:mt-24">
     <a
       class="group/back flex flex-row items-center gap-2 transition-all"
       title="Nick Leslie"
@@ -21,13 +23,13 @@ const projects = project.getProjects();
       />Nick Leslie</a
     >
     <table class="mt-4 w-full table-auto border-collapse pb-24 text-left">
-      <caption class="mb-12 w-full text-start text-4xl"
-        ><h2>All Projects</h2></caption
-      >
+      <caption class="mb-12 w-full text-start text-4xl">
+        <h2>All Projects</h2>
+      </caption>
       <thead class="sticky top-0 z-10 border-b px-6 py-5 backdrop-blur">
         <tr>
-          <th class="table-cell py-4 pr-8 sm:hidden md:table-cell" scope="col"
-          ></th>
+          <th class="hidden py-4 pr-8 md:table-cell" scope="col"></th>
+          <th class="py-4 pr-8 text-sm font-semibold" scope="col">Year</th>
           <th class="py-4 pr-8 text-sm font-semibold" scope="col">Project</th>
           <th
             class="hidden py-4 pr-8 text-sm font-semibold lg:table-cell"
@@ -52,10 +54,10 @@ const projects = project.getProjects();
           projects.map((project) => {
             return (
               <tr class="border-b last:border-none">
-                <td class="group/thumbnail table-cell py-4 pr-4 sm:hidden md:table-cell ">
+                <td class="group/thumbnail hidden py-4 pr-4 md:table-cell ">
                   {project.imageUrl && (
                     <a
-                      href={project.projectUrl || project.githubUrl}
+                      href={project.projectUrl || project.githubUrl || ""}
                       target="_blank"
                       rel="noopener noreferrer"
                       title={`See ${project.title}`}
@@ -73,26 +75,35 @@ const projects = project.getProjects();
                   )}
                 </td>
                 <td class="py-4 pr-4 align-top font-semibold leading-tight">
+                  {project.year}
+                </td>
+                <td class="py-4 pr-4 align-top font-semibold leading-tight">
                   <span class="hidden sm:block">{project.title}</span>
                   <span class="hidden font-normal sm:block">
                     {project.description}
                   </span>
                   <span class="block sm:hidden">
-                    <a
-                      href={project.projectUrl || project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={`See ${project.title}`}
-                      class="group/project flex flex-row items-center gap-2"
-                    >
-                      <span class="max-w-xs truncate text-ellipsis ">
+                    {project.projectUrl || project.githubUrl ? (
+                      <a
+                        href={project.projectUrl || project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`See ${project.title}`}
+                        class="group/project flex flex-row items-center gap-2"
+                      >
+                        <span class="max-w-xs truncate text-ellipsis">
+                          {project.title}
+                        </span>
+                        <Icon
+                          class="h-5 w-5 transition-all group-hover/project:scale-110 group-hover/project:animate-pulse"
+                          name="mdi:external-link"
+                        />
+                      </a>
+                    ) : (
+                      <span class="max-w-xs truncate text-ellipsis">
                         {project.title}
                       </span>
-                      <Icon
-                        class="h-5 w-5 transition-all group-hover/project:scale-110 group-hover/project:animate-pulse"
-                        name="mdi:external-link"
-                      />
-                    </a>
+                    )}
                   </span>
                 </td>
                 <td class="hidden py-4 pr-8 align-middle text-sm lg:table-cell">
@@ -124,22 +135,24 @@ const projects = project.getProjects();
                   )}
                 </td>
                 <td class="hidden text-sm sm:table-cell">
-                  <a
-                    href={project.projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={project.projectUrl}
-                    class="group/project flex flex-row items-center gap-2"
-                  >
-                    <span class="max-w-[10rem] truncate text-ellipsis lg:max-w-xs ">
-                      {project.projectUrl?.replace(/(^\w+:|^)\/\//, "") ||
-                        project.githubUrl.replace(/(^\w+:|^)\/\//, "")}
-                    </span>
-                    <Icon
-                      class="h-5 w-5 transition-all group-hover/project:translate-x-1 group-hover/project:scale-110 group-hover/project:animate-pulse"
-                      name="mdi:external-link"
-                    />
-                  </a>
+                  {project.projectUrl || project.githubUrl ? (
+                    <a
+                      href={project.projectUrl || project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={project.projectUrl}
+                      class="group/project flex flex-row items-center gap-2"
+                    >
+                      <span class="max-w-[10rem] truncate text-ellipsis lg:max-w-xs ">
+                        {project.projectUrl?.replace(/(^\w+:|^)\/\//, "") ||
+                          project.githubUrl?.replace(/(^\w+:|^)\/\//, "")}
+                      </span>
+                      <Icon
+                        class="h-5 w-5 transition-all group-hover/project:translate-x-1 group-hover/project:scale-110 group-hover/project:animate-pulse"
+                        name="mdi:external-link"
+                      />
+                    </a>
+                  ) : null}
                 </td>
               </tr>
             );

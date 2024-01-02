@@ -4,15 +4,16 @@ import Hero from "../components/Hero.astro";
 import Navbar from "../components/Navbar.astro";
 import Projects from "../components/Projects.astro";
 import WorkHistory from "../components/WorkHistory.astro";
-import useProject from "../hooks/useProjects.hook";
-import useWorkHistory from "../hooks/useWorkHistory.hook";
+import useContent from "../hooks/useContent.hook";
 import IconLink from "../components/IconLink.astro";
 import Contact from "../components/Contact.astro";
 
-const { getProjects } = useProject();
+export const prerender = true;
+
+const { getProjects, getWorkHistory, getDetails } = useContent();
 const projects = getProjects(true);
-const { getWorkHistory } = useWorkHistory();
 const workHistory = getWorkHistory();
+const details = getDetails();
 
 const navbarLinks = [
   {
@@ -36,12 +37,6 @@ const navbarLinks = [
     icon: "mdi:email",
     alt: "Contact Nick",
   },
-  // {
-  //   title: "LinkedIn",
-  //   link: "https://linkedin.com",
-  //   icon: "mdi:linkedin",
-  //   alt: "Navigate to Nick's LinkedIn",
-  // },
 ];
 
 const contact = { email: "me@nickleslie.dev" };
@@ -49,11 +44,11 @@ const contact = { email: "me@nickleslie.dev" };
 
 <Layout title={"Nick Leslie - Portfolio"}>
   <div class="my-32 grid grid-cols-1 gap-16 md:gap-8 lg:grid-cols-2">
-    <Hero class="grid-span-1 col-start-1 lg:fixed">
+    <Hero class="grid-span-1 col-start-1 lg:fixed" details={details}>
       <Navbar links={navbarLinks} />
     </Hero>
     <div class="grid-span-1 col-start-1 lg:col-start-2">
-      <div class="mb-12 flex h-80 w-full flex-col items-center">
+      <div class="mb-6 flex h-80 w-full flex-col items-center">
         <div class="flex max-w-prose flex-col gap-4">
           <p>
             Hi, I'm Nick. I'm a Software Engineer from New Zealand living in
@@ -86,32 +81,31 @@ const contact = { email: "me@nickleslie.dev" };
             >.
           </p>
           <p>
-            Check out some of my personal projects for a little taste of what I
-            can do.
+            Check out some of my <a href="/projects">projects</a> for a little
+            taste of what I can do.
           </p>
         </div>
       </div>
-      <div class="flex flex-col justify-center gap-8" id="projects">
+      <div class="mt-16 flex flex-col justify-center gap-8" id="projects">
         <Projects projects={projects} />
-
         <IconLink
           href="/projects"
           title="See more projects"
           icon="ep:right"
-          class="pl-4"
+          class="pl-4 text-lg font-bold"
         >
-          See more projects including corporate projects
+          View more projects including corporate work
         </IconLink>
       </div>
-      <div class="mt-16 flex flex-col justify-center gap-8" id="resume">
+      <div class="flex flex-col justify-center gap-8" id="resume">
         <WorkHistory workHistory={workHistory} />
         <IconLink
           href="/resume"
           title="See Résumé"
           icon="ep:right"
-          class="pl-4"
+          class="pl-4 text-lg font-bold"
         >
-          Full résumé available here
+          View full résumé
         </IconLink>
       </div>
       <div class="mt-16 flex flex-col justify-center gap-8" id="contact">

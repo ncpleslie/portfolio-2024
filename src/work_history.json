@@ -44,6 +44,35 @@
       "company_url": "https://jadeworld.com",
       "company": "Jade Software Corporation",
       "order": 2
+    },
+    {
+      "from": "July 2020",
+      "to": "Nov 2020",
+      "position_title": "IoT Software Engineer Intern",
+      "job_description": "Enhanced the accessibility of everyday cooking appliances through a multi-modal interface. Using on-device natural language processing and voice recognition",
+      "technologies": [
+        "TypeScript",
+        "Vue",
+        "Node JS",
+        "Firebase",
+        "Firebase Functions",
+        "Google Cloud Services",
+        "Google DialogFlow",
+        "NLP.js"
+      ],
+      "company_url": "https://jadeworld.com",
+      "company": "Jade Software Corporation",
+      "order": 3
+    },
+    {
+      "from": "Nov 2019",
+      "to": "Feb 2020",
+      "position_title": "Computer Vision Intern",
+      "job_description": "Developed a Computer Vision application for running on the Edge to enhance the capabilities of security cameras. Allowing them to perform tasks such as license plate recognition, object tracking and detection",
+      "technologies": ["Python", "OpenCV", "OpenVino"],
+      "company_url": "https://jadeworld.com",
+      "company": "Jade Software Corporation",
+      "order": 4
     }
   ]
 }

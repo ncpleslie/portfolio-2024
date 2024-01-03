@@ -14,7 +14,16 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
+    speedInsights: {
+      enabled: true,
+    },
     imageService: true,
+    imagesConfig: {
+      sizes: [320, 640, 1280],
+      domains: [
+        "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/",
+      ],
+    },
     devImageService: "sharp",
     functionPerRoute: true,
   }),

@@ -20,6 +20,9 @@ dependencies:
   '@astrojs/vercel':
     specifier: 6.0.2
     version: 6.0.2(astro@4.0.4)
+  '@vercel/speed-insights':
+    specifier: ^1.0.2
+    version: 1.0.2
   astro:
     specifier: 4.0.4
     version: 4.0.4(typescript@5.3.3)
@@ -1464,6 +1467,11 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: false
+
+  /@vercel/speed-insights@1.0.2:
+    resolution: {integrity: sha512-y5HWeB6RmlyVYxJAMrjiDEz8qAIy2cit0fhBq+MD78WaUwQvuBnQlX4+5MuwVTWi46bV3klaRMq83u9zUy1KOg==}
+    requiresBuild: true
     dev: false
 
   /@volar/kit@1.10.10(typescript@5.3.3):

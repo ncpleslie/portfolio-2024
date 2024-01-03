@@ -27,7 +27,7 @@ const { links } = Astro.props;
   }
 </div>
 
-<script define:vars={{ links }}>
+<script define:vars={{ links }} is:inline>
 const hoverStyle = [
   "lg:px-8",
   "lg:pb-4",
@@ -38,28 +38,37 @@ const hoverStyle = [
 
 const testStyle = ["text-transparent"];
 
-window.onload = () => {
-  const elements = links.map((link) => document.getElementById(link.id));
-  window.addEventListener("scroll", () =>
-    handleUpdatingActiveNavItems(elements),
-  );
-  handleUpdatingActiveNavItems(elements);
-};
-
 const handleUpdatingActiveNavItems = (elements) => {
   elements.forEach((element) => {
     const middle = window.innerHeight / 2 + window.scrollY;
     const scrolledToElement = document.getElementById(`${element.id}_nav`);
+
     if (
       middle > element.offsetTop &&
       middle < element.offsetTop + element.offsetHeight
     ) {
-      scrolledToElement.classList.remove(...testStyle);
-      scrolledToElement.classList.add(...hoverStyle);
+      scrolledToElement?.classList.remove(...testStyle);
+      scrolledToElement?.classList.add(...hoverStyle);
     } else {
-      scrolledToElement.classList.add(...testStyle);
-      scrolledToElement.classList.remove(...hoverStyle);
+      scrolledToElement?.classList.add(...testStyle);
+      scrolledToElement?.classList.remove(...hoverStyle);
     }
   });
 };
+
+document.addEventListener("astro:before-swap", (ev) => {
+  window.removeEventListener("scroll", () => handleUpdatingActiveNavItems);
+});
+
+document.addEventListener(
+  "astro:page-load",
+  () => {
+    const elements = links.map((link) => document.getElementById(link.id));
+    window.addEventListener("scroll", () =>
+      handleUpdatingActiveNavItems(elements),
+    );
+    handleUpdatingActiveNavItems(elements);
+  },
+  { once: true },
+  );
 </script>

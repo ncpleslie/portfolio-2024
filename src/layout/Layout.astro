@@ -2,6 +2,8 @@
 import { AstroFont } from "astro-font";
 import { SEO } from "astro-seo";
 import { ViewTransitions } from "astro:transitions";
+// @ts-ignore
+import SpeedInsights from "@vercel/speed-insights/astro";
 import SocialsBar from "../components/SocialsBar.astro";
 import IconLink from "../components/IconLink.astro";
 import useContent from "../hooks/useContent.hook";
@@ -21,17 +23,18 @@ const { title, class: className } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#33333d" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
       title={title}
-      description="description"
+      description={description}
       openGraph={{
         basic: {
           title: title,
           type: "website",
-          image: "",
+          image: "/metadata_thumbnail.jpg",
           url: Astro.url.href,
         },
         optional: {
@@ -46,6 +49,7 @@ const { title, class: className } = Astro.props;
           { name: "og" },
           {
             name: "twitter:image",
+            content: "/metadata_thumbnail.jpg",
           },
           { name: "twitter:title", content: metadataTitle },
           {
@@ -216,5 +220,6 @@ const { title, class: className } = Astro.props;
         }
       </style>
     </footer>
+    <SpeedInsights />
   </body>
 </html>

@@ -27,7 +27,7 @@
         "Tailwind",
         "Azure",
         "Azure AD",
-        "Azure Static Web Apps",
+        "Static Web Apps",
         "Azure Functions"
       ],
       "title": "Air New Zealand Claims Portal",
@@ -217,7 +217,6 @@
       "description": "Created a multi-AZ WordPress website on AWS. Effectively separating the web-tier from the data-tier with no public facing instances. Data is shared across EC2 instances by utilizing EBS",
       "github_url": "https://github.com/ncpleslie/AWS_CloudFormation_WordPress_Template",
       "image_url": "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/o/projects%2Faws_showcase.png?alt=media&token=42819161-cd8b-4be5-a54b-bfceab533b5f",
-      "project_url": "",
       "technologies": ["AWS", "CloudFormation"],
       "title": "AWS Multi-AZ WordPress Website",
       "id": "aws_multi-az_wordpress_website",
@@ -227,10 +226,9 @@
     },
     {
       "description": "Enhancing the accessibility of a Coffee Machine to include voice controls, for Jade Software. Showcased at the Noel Leeming Flagship store",
-      "github_url": "",
       "videoUrl": "https://www.youtube.com/embed/yoUnQg4luE8",
       "project_url": "https://jadeworld.com/resources/blog/we-built-the-worlds-first-digital-barista-but-why",
-      "technologies": ["JavaScript", "NodeJS", "Google Cloud API"],
+      "technologies": ["JavaScript", "NodeJS", "Google Cloud"],
       "title": "Bella - The Coffee Machine Assistant",
       "id": "bella_-_the_coffee_machine_assistant",
       "is_video": true,

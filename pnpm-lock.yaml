@@ -9,66 +9,66 @@ overrides:
 
 dependencies:
   '@astrojs/check':
-    specifier: ^0.3.2
+    specifier: 0.3.2
     version: 0.3.2(prettier-plugin-astro@0.12.2)(prettier@3.1.1)(typescript@5.3.3)
   '@astrojs/sitemap':
-    specifier: ^3.0.3
+    specifier: 3.0.3
     version: 3.0.3
   '@astrojs/tailwind':
-    specifier: ^5.0.3
+    specifier: 5.0.3
     version: 5.0.3(astro@4.0.4)(tailwindcss@3.3.6)
   '@astrojs/vercel':
-    specifier: ^6.0.2
+    specifier: 6.0.2
     version: 6.0.2(astro@4.0.4)
   astro:
-    specifier: ^4.0.4
+    specifier: 4.0.4
     version: 4.0.4(typescript@5.3.3)
   astro-compress:
-    specifier: ^2.2.5
+    specifier: 2.2.5
     version: 2.2.5
   astro-font:
-    specifier: ^0.0.28
+    specifier: 0.0.28
     version: 0.0.28
   astro-iconify:
-    specifier: ^1.2.0
+    specifier: 1.2.0
     version: 1.2.0
   astro-robots-txt:
-    specifier: ^1.0.0
+    specifier: 1.0.0
     version: 1.0.0
   astro-seo:
-    specifier: ^0.8.0
+    specifier: 0.8.0
     version: 0.8.0
   resend:
-    specifier: ^2.1.0
+    specifier: 2.1.0
     version: 2.1.0
   tailwindcss:
-    specifier: ^3.3.6
+    specifier: 3.3.6
     version: 3.3.6
   typescript:
-    specifier: ^5.3.3
+    specifier: 5.3.3
     version: 5.3.3
 
 devDependencies:
   '@typescript-eslint/parser':
-    specifier: ^6.14.0
+    specifier: 6.14.0
     version: 6.14.0(eslint@8.55.0)(typescript@5.3.3)
   eslint:
-    specifier: ^8.55.0
+    specifier: 8.55.0
     version: 8.55.0
   eslint-plugin-astro:
-    specifier: ^0.30.0
+    specifier: 0.30.0
     version: 0.30.0(eslint@8.55.0)
   eslint-plugin-jsx-a11y:
-    specifier: ^6.8.0
+    specifier: 6.8.0
     version: 6.8.0(eslint@8.55.0)
   prettier:
-    specifier: ^3.1.1
+    specifier: 3.1.1
     version: 3.1.1
   prettier-plugin-astro:
-    specifier: ^0.12.2
+    specifier: 0.12.2
     version: 0.12.2
   prettier-plugin-tailwindcss:
-    specifier: ^0.5.9
+    specifier: 0.5.9
     version: 0.5.9(prettier-plugin-astro@0.12.2)(prettier@3.1.1)
 
 packages:
@@ -1326,7 +1326,7 @@ packages:
   /@types/sax@1.2.7:
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.10.4
     dev: false
 
   /@types/tar@6.1.10:

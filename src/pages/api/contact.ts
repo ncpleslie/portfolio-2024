@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import type { ContactResponse } from "../../types/contact_response";
+import { Resend } from "resend";
 
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
@@ -7,23 +8,37 @@ export const POST: APIRoute = async ({ request }) => {
   const email = data.get("email");
   const message = data.get("message");
 
-  // Validate the data - you'll probably want to do more than this
   if (!name || !email || !message) {
     return new Response(
       JSON.stringify({
         message: "Missing required fields",
-        statusCode: 400,
-      } as ContactResponse),
+      } satisfies ContactResponse),
       { status: 400 },
     );
   }
-  console.log("We have data", name, email, message);
-  // Do something with the data, then return a success response
-  return new Response(
-    JSON.stringify({
-      message: "Success!",
-      statusCode: 200,
-    } as ContactResponse),
-    { status: 200 },
-  );
+  try {
+    const resend = new Resend(import.meta.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from: import.meta.env.EMAIL_FROM,
+      to: import.meta.env.EMAIL_TO,
+      subject: `New message from nickleslie.dev`,
+      html: `From: ${name}<br><br>
+      Email: ${email}<br><br>
+      Message: ${message}<br><br>`,
+    });
+
+    return new Response(
+      JSON.stringify({
+        message: "Success!",
+      } satisfies ContactResponse),
+      { status: 200 },
+    );
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        message: "Error!",
+      } satisfies ContactResponse),
+      { status: 500 },
+    );
+  }
 };

@@ -12,7 +12,7 @@ const { email } = Astro.props;
 <Card class="group/contact">
   <div class="flex w-full flex-col items-center justify-center py-10">
     <p class="heading text-2xl">Contact me</p>
-    <div class="flex flex-row gap-2">
+    <div class="flex flex-row gap-1">
       <p>Contact me at</p>
       <a href={`mailto:${email}`}>{email}</a>
     </div>
@@ -34,7 +34,7 @@ const { email } = Astro.props;
         />
         <label
           for="name"
-          class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          class="absolute -top-2.5 left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
           >Name</label
         >
       </div>
@@ -50,7 +50,7 @@ const { email } = Astro.props;
         />
         <label
           for="email"
-          class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          class="absolute -top-2.5 left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
           >Email</label
         >
       </div>
@@ -64,9 +64,17 @@ const { email } = Astro.props;
           required></textarea>
         <label
           for="message"
-          class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          class="absolute -top-2.5 left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
           >Your Message</label
         >
+      </div>
+
+      <div
+        id="error-msg"
+        class="hidden w-full flex-col justify-center gap-2 rounded border-2 border-red-600 p-8 text-center"
+      >
+        <p class="w-full text-center text-3xl font-medium">Oops!</p>
+        <p>Something went wrong. Please try again</p>
       </div>
 
       <button
@@ -107,6 +115,7 @@ const { email } = Astro.props;
   const contactFormBtn = document.getElementById("submit") as HTMLButtonElement;
   const successMsg = document.getElementById("success-msg");
   const sendAnotherBtn = document.getElementById("send-another");
+  const errorMsg = document.getElementById("error-msg");
 
   sendAnotherBtn?.addEventListener("click", () => {
     contactForm?.classList.remove("hidden");
@@ -117,27 +126,40 @@ const { email } = Astro.props;
 
   contactForm?.addEventListener("submit", submit);
 
-  function submit(e: SubmitEvent) {
+  async function submit(e: SubmitEvent) {
     e.preventDefault();
+    errorMsg?.classList.add("hidden");
+    errorMsg?.classList.remove("flex");
     contactFormBtn.disabled = true;
     const formData = new FormData(e.currentTarget as HTMLFormElement);
-    fetch("/api/contact", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data: ContactResponse) => {
-        if (data.statusCode === 200) {
-          contactForm?.classList.add("hidden");
-          contactForm?.classList.remove("flex");
-          successMsg?.classList.remove("hidden");
-          successMsg?.classList.add("flex");
-          contactFormBtn.disabled = false;
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
       });
-    e.preventDefault();
+
+      if (response.status !== 200) {
+        showErrorMsg();
+        return;
+      }
+
+      contactForm?.classList.add("hidden");
+      contactForm?.classList.remove("flex");
+      successMsg?.classList.remove("hidden");
+      successMsg?.classList.add("flex");
+      contactFormBtn.disabled = false;
+
+      return;
+    } catch (error) {
+      console.error("Error:", error);
+      showErrorMsg();
+    }
+  }
+
+  function showErrorMsg() {
+    errorMsg?.classList.remove("hidden");
+    errorMsg?.classList.add("flex");
+    contactFormBtn.disabled = false;
   }
 </script>

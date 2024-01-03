@@ -1,6 +1,6 @@
 import { projects } from "../projects.json";
 import { work_history } from "../work_history.json";
-import { details } from "../description.json";
+import { details, metadata } from "../description.json";
 import { convertKeys, type SnakeCaseObject } from "../utils/case_converter";
 
 const useContent = () => {
@@ -30,9 +30,14 @@ const useContent = () => {
     return convertKeys(details);
   };
 
-  return { getProjects, getWorkHistory, getDetails };
+  const getMetadata = () => {
+    return convertKeys(metadata);
+  };
+
+  return { getProjects, getWorkHistory, getDetails, getMetadata };
 };
 
+export type Metadata = SnakeCaseObject<typeof metadata>;
 export type Details = SnakeCaseObject<typeof details>;
 export type Socials = SnakeCaseObject<typeof details.socials>;
 export type Project = SnakeCaseObject<(typeof projects)[0]>;

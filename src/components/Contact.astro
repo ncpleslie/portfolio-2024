@@ -21,6 +21,7 @@ const { email } = Astro.props;
     <form
       class="m-8 flex w-full flex-col items-center justify-center gap-8 rounded border-2 border-black/5 p-8"
       id="contact-form"
+      action="javascript:void(0)"
     >
       <div class="relative w-full">
         <input
@@ -29,6 +30,7 @@ const { email } = Astro.props;
           type="text"
           class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
           placeholder="John Doe"
+          required
         />
         <label
           for="name"
@@ -44,6 +46,7 @@ const { email } = Astro.props;
           type="email"
           class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
           placeholder="john@doe.com"
+          required
         />
         <label
           for="email"
@@ -57,7 +60,8 @@ const { email } = Astro.props;
           id="message"
           name="message"
           class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
-          placeholder=" "></textarea>
+          placeholder=" "
+          required></textarea>
         <label
           for="message"
           class="absolute left-2 text-xl text-gray-600 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
@@ -113,22 +117,27 @@ const { email } = Astro.props;
 
   contactForm?.addEventListener("submit", submit);
 
-  async function submit(e: SubmitEvent) {
+  function submit(e: SubmitEvent) {
     e.preventDefault();
     contactFormBtn.disabled = true;
     const formData = new FormData(e.currentTarget as HTMLFormElement);
-    const response = await fetch("/api/contact", {
+    fetch("/api/contact", {
       method: "POST",
       body: formData,
-    });
-    const data = (await response.json()) as ContactResponse;
-
-    if (data.statusCode === 200) {
-      contactForm?.classList.add("hidden");
-      contactForm?.classList.remove("flex");
-      successMsg?.classList.remove("hidden");
-      successMsg?.classList.add("flex");
-      contactFormBtn.disabled = false;
-    }
+    })
+      .then((response) => response.json())
+      .then((data: ContactResponse) => {
+        if (data.statusCode === 200) {
+          contactForm?.classList.add("hidden");
+          contactForm?.classList.remove("flex");
+          successMsg?.classList.remove("hidden");
+          successMsg?.classList.add("flex");
+          contactFormBtn.disabled = false;
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    e.preventDefault();
   }
 </script>

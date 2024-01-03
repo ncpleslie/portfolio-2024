@@ -6,8 +6,9 @@ import SocialsBar from "../components/SocialsBar.astro";
 import IconLink from "../components/IconLink.astro";
 import useContent from "../hooks/useContent.hook";
 
-const { getDetails } = useContent();
+const { getDetails, getMetadata } = useContent();
 const { socials } = getDetails();
+const { description, title: metadataTitle } = getMetadata();
 
 interface Props {
   title: string;
@@ -25,66 +26,82 @@ const { title, class: className } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
       title={title}
-      description=""
+      description="description"
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: "",
+          url: Astro.url.href,
+        },
+        optional: {
+          description: description,
+          siteName: metadataTitle,
+        },
+      }}
+      ,
       extend={{
         link: [{ rel: "icon", href: "/favicon.ico" }],
         meta: [
+          { name: "og" },
           {
             name: "twitter:image",
           },
-          { name: "twitter:title", content: "Nick Leslie - Software Engineer" },
-          { name: "twitter:description", content: "Agent" },
+          { name: "twitter:title", content: metadataTitle },
+          {
+            name: "twitter:description",
+            content: description,
+          },
         ],
       }}
-    >
-      <ViewTransitions />
-      <AstroFont
-        config={[
-          {
-            name: "Monoton",
-            src: [
-              {
-                style: "normal",
-                weight: "400",
-                path: "https://fonts.gstatic.com/s/monoton/v19/5h1aiZUrOngCibe4TkHLQg.woff2",
-              },
-            ],
-            preload: true,
-            display: "swap",
-            selector: "body",
-            fallback: "sans-serif",
-          },
-          {
-            name: "Roboto",
-            src: [
-              {
-                style: "normal",
-                weight: "400",
-                path: "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2",
-              },
-            ],
-            preload: true,
-            display: "swap",
-            selector: "body",
-            fallback: "sans-serif",
-          },
-          {
-            name: "Share Tech Mono",
-            src: [
-              {
-                style: "normal",
-                weight: "400",
-                path: "https://fonts.gstatic.com/s/sharetechmono/v15/J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2",
-              },
-            ],
-            preload: true,
-            display: "swap",
-            selector: "body",
-            fallback: "sans-serif",
-          },
-        ]}
-      />
-    </SEO>
+    />
+    <ViewTransitions />
+    <AstroFont
+      config={[
+        {
+          name: "Monoton",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/monoton/v19/5h1aiZUrOngCibe4TkHLQg.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+        {
+          name: "Roboto",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+        {
+          name: "Share Tech Mono",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/sharetechmono/v15/J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
   </head><body>
     <main
       class:list={[
@@ -96,10 +113,10 @@ const { title, class: className } = Astro.props;
       <slot />
     </main>
     <footer
-      class="mx-auto mb-12 flex h-32 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-sans md:mb-0 md:h-16 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
+      class="mx-auto mb-12 flex h-32 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-sans md:mb-0 md:h-24 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
     >
       <SocialsBar socials={socials} class="lg:hidden" />
-      <div class="mx-4 flex flex-col gap-1">
+      <div class="m-4 flex flex-col gap-1">
         <div class="flex gap-1">
           <p>Made by me with</p>
           <IconLink

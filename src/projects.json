@@ -1,6 +1,25 @@
 {
   "projects": [
     {
+      "description": "A white-labeled insurance (Life, TPD) calculator for Zurich Insurance, Australia. Using Angular for frontend and .NET for the backend. Deployed to Azure. This application is highly configuration driven allowing for quick customizability and changes to the calculation engine",
+      "project_url": "https://zurich.zurichcalculators.net",
+      "technologies": [
+        "Angular",
+        "TypeScript",
+        "C#",
+        ".NET",
+        "Azure",
+        "CosmosDB",
+        "TeamCity"
+      ],
+      "title": "Zurich Insurance Calculator",
+      "id": "insurance_calculator",
+      "is_video": false,
+      "showcase": false,
+      "company": "Jade Software",
+      "year": 2022
+    },
+    {
       "description": "The Air New Zealand claims portal is a web application to make it easier for pilots and cabin crew to submit, edit and review expense claims. It replaces the old process of hand-written expense reports. Developed with Vue 3 and deployed to Azure",
       "technologies": [
         "Vue 3",

@@ -7,7 +7,7 @@ import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://dev.nickleslie.dev",
+  site: "https://nickleslie.dev",
   integrations: [tailwind(), sitemap(), robotsTxt(), compress()],
   output: "server",
   adapter: vercel({
@@ -15,14 +15,12 @@ export default defineConfig({
       enabled: true,
     },
     speedInsights: {
-      enabled: true,
+      enabled: false,
     },
     imageService: true,
     imagesConfig: {
-      sizes: [320, 640, 1280],
-      domains: [
-        "https://firebasestorage.googleapis.com/v0/b/nick-leslie-dev.appspot.com/",
-      ],
+      sizes: [122, 552],
+      domains: [],
     },
     devImageService: "sharp",
     functionPerRoute: true,

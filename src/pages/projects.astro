@@ -6,21 +6,22 @@ import useContent from "../hooks/useContent.hook";
 
 export const prerender = true;
 
-const { getProjects } = useContent();
+const { getProjects, getDetails } = useContent();
 const projects = getProjects();
+const { fullName } = getDetails();
 ---
 
-<Layout title={"Nick Leslie - Software Engineer | Projects"}>
+<Layout title={"Projects"}>
   <div class="md:mt-24">
     <a
       class="group/back flex flex-row items-center gap-2 transition-all"
-      title="Nick Leslie"
+      title="Back to home"
       href="/"
     >
       <Icon
         class="h-5 w-5 transition-all group-hover/back:-translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
         name="ep:back"
-      />Nick Leslie</a
+      />{fullName}</a
     >
     <table class="mt-4 w-full table-auto border-collapse pb-24 text-left">
       <caption class="mb-12 w-full text-start text-4xl">
@@ -64,8 +65,8 @@ const projects = getProjects();
                     >
                       <Image
                         class="aspect-video h-full w-full min-w-[75px] rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover/thumbnail:md:scale-110"
-                        height="310"
-                        width="552"
+                        height="70"
+                        width="122"
                         alt={project.title}
                         decoding="async"
                         loading="lazy"
@@ -91,7 +92,7 @@ const projects = getProjects();
                         title={`See ${project.title}`}
                         class="group/project flex flex-row items-center gap-2"
                       >
-                        <span class="max-w-xs truncate text-ellipsis">
+                        <span class="max-w-[67vw] truncate text-ellipsis">
                           {project.title}
                         </span>
                         <Icon
@@ -100,9 +101,9 @@ const projects = getProjects();
                         />
                       </a>
                     ) : (
-                      <span class="max-w-xs truncate text-ellipsis">
+                      <p class="max-w-xs truncate text-ellipsis font-normal">
                         {project.title}
-                      </span>
+                      </p>
                     )}
                   </span>
                 </td>

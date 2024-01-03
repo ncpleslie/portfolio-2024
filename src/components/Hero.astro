@@ -17,8 +17,8 @@ const { class: className, details } = Astro.props;
   ]}
 >
   <div class="flex flex-col gap-2">
-    <a title="Nick Leslie" href="/">
-      <h1 class="fancy text-7xl">{details.name}</h1>
+    <a title={details.fullName} href="/">
+      <h1 class="fancy text-7xl">{details.fullName}</h1>
     </a>
     <h2>{details.title}</h2>
     <p class="max-w-[25rem]">{details.pitch}</p>

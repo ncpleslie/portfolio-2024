@@ -21,28 +21,26 @@ const navbarLinks = [
     link: "#projects",
     id: "projects",
     icon: "mdi:card-bulleted-settings",
-    alt: "See Nick's projects",
+    alt: `See ${details.firstName}'s projects`,
   },
   {
     title: "Résumé",
     link: "#resume",
     id: "resume",
     icon: "mdi:resume",
-    alt: "Check out Nick's Résumé",
+    alt: `Check out ${details.firstName}'s Résumé`,
   },
   {
     title: "Contact",
     link: "#contact",
     id: "contact",
     icon: "mdi:email",
-    alt: "Contact Nick",
+    alt: `Contact ${details.firstName}`,
   },
 ];
-
-const contact = { email: "me@nickleslie.dev" };
 ---
 
-<Layout title={"Nick Leslie - Software Engineer"}>
+<Layout>
   <div class="my-32 grid grid-cols-1 gap-16 md:gap-8 lg:grid-cols-2">
     <Hero class="grid-span-1 col-start-1 lg:fixed" details={details}>
       <Navbar links={navbarLinks} />
@@ -50,40 +48,7 @@ const contact = { email: "me@nickleslie.dev" };
     <div class="grid-span-1 col-start-1 lg:col-start-2">
       <div class="mb-6 flex h-80 w-full flex-col items-center">
         <div class="flex max-w-prose flex-col gap-4">
-          <p>
-            Hi, I'm Nick. I'm a Software Engineer from New Zealand living in
-            Washington, D.C.
-          </p>
-          <p>
-            I specialize in building applications using web technologies. With
-            proven, commercial experience delivering high-quality applications
-            for many clients around the world.
-          </p>
-          <p>
-            These include <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.airnewzealand.com/"
-            >
-              Air New Zealand</a
-            >, <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.dbcargo.com/">DB Cargo</a
-            >, <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.jadeworld.com/">Jade Software Corporation</a
-            >, and <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.skipton.co.uk/">Skipton Building Society</a
-            >.
-          </p>
-          <p>
-            Check out some of my <a href="/projects">projects</a> for a little
-            taste of what I can do.
-          </p>
+          <Fragment set:html={details.descriptionHtml} />
         </div>
       </div>
       <div class="mt-16 flex flex-col justify-center gap-8" id="projects">
@@ -110,7 +75,7 @@ const contact = { email: "me@nickleslie.dev" };
         </IconLink>
       </div>
       <div class="mt-16 flex flex-col justify-center gap-8" id="contact">
-        <Contact email={contact.email} />
+        <Contact email={details.contactEmail} />
       </div>
     </div>
   </div>

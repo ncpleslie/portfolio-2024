@@ -2,18 +2,16 @@
 import { AstroFont } from "astro-font";
 import { SEO } from "astro-seo";
 import { ViewTransitions } from "astro:transitions";
-// @ts-ignore
-import SpeedInsights from "@vercel/speed-insights/astro";
 import SocialsBar from "../components/SocialsBar.astro";
 import IconLink from "../components/IconLink.astro";
 import useContent from "../hooks/useContent.hook";
 
 const { getDetails, getMetadata } = useContent();
-const { socials } = getDetails();
+const { fullName, profession, socials } = getDetails();
 const { description, title: metadataTitle } = getMetadata();
 
 interface Props {
-  title: string;
+  title?: string;
   class?: string;
 }
 
@@ -28,11 +26,15 @@ const { title, class: className } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
-      title={title}
+      title={title
+        ? `${title} | ${fullName} - ${profession}`
+        : `${fullName} - ${profession}`}
       description={description}
       openGraph={{
         basic: {
-          title: title,
+          title: title
+            ? `${title} | ${fullName} - ${profession}`
+            : `${fullName} - ${profession}`,
           type: "website",
           image: "/metadata_thumbnail.jpg",
           url: Astro.url.href,
@@ -83,6 +85,17 @@ const { title, class: className } = Astro.props;
               style: "normal",
               weight: "400",
               path: "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2",
+            },
+
+            {
+              style: "normal",
+              weight: "500",
+              path: "https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2",
+            },
+            {
+              style: "normal",
+              weight: "700",
+              path: "https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4.woff2",
             },
           ],
           preload: true,
@@ -147,79 +160,78 @@ const { title, class: className } = Astro.props;
           />
         </div>
       </div>
-      <style is:global>
-        html {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          scroll-behavior: smooth !important;
-        }
-
-        html.is-changing .transition-fade {
-          transition: opacity 0.25s;
-          opacity: 1;
-        }
-
-        html.is-animating .transition-fade {
-          opacity: 0;
-        }
-
-        :root {
-          --color-accent1: 255, 138, 0;
-          --color-accent2: 229, 46, 113;
-        }
-
-        h1 {
-          font-family: "Monoton", monospace;
-        }
-
-        h2 {
-          font-family: "Share Tech Mono", monospace;
-        }
-
-        h3 {
-          font-family: "Roboto", sans-serif;
-        }
-
-        p {
-          font-family: "Roboto", sans-serif;
-        }
-
-        a {
-          font-family: "Roboto", sans-serif;
-        }
-
-        a:hover {
-          background: linear-gradient(
-            90deg,
-            rgb(var(--color-accent1)),
-            rgb(var(--color-accent2))
-          );
-          text-shadow: none;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          transition-property: all;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 250ms;
-        }
-
-        .heading {
-          font-family: "Share Tech Mono", monospace;
-        }
-
-        .fancy {
-          background: linear-gradient(
-            90deg,
-            rgb(var(--color-accent1)),
-            rgb(var(--color-accent2))
-          );
-          text-shadow: none;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      </style>
     </footer>
-    <SpeedInsights />
+    <style is:global>
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth !important;
+      }
+
+      html.is-changing .transition-fade {
+        transition: opacity 0.25s;
+        opacity: 1;
+      }
+
+      html.is-animating .transition-fade {
+        opacity: 0;
+      }
+
+      :root {
+        --color-accent1: 255, 138, 0;
+        --color-accent2: 229, 46, 113;
+      }
+
+      h1 {
+        font-family: "Monoton", monospace;
+      }
+
+      h2 {
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      h3 {
+        font-family: "Roboto", sans-serif;
+      }
+
+      p {
+        font-family: "Roboto", sans-serif;
+      }
+
+      a {
+        font-family: "Roboto", sans-serif;
+      }
+
+      a:hover {
+        background: linear-gradient(
+          90deg,
+          rgb(var(--color-accent1)),
+          rgb(var(--color-accent2))
+        );
+        text-shadow: none;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 250ms;
+      }
+
+      .heading {
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      .fancy {
+        background: linear-gradient(
+          90deg,
+          rgb(var(--color-accent1)),
+          rgb(var(--color-accent2))
+        );
+        text-shadow: none;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </body>
 </html>

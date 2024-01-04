@@ -4,18 +4,22 @@ import { type Project } from "../hooks/useContent.hook";
 
 interface Props {
   projects: Project[];
+  class?: string;
 }
 
-const { projects } = Astro.props;
+const { projects, class: className } = Astro.props;
 ---
 
 <ul
-  class="flex flex-grow flex-row flex-wrap justify-center gap-4 md:gap-8 lg:flex-col"
+  class:list={[
+    "flex flex-grow flex-row flex-wrap justify-center gap-6 md:gap-8 lg:flex-col",
+    className,
+  ]}
 >
   {
     projects.map((project) => {
       return (
-        <li>
+        <li class="w-full">
           <ProjectCard project={project} />
         </li>
       );

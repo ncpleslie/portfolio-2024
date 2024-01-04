@@ -51,28 +51,32 @@ const navbarLinks = [
           <Fragment set:html={details.descriptionHtml} />
         </div>
       </div>
-      <div class="mt-16 flex flex-col justify-center gap-8" id="projects">
-        <Projects projects={projects} />
-        <IconLink
-          href="/projects"
-          title="See more projects"
-          icon="ep:right"
-          class="pl-4 text-lg font-bold"
-        >
-          View more projects including corporate work
-        </IconLink>
+      <div class="mt-24 flex justify-center md:mt-16" id="projects">
+        <div class="flex max-w-[592px] flex-col items-center gap-8">
+          <Projects projects={projects} />
+          <IconLink
+            href="/projects"
+            title="See more projects"
+            icon="ep:right"
+            class="self-start text-lg font-bold md:pl-4"
+          >
+            View more projects including corporate work
+          </IconLink>
+        </div>
       </div>
-      <div class="mt-16 flex flex-col justify-center gap-8" id="resume">
-        <WorkHistory workHistory={workHistory} />
-        <IconLink
-          href={details.resumeUrl}
-          title="See Résumé"
-          icon="ep:right"
-          class="pl-4 text-lg font-bold"
-          external
-        >
-          View full résumé
-        </IconLink>
+      <div class="mt-24 flex justify-center md:mt-16" id="resume">
+        <div class="flex max-w-[592px] flex-col items-center gap-8">
+          <WorkHistory workHistory={workHistory} />
+          <IconLink
+            href={details.resumeUrl}
+            title="See Résumé"
+            icon="ep:right"
+            class="self-start text-lg font-bold md:pl-4"
+            external
+          >
+            View full résumé
+          </IconLink>
+        </div>
       </div>
       <div class="mt-16 flex flex-col justify-center gap-8" id="contact">
         <Contact email={details.contactEmail} />

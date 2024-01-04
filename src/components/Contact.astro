@@ -71,10 +71,11 @@ const { email } = Astro.props;
 
       <div
         id="error-msg"
-        class="hidden w-full flex-col justify-center gap-2 rounded border-2 border-red-600 p-8 text-center"
+        class="hidden w-full flex-col justify-center gap-2 rounded border-2 border-red-600 p-4 text-center"
       >
-        <p class="w-full text-center text-3xl font-medium">Oops!</p>
-        <p>Something went wrong. Please try again</p>
+        <p class="w-full text-center text-xl font-medium" id="error-string">
+          Oops!
+        </p>
       </div>
 
       <button
@@ -109,6 +110,8 @@ const { email } = Astro.props;
 </Card>
 
 <script>
+  import { type ContactResponse } from "../types/contact_response";
+
   const contactForm = document.getElementById("contact-form");
   const contactFormBtn = document.getElementById("submit") as HTMLButtonElement;
   const successMsg = document.getElementById("success-msg");
@@ -138,7 +141,9 @@ const { email } = Astro.props;
       });
 
       if (response.status !== 200) {
-        showErrorMsg();
+        const data = await response.json();
+        console.log(data);
+        showErrorMsg(data);
         return;
       }
 
@@ -155,9 +160,21 @@ const { email } = Astro.props;
     }
   }
 
-  function showErrorMsg() {
+  function showErrorMsg(data?: ContactResponse) {
     errorMsg?.classList.remove("hidden");
     errorMsg?.classList.add("flex");
     contactFormBtn.disabled = false;
+
+    const errorNode = document.getElementById("error-string");
+    if (errorNode) {
+      errorNode.innerText = data?.message || "";
+      errorMsg?.appendChild(errorNode);
+    }
+
+    data?.issues?.forEach((issue) => {
+      const errorNode = document.createElement("p");
+      errorNode.innerText = issue;
+      errorMsg?.appendChild(errorNode);
+    });
   }
 </script>

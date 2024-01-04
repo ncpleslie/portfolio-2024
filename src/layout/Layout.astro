@@ -16,6 +16,35 @@ interface Props {
 }
 
 const { title, class: className } = Astro.props;
+
+const openGraph = {
+  basic: {
+    title: title
+      ? `${title} | ${fullName} - ${profession}`
+      : `${fullName} - ${profession}`,
+    type: "website",
+    image: "/metadata_thumbnail.jpg",
+    url: Astro.url.href,
+  },
+  optional: {
+    description: description,
+    siteName: metadataTitle,
+  },
+};
+
+const twitterOg = [
+  { name: "og" },
+  {
+    name: "twitter:image",
+    content: "/metadata_thumbnail.jpg",
+  },
+  { name: "twitter:title", content: metadataTitle },
+  {
+    name: "twitter:description",
+    content: description,
+  },
+  { name: "twitter:card", content: "summary_large_image" },
+];
 ---
 
 <html lang="en">
@@ -30,35 +59,10 @@ const { title, class: className } = Astro.props;
         ? `${title} | ${fullName} - ${profession}`
         : `${fullName} - ${profession}`}
       description={description}
-      openGraph={{
-        basic: {
-          title: title
-            ? `${title} | ${fullName} - ${profession}`
-            : `${fullName} - ${profession}`,
-          type: "website",
-          image: "/metadata_thumbnail.jpg",
-          url: Astro.url.href,
-        },
-        optional: {
-          description: description,
-          siteName: metadataTitle,
-        },
-      }}
-      ,
+      openGraph={openGraph}
       extend={{
         link: [{ rel: "icon", href: "/favicon.ico" }],
-        meta: [
-          { name: "og" },
-          {
-            name: "twitter:image",
-            content: "/metadata_thumbnail.jpg",
-          },
-          { name: "twitter:title", content: metadataTitle },
-          {
-            name: "twitter:description",
-            content: description,
-          },
-        ],
+        meta: [...twitterOg],
       }}
     />
     <ViewTransitions />
@@ -119,7 +123,8 @@ const { title, class: className } = Astro.props;
         },
       ]}
     />
-  </head><body>
+  </head>
+  <body>
     <main
       class:list={[
         "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 font-sans md:px-12 md:py-20 lg:px-8 lg:py-0",

@@ -5,18 +5,22 @@ import Card from "./Card.astro";
 
 interface Props {
   workHistory: WorkHistory[];
+  class?: string;
 }
 
-const { workHistory } = Astro.props;
+const { workHistory, class: className } = Astro.props;
 ---
 
 <ul
-  class="flex flex-grow flex-row flex-wrap justify-center gap-4 md:gap-8 lg:flex-col"
+  class:list={[
+    "flex flex-grow flex-row flex-wrap justify-center gap-6 md:gap-8 lg:flex-col",
+    className,
+  ]}
 >
   {
     workHistory.map((work) => (
-      <li>
-        <Card class="grid md:grid-cols-3">
+      <li class="w-full">
+        <Card class="grid w-full md:grid-cols-3">
           <p class="mt-[0.20rem] font-mono text-sm md:col-span-1">
             {work.from} - {work.to}
           </p>

@@ -30,13 +30,13 @@ const { project } = Astro.props;
     <div class="flex flex-wrap gap-2 text-sm">
       {
         project.technologies.map((tech) => (
-          <p class="rounded border-2 p-2 font-bold uppercase group-hover:bg-gray-50">
+          <p class="rounded border-2 p-2 font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
             {tech}
           </p>
         ))
       }
     </div>
-    <p class="max-w-prose">
+    <p class="max-w-prose text-slate-800 dark:text-gray-200">
       {project.description}
     </p>
     <div
@@ -49,7 +49,7 @@ const { project } = Astro.props;
             href={project.githubUrl || ""}
             title="See this project on GitHub"
             icon="simple-icons:github"
-            class="group-hover:bg-white"
+            class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
           >
             GitHub
           </IconLinkBtn>
@@ -63,7 +63,7 @@ const { project } = Astro.props;
             href={project.projectUrl}
             title="See this project in action"
             icon="mdi:external-link"
-            class="group-hover:bg-white"
+            class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
           >
             View site
           </IconLinkBtn>

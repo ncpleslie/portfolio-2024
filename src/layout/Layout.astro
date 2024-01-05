@@ -3,8 +3,9 @@ import { AstroFont } from "astro-font";
 import { SEO } from "astro-seo";
 import { ViewTransitions } from "astro:transitions";
 import SocialsBar from "../components/SocialsBar.astro";
-import IconLink from "../components/IconLink.astro";
 import useContent from "../hooks/useContent.hook";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import MadeWith from "../components/MadeWith.astro";
 
 const { getDetails, getMetadata } = useContent();
 const { fullName, profession, socials } = getDetails();
@@ -124,119 +125,69 @@ const twitterOg = [
       ]}
     />
   </head>
-  <body>
+  <body
+    class="font-body op overflow-x-hidden text-black transition-colors duration-500 dark:bg-slate-800 dark:text-white"
+  >
+    <div class="hidden overflow-hidden lg:block">
+      <div
+        class="lg:blob lg:animate-rotate-and-grow transform-gpu opacity-25 motion-reduce:hidden dark:opacity-20"
+        id="blob"
+      >
+      </div>
+      <div class="transform-gpu motion-reduce:hidden lg:blur" id="blur"></div>
+    </div>
     <main
       class:list={[
-        "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 font-sans md:px-12 md:py-20 lg:px-8 lg:py-0",
+        "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 md:px-12 md:py-20 lg:px-8 lg:py-0",
         className,
       ]}
       transition:animate="fade"
     >
+      <div class="absolute right-10 top-10">
+        <ThemeSwitcher />
+      </div>
       <slot />
     </main>
     <footer
-      class="mx-auto mb-12 flex h-32 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-sans md:mb-0 md:h-24 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
+      class="font-body mx-auto mb-12 flex h-32 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 md:mb-0 md:h-24 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
     >
       <SocialsBar socials={socials} class="lg:hidden" />
-      <div class="m-4 flex flex-col gap-1">
-        <div class="flex gap-1">
-          <p>Made by me with</p>
-          <IconLink
-            external
-            icon="devicon:astro"
-            href="https://astro.build"
-            title="Astro"
-          />
-          <p>and</p>
-          <IconLink
-            external
-            icon="devicon:tailwindcss"
-            href="https://tailwindcss.com/"
-            title="Tailwindcss"
-          />
-        </div>
-        <div class="flex gap-1">
-          <p>Deployed to</p>
-          <IconLink
-            external
-            icon="devicon:vercel"
-            href="https://vercel.com"
-            title="Vercel"
-          />
-        </div>
-      </div>
+      <MadeWith />
     </footer>
-    <style is:global>
-      html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        scroll-behavior: smooth !important;
+    <script>
+      const blob = document.getElementById("blob");
+      const blur = document.getElementById("blur");
+
+      function throttle(callback, delay) {
+        let lastTime = 0;
+        return function () {
+          const currentTime = new Date().getTime();
+          if (currentTime - lastTime >= delay) {
+            callback.apply(null, arguments);
+            lastTime = currentTime;
+          }
+        };
       }
 
-      html.is-changing .transition-fade {
-        transition: opacity 0.25s;
-        opacity: 1;
-      }
+      window.onpointermove = throttle((event) => {
+        const { clientX, clientY } = event;
+        const x = clientX - blob.clientWidth * 1.5;
+        const y = clientY - blob.clientHeight + window.scrollY;
 
-      html.is-animating .transition-fade {
-        opacity: 0;
-      }
-
-      :root {
-        --color-accent1: 255, 138, 0;
-        --color-accent2: 229, 46, 113;
-      }
-
-      h1 {
-        font-family: "Monoton", monospace;
-      }
-
-      h2 {
-        font-family: "Share Tech Mono", monospace;
-      }
-
-      h3 {
-        font-family: "Roboto", sans-serif;
-      }
-
-      p {
-        font-family: "Roboto", sans-serif;
-      }
-
-      a {
-        font-family: "Roboto", sans-serif;
-      }
-
-      a:hover {
-        background: linear-gradient(
-          90deg,
-          rgb(var(--color-accent1)),
-          rgb(var(--color-accent2))
+        blob.animate(
+          {
+            transform: `translate(${x}px, ${y}px)`,
+          },
+          { duration: 3000, fill: "forwards" },
         );
-        text-shadow: none;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition-property: all;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 250ms;
-      }
 
-      .heading {
-        font-family: "Share Tech Mono", monospace;
-      }
-
-      .fancy {
-        background: linear-gradient(
-          90deg,
-          rgb(var(--color-accent1)),
-          rgb(var(--color-accent2))
+        blur.animate(
+          {
+            transform: `translate(${0}px, ${y}px)`,
+          },
+          { duration: 3000, fill: "forwards" },
         );
-        text-shadow: none;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    </style>
+      }, 100);
+    </script>
   </body>
 </html>

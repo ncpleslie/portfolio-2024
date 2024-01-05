@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-iconify";
+import { ThemeSwitch } from "astro-color-scheme";
+---
+
+<ThemeSwitch strategy="button" defaultTheme="system">
+  <button
+    class="group text-black transition-all dark:text-white"
+    title="Toggle theme"
+  >
+    <Icon
+      class="h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:hidden"
+      name="heroicons-outline:sun"
+    />
+    <Icon
+      class="hidden h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:block"
+      name="heroicons-outline:moon"
+    />
+  </button>
+</ThemeSwitch>

@@ -34,10 +34,12 @@ const { workHistory, class: className } = Astro.props;
             >
               {work.company}
             </IconLink>
-            <p class="max-w-prose text-sm">{work.jobDescription}</p>
+            <p class="max-w-prose text-sm text-slate-800 dark:text-gray-200">
+              {work.jobDescription}
+            </p>
             <div class="mt-2 flex flex-wrap gap-1">
               {work.technologies.map((tech: string) => (
-                <p class="rounded border-2 p-2 text-xs font-bold uppercase group-hover:bg-gray-50">
+                <p class="rounded border-2 p-2 text-xs font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
                   {tech}
                 </p>
               ))}

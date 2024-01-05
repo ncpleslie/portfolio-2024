@@ -17,11 +17,11 @@ const { links } = Astro.props;
       <a
         id={`${link.id}_nav`}
         title={link.alt}
-        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:text-black active:text-black hover:md:pb-4 hover:md:pt-8 lg:text-transparent"
+        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:text-black active:text-black dark:text-white dark:hover:text-white dark:active:text-white hover:md:pb-4 hover:md:pt-8 lg:text-transparent"
         href={link.link}
       >
         {link.title}
-        <Icon class="h-10 w-10 text-black" name={link.icon} />
+        <Icon class="h-10 w-10 text-black dark:text-white" name={link.icon} />
       </a>
     ))
   }
@@ -34,6 +34,7 @@ const hoverStyle = [
   "lg:pt-8",
   "lg:indent-0",
   "lg:text-black",
+  "dark:lg:text-white",
 ];
 
 const testStyle = ["lg:text-transparent"];

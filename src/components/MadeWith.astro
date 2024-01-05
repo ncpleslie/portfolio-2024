@@ -1,0 +1,31 @@
+---
+import IconLink from "./IconLink.astro";
+---
+
+<div class="m-4 flex flex-col gap-1">
+  <div class="flex gap-1">
+    <p>Made by me with</p>
+    <IconLink
+      external
+      icon="devicon:astro"
+      href="https://astro.build"
+      title="Astro"
+    />
+    <p>and</p>
+    <IconLink
+      external
+      icon="devicon:tailwindcss"
+      href="https://tailwindcss.com/"
+      title="Tailwindcss"
+    />
+  </div>
+  <div class="flex gap-1">
+    <p>Deployed to</p>
+    <IconLink
+      external
+      icon="devicon:vercel"
+      href="https://vercel.com"
+      title="Vercel"
+    />
+  </div>
+</div>

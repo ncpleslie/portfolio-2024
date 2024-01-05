@@ -28,13 +28,13 @@ const { email } = Astro.props;
           id="name"
           name="name"
           type="text"
-          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
+          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1 dark:bg-slate-600 dark:text-white"
           placeholder="John Doe"
           required
         />
         <label
           for="name"
-          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600 dark:text-white dark:peer-placeholder-shown:text-white dark:peer-focus:text-white"
           >Name</label
         >
       </div>
@@ -44,13 +44,13 @@ const { email } = Astro.props;
           id="email"
           name="email"
           type="email"
-          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
+          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1 dark:bg-slate-600 dark:text-white"
           placeholder="john@doe.com"
           required
         />
         <label
           for="email"
-          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600 dark:text-white dark:peer-placeholder-shown:text-white dark:peer-focus:text-white"
           >Email</label
         >
       </div>
@@ -59,12 +59,12 @@ const { email } = Astro.props;
         <textarea
           id="message"
           name="message"
-          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1"
+          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent focus:shadow-lg dark:bg-slate-600 dark:text-white"
           placeholder=" "
           required></textarea>
         <label
           for="message"
-          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600 dark:text-white dark:peer-placeholder-shown:text-white dark:peer-focus:text-white"
           >Your Message</label
         >
       </div>
@@ -73,14 +73,15 @@ const { email } = Astro.props;
         id="error-msg"
         class="hidden w-full flex-col justify-center gap-2 rounded border-2 border-red-600 p-4 text-center"
       >
-        <p class="w-full text-center text-xl font-medium" id="error-string">
-          Oops!
+        <p class="w-full text-center text-xl font-medium">Oops!</p>
+        <p class="w-full text-center text-sm">
+          Ensure all fields have the correct value and try again
         </p>
       </div>
 
       <button
         id="submit"
-        class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white"
+        class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-600 dark:hover:!bg-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
         >Send
         <Icon
           name="iconamoon:send-fill"
@@ -97,11 +98,11 @@ const { email } = Astro.props;
       <p class="w-full text-center text-3xl font-medium">
         Thanks for contacting me!
       </p>
-      <p class="">I'll get back to you as soon as possible</p>
+      <p>I'll get back to you as soon as possible</p>
 
       <button
         id="send-another"
-        class="group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white"
+        class="group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-600 dark:hover:!bg-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
       >
         Want to send me another message?
       </button>
@@ -110,8 +111,6 @@ const { email } = Astro.props;
 </Card>
 
 <script>
-  import { type ContactResponse } from "../types/contact_response";
-
   const contactForm = document.getElementById("contact-form");
   const contactFormBtn = document.getElementById("submit") as HTMLButtonElement;
   const successMsg = document.getElementById("success-msg");
@@ -141,9 +140,8 @@ const { email } = Astro.props;
       });
 
       if (response.status !== 200) {
-        const data = await response.json();
-        console.log(data);
-        showErrorMsg(data);
+        showErrorMsg();
+
         return;
       }
 
@@ -160,21 +158,9 @@ const { email } = Astro.props;
     }
   }
 
-  function showErrorMsg(data?: ContactResponse) {
+  function showErrorMsg() {
     errorMsg?.classList.remove("hidden");
     errorMsg?.classList.add("flex");
     contactFormBtn.disabled = false;
-
-    const errorNode = document.getElementById("error-string");
-    if (errorNode) {
-      errorNode.innerText = data?.message || "";
-      errorMsg?.appendChild(errorNode);
-    }
-
-    data?.issues?.forEach((issue) => {
-      const errorNode = document.createElement("p");
-      errorNode.innerText = issue;
-      errorMsg?.appendChild(errorNode);
-    });
   }
 </script>

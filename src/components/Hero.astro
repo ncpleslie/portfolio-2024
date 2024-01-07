@@ -18,7 +18,9 @@ const { class: className, details } = Astro.props;
 >
   <div class="flex flex-col gap-2">
     <a title={details.fullName} href="/">
-      <h1 class="fancy font-heading text-7xl">{details.fullName}</h1>
+      <h1 class="fancy font-heading text-7xl hover:fancy">
+        {details.fullName}
+      </h1>
     </a>
     <h2 class="font-sub-heading">{details.title}</h2>
     <p class="max-w-[25rem]">{details.pitch}</p>

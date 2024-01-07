@@ -14,10 +14,9 @@
     "@astrojs/sitemap": "3.0.3",
     "@astrojs/tailwind": "5.0.3",
     "@astrojs/vercel": "6.0.2",
-    "@t3-oss/env-core": "^0.7.1",
-    "@vercel/speed-insights": "^1.0.2",
+    "@t3-oss/env-core": "0.7.1",
+    "@vercel/speed-insights": "1.0.2",
     "astro": "4.0.4",
-    "astro-color-scheme": "^1.1.2",
     "astro-compress": "2.2.5",
     "astro-font": "0.0.28",
     "astro-iconify": "1.2.0",
@@ -29,14 +28,14 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/eslint-plugin": "6.17.0",
     "@typescript-eslint/parser": "6.14.0",
     "eslint": "8.55.0",
     "eslint-plugin-astro": "0.30.0",
     "prettier": "3.1.1",
     "prettier-plugin-astro": "0.12.2",
     "prettier-plugin-tailwindcss": "0.5.9",
-    "vite": "^5.0.10"
+    "vite": "5.0.10"
   },
   "resolutions": {
     "sharp": "0.33.0"

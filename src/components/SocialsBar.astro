@@ -10,7 +10,12 @@ interface Props {
 const { socials, class: classname } = Astro.props;
 ---
 
-<div class:list={["flex w-full flex-row flex-wrap gap-6", classname]}>
+<div
+  class:list={[
+    "flex w-full flex-row flex-wrap justify-center gap-6",
+    classname,
+  ]}
+>
   <IconLink
     icon="simple-icons:github"
     href={socials.github}

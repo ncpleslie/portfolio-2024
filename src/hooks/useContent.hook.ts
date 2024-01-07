@@ -12,18 +12,31 @@ const useContent = () => {
   /**
    * Retrieves projects data.
    *
-   * @param showcase - Flag indicating whether to filter showcase projects.
-   * @param take - Optional parameter to limit the number of projects returned.
    * @returns An array of projects with camelCase keys, sorted by year.
    */
-  const getProjects = (showcase = false, take?: number) => {
-    const projs = showcase
-      ? projects.filter((project) => project.showcase)
-      : projects;
+  const getProjects = () => {
+    return processProjects(projects);
+  };
 
-    const slicedProjects = take ? projs.slice(0, take) : projs;
+  /**
+   * Retrieves showcase projects.
+   *
+   * @returns An array of showcase projects with camelCase keys, sorted by year.
+   */
+  const getShowcaseProjects = () => {
+    const projs = projects.filter((project) => project.showcase);
 
-    const sortedProjects = slicedProjects.sort(
+    return processProjects(projs);
+  };
+
+  /**
+   * Sorts an array of projects by year and converts to camelCase.
+   *
+   * @param value The projects to process.
+   * @returns An array of projects
+   */
+  const processProjects = (value: typeof projects) => {
+    const sortedProjects = value.sort(
       (projectA, projectB) => projectB.year - projectA.year,
     );
 
@@ -61,7 +74,13 @@ const useContent = () => {
     return convertKeys(metadata);
   };
 
-  return { getProjects, getWorkHistory, getDetails, getMetadata };
+  return {
+    getProjects,
+    getShowcaseProjects,
+    getWorkHistory,
+    getDetails,
+    getMetadata,
+  };
 };
 
 export type Metadata = CamelCaseObject<typeof metadata>;

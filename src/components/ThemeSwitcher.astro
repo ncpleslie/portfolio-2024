@@ -1,20 +1,59 @@
 ---
 import { Icon } from "astro-iconify";
-import { ThemeSwitch } from "astro-color-scheme";
 ---
 
-<ThemeSwitch strategy="button" defaultTheme="system">
-  <button
-    class="group text-black transition-all dark:text-white"
-    title="Toggle theme"
-  >
-    <Icon
-      class="h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:hidden"
-      name="heroicons-outline:sun"
-    />
-    <Icon
-      class="hidden h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:block"
-      name="heroicons-outline:moon"
-    />
-  </button>
-</ThemeSwitch>
+<button
+  class="group text-black transition-all dark:text-white"
+  title="Toggle theme"
+  id="theme-switcher"
+>
+  <Icon
+    class="pointer-events-none hidden h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:block"
+    name="heroicons-outline:sun"
+  />
+  <Icon
+    class="pointer-events-none h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:hidden"
+    name="heroicons-outline:moon"
+  />
+</button>
+
+<script is:inline>
+const updateTheme = (document, theme) => {
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  window.localStorage.setItem("theme", theme);
+};
+
+const setTheme = (document) => {
+  const theme =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  updateTheme(document, theme);
+};
+document.addEventListener("astro:before-swap", (ev) => {
+  setTheme(ev.newDocument);
+});
+
+document.addEventListener(
+  "astro:page-load",
+  () => {
+    setTheme(document);
+  },
+  { once: true },
+);
+
+document.addEventListener(
+  "astro:page-load",
+  () => {
+    const themeBtn = document.getElementById("theme-switcher");
+
+    themeBtn?.addEventListener("click", () => {
+      const currentTheme = localStorage.getItem("theme");
+      updateTheme(document, currentTheme === "light" ? "dark" : "light");
+    });
+  },
+  { once: false },
+  );
+</script>

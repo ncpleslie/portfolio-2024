@@ -10,8 +10,8 @@ import Contact from "../components/Contact.astro";
 
 export const prerender = true;
 
-const { getProjects, getWorkHistory, getDetails } = useContent();
-const projects = getProjects(true);
+const { getShowcaseProjects, getWorkHistory, getDetails } = useContent();
+const projects = getShowcaseProjects();
 const workHistory = getWorkHistory();
 const details = getDetails();
 

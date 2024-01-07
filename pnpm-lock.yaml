@@ -21,17 +21,14 @@ dependencies:
     specifier: 6.0.2
     version: 6.0.2(astro@4.0.4)
   '@t3-oss/env-core':
-    specifier: ^0.7.1
+    specifier: 0.7.1
     version: 0.7.1(typescript@5.3.3)(zod@3.22.4)
   '@vercel/speed-insights':
-    specifier: ^1.0.2
+    specifier: 1.0.2
     version: 1.0.2
   astro:
     specifier: 4.0.4
     version: 4.0.4(typescript@5.3.3)
-  astro-color-scheme:
-    specifier: ^1.1.2
-    version: 1.1.2
   astro-compress:
     specifier: 2.2.5
     version: 2.2.5
@@ -62,7 +59,7 @@ dependencies:
 
 devDependencies:
   '@typescript-eslint/eslint-plugin':
-    specifier: ^6.17.0
+    specifier: 6.17.0
     version: 6.17.0(@typescript-eslint/parser@6.14.0)(eslint@8.55.0)(typescript@5.3.3)
   '@typescript-eslint/parser':
     specifier: 6.14.0
@@ -83,7 +80,7 @@ devDependencies:
     specifier: 0.5.9
     version: 0.5.9(prettier-plugin-astro@0.12.2)(prettier@3.1.1)
   vite:
-    specifier: ^5.0.10
+    specifier: 5.0.10
     version: 5.0.10
 
 packages:
@@ -1767,10 +1764,6 @@ packages:
   /array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
-
-  /astro-color-scheme@1.1.2:
-    resolution: {integrity: sha512-HCnBlb805QaT8xgPB59Qur9wqFKoLGA3gQjY33SQe07re1XTF8ksJ3UT8KF55V14aNwfhe/dr4WC0ZZ2DL7U7g==}
-    dev: false
 
   /astro-compress@2.2.5:
     resolution: {integrity: sha512-2F+dR4zbVCTAAZtHKbnskkV/CUi86JIFK1ywM98Y3hFDYN7e3TZDMugbQpv6+amqoI300tP/UE/Pjm3m8QaeFg==}

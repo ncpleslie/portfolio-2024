@@ -54,7 +54,9 @@ export default {
           "--color-accent-one": "255, 138, 0",
           "--color-accent-two": "229, 46, 113",
         },
-        "a:hover": {
+      });
+      addUtilities({
+        ".fancy": {
           background: `linear-gradient(
             90deg,
             ${theme("colors.accent-one")},
@@ -68,15 +70,14 @@ export default {
           transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
           transitionDuration: "250ms",
         },
-      });
-      addUtilities({}),
+      }),
         addComponents({
           ".blob": {
             "will-change": "transform",
             position: "absolute",
             "pointer-events": "none",
             "background-color": "white",
-            height: "34vmax",
+            height: "35vmax",
             "aspect-ratio": "1",
             position: "absolute",
             left: "50%",

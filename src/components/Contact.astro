@@ -10,11 +10,11 @@ const { email } = Astro.props;
 ---
 
 <Card class="group/contact">
-  <div class="flex w-full flex-col items-center justify-center py-10">
+  <div class="flex w-full flex-col items-center justify-center pt-10">
     <p class="heading text-2xl">Contact me</p>
     <div class="flex flex-row gap-1">
       <p>Contact me at</p>
-      <a href={`mailto:${email}`} class="font-semibold">{email}</a>
+      <a href={`mailto:${email}`} class="font-semibold hover:fancy">{email}</a>
     </div>
     <p>or give me a bell using the form below</p>
 
@@ -81,7 +81,7 @@ const { email } = Astro.props;
 
       <button
         id="submit"
-        class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-600 dark:hover:!bg-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
+        class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-700 dark:hover:!bg-slate-800 dark:hover:shadow-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
         >Send
         <Icon
           name="iconamoon:send-fill"

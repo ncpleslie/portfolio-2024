@@ -17,7 +17,7 @@ const { links } = Astro.props;
       <a
         id={`${link.id}_nav`}
         title={link.alt}
-        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:text-black active:text-black dark:text-white dark:hover:text-white dark:active:text-white hover:md:pb-4 hover:md:pt-8 lg:text-transparent"
+        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:fancy hover:text-black active:text-black dark:text-white dark:hover:text-white dark:active:text-white hover:md:pb-4 hover:md:pt-8 lg:text-transparent dark:lg:text-transparent"
         href={link.link}
       >
         {link.title}
@@ -37,7 +37,7 @@ const hoverStyle = [
   "dark:lg:text-white",
 ];
 
-const testStyle = ["lg:text-transparent"];
+const testStyle = ["lg:text-transparent", "dark:lg:text-transparent"];
 
 const handleUpdatingActiveNavItems = (elements) => {
   elements.forEach((element) => {

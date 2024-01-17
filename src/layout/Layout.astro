@@ -6,7 +6,6 @@ import SocialsBar from "../components/SocialsBar.astro";
 import useContent from "../hooks/useContent.hook";
 import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 import MadeWith from "../components/MadeWith.astro";
-// import FollowingBlob from "../components/FollowingBlob.astro";
 
 const { getDetails, getMetadata } = useContent();
 const { fullName, profession, socials } = getDetails();
@@ -129,9 +128,6 @@ const twitterOg = [
   <body
     class="overflow-x-hidden font-body text-black transition-colors duration-500 dark:bg-slate-800 dark:text-white"
   >
-    <!-- <div class="hidden overflow-hidden lg:block">
-      <FollowingBlob />
-    </div> -->
     <main
       class:list={[
         "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 md:px-12 md:py-20 lg:px-8 lg:py-0",
@@ -145,7 +141,7 @@ const twitterOg = [
       <slot />
     </main>
     <footer
-      class="mx-auto mb-12 flex h-32 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-body md:mb-0 md:h-24 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
+      class="mx-auto mb-12 flex h-36 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-body md:mb-0 md:h-28 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
     >
       <SocialsBar socials={socials} class="lg:hidden" />
       <MadeWith />

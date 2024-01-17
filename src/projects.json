@@ -1,6 +1,17 @@
 {
   "projects": [
     {
+      "description": "A highly data-driven portal for monitoring transaction data of Point-of-sale terminals for SmartPay Ltd. With interactive charts and graphs, merchants can easily see their transaction data and trends",
+      "project_url": "https://announcements.asx.com.au/asxpdf/20220530/pdf/459ftrqcv7gg5d.pdf#page=7",
+      "technologies": ["Vue 2", "JavaScript", "Chart.js", "Bootstrap"],
+      "title": "SmartPay Merchant Dashboard",
+      "id": "smartpay",
+      "is_video": false,
+      "showcase": false,
+      "company": "Jade Software",
+      "year": 2022
+    },
+    {
       "description": "A white-labeled insurance (Life, TPD) calculator for Zurich Insurance, Australia. Using Angular for frontend and .NET for the backend. Deployed to Azure. This application is highly configuration driven allowing for quick customizability and changes to the calculation engine",
       "project_url": "https://zurich.zurichcalculators.net",
       "technologies": [
@@ -151,11 +162,13 @@
         "NextJS",
         "React",
         "Prisma",
-        "MySQL",
+        "Postgres",
         "tRPC",
         "WebSockets",
         "FabricJS",
-        "PWA"
+        "PWA",
+        "Jest",
+        "GitHub Actions"
       ],
       "title": "Draw For Them",
       "id": "draw_for_them",

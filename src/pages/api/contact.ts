@@ -8,11 +8,11 @@ const { RESEND_API_KEY, EMAIL_FROM, EMAIL_TO } = env;
 
 const contactSchema = z
   .object({
-    name: z.string().min(1, "Name is required"),
-    email: z.string().min(1, "name is required").email(),
+    name: z.string().min(1, "name is required"),
+    email: z.string().min(1, "email is required").email(),
     message: z
-      .string({ required_error: "Message is required" })
-      .min(1, "Message is required"),
+      .string({ required_error: "message is required" })
+      .min(1, "message is required"),
   })
   .required();
 
@@ -25,7 +25,6 @@ export const POST: APIRoute = async ({ request }) => {
     const issues = Object.values(
       parseResult.error.flatten().fieldErrors,
     ).flat();
-    console.log(issues);
     return new Response(
       JSON.stringify({
         message: `Missing required fields`,
@@ -39,7 +38,6 @@ export const POST: APIRoute = async ({ request }) => {
     const resend = new Resend(RESEND_API_KEY);
     await resend.emails.send({
       from: EMAIL_FROM,
-
       to: EMAIL_TO,
       subject: `New message from nickleslie.dev`,
       html: `From: ${parseResult.data.name}<br><br>

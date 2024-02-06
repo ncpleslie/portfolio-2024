@@ -197,7 +197,7 @@
     {
       "description": "A NextJS website for the podcast, 'This One Time At Summer Camp'. Built with NextJS and React. A ThreeJS 3D model moves as the user navigates the website",
       "image_url": "/thumbnails/podcast_showcase.jpg",
-      "project_url": "https://camp-pod.nickleslie.dev",
+      "project_url": "https://summercamppod.com",
       "technologies": [
         "React",
         "NextJS",
@@ -209,11 +209,12 @@
         "Vercel",
         "Sanity"
       ],
-      "title": "A Podcast Website",
+      "title": "This One Time - A Podcast Website",
       "id": "camp_pod_website",
       "is_video": false,
       "showcase": true,
-      "year": 2023
+      "year": 2023,
+      "company": "Freelance"
     },
     {
       "description": "Another wordle clone because I liked the game so much that playing it once a day wasn't enough",

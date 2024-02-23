@@ -17,10 +17,10 @@ const { projects, class: className } = Astro.props;
   ]}
 >
   {
-    projects.map((project) => {
+    projects.map((project, index) => {
       return (
         <li class="w-full">
-          <ProjectCard project={project} />
+          <ProjectCard project={project} lazyLoad={index !== 0} />
         </li>
       );
     })

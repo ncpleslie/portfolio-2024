@@ -6,9 +6,10 @@ import Card from "./Card.astro";
 
 interface Props {
   project: Project;
+  lazyLoad?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, lazyLoad } = Astro.props;
 ---
 
 <Card class="flex flex-col">
@@ -20,7 +21,7 @@ const { project } = Astro.props;
         width="552"
         alt={`Image of the ${project.title} project`}
         decoding="async"
-        loading="lazy"
+        loading={lazyLoad ? "lazy" : "eager"}
         src={project.imageUrl}
       />
     )

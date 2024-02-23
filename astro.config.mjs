@@ -21,7 +21,7 @@ export default defineConfig({
       enabled: true,
     },
     speedInsights: {
-      enabled: false,
+      enabled: true,
     },
     imageService: true,
     imagesConfig: {

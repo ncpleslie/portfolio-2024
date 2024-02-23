@@ -84,6 +84,7 @@ const { email } = Astro.props;
         class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-700 dark:hover:!bg-slate-800 dark:hover:shadow-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
         >Send
         <Icon
+          id="send-icon"
           name="iconamoon:send-fill"
           size={24}
           class="group-hover/btn:animate-pulse"
@@ -102,7 +103,7 @@ const { email } = Astro.props;
 
       <button
         id="send-another"
-        class="group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-600 dark:hover:!bg-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
+        class="group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-700 dark:hover:!bg-slate-800 dark:hover:shadow-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
       >
         Want to send me another message?
       </button>
@@ -111,27 +112,51 @@ const { email } = Astro.props;
 </Card>
 
 <script>
-  const contactForm = document.getElementById("contact-form");
+  const contactForm = document.getElementById(
+    "contact-form",
+  ) as HTMLFormElement;
   const contactFormBtn = document.getElementById("submit") as HTMLButtonElement;
-  const successMsg = document.getElementById("success-msg");
-  const sendAnotherBtn = document.getElementById("send-another");
-  const errorMsg = document.getElementById("error-msg");
+  const successMsg = document.getElementById("success-msg") as HTMLElement;
+  const sendAnotherBtn = document.getElementById(
+    "send-another",
+  ) as HTMLButtonElement;
+  const errorMsg = document.getElementById("error-msg") as HTMLElement;
+  const sendIcon = document.getElementById("send-icon") as HTMLElement;
 
-  sendAnotherBtn?.addEventListener("click", () => {
-    contactForm?.classList.remove("hidden");
-    contactForm?.classList.add("flex");
-    successMsg?.classList.add("hidden");
-    successMsg?.classList.remove("flex");
-  });
+  /**
+   * Show the error message and enable the contact form button.
+   */
+  function showErrorMsg(): void {
+    toggleVisibility(errorMsg, true);
+    contactFormBtn.disabled = false;
+  }
 
-  contactForm?.addEventListener("submit", submit);
+  /**
+   * Toggle the visibility of a given HTML element.
+   * @param {HTMLElement | null} element - The HTML element to toggle visibility of.
+   * @param {boolean} isVisible - Whether the element should be visible.
+   */
+  function toggleVisibility(
+    element: HTMLElement | null,
+    isVisible: boolean,
+  ): void {
+    if (element) {
+      element.classList.toggle("hidden", !isVisible);
+      element.classList.toggle("flex", isVisible);
+    }
+  }
 
-  async function submit(e: SubmitEvent) {
+  /**
+   * Handle the form submission event.
+   * @param {SubmitEvent} e - The form submission event.
+   * @returns {Promise<void>}
+   */
+  async function submit(e: SubmitEvent): Promise<void> {
     e.preventDefault();
-    errorMsg?.classList.add("hidden");
-    errorMsg?.classList.remove("flex");
+    toggleVisibility(errorMsg, false);
     contactFormBtn.disabled = true;
-    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    contactFormBtn.innerText = "Sending...";
+    const formData = new FormData(contactForm);
 
     try {
       const response = await fetch("/api/contact", {
@@ -141,26 +166,23 @@ const { email } = Astro.props;
 
       if (response.status !== 200) {
         showErrorMsg();
-
         return;
       }
 
-      contactForm?.classList.add("hidden");
-      contactForm?.classList.remove("flex");
-      successMsg?.classList.remove("hidden");
-      successMsg?.classList.add("flex");
+      toggleVisibility(contactForm, false);
+      toggleVisibility(successMsg, true);
       contactFormBtn.disabled = false;
-
-      return;
+      contactFormBtn.innerHTML = "Send" + sendIcon?.outerHTML;
     } catch (error) {
       console.error("Error:", error);
       showErrorMsg();
     }
   }
 
-  function showErrorMsg() {
-    errorMsg?.classList.remove("hidden");
-    errorMsg?.classList.add("flex");
-    contactFormBtn.disabled = false;
-  }
+  sendAnotherBtn?.addEventListener("click", () => {
+    toggleVisibility(contactForm, true);
+    toggleVisibility(successMsg, false);
+  });
+
+  contactForm?.addEventListener("submit", submit);
 </script>

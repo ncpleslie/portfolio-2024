@@ -1,6 +1,30 @@
 {
   "projects": [
     {
+      "description": "A web app and extension to track your job applications from applied to hired. With a Chrome Extension and web interface to easily add jobs, screenshot the application, upload relevant documents, take notes, and track the status of the job application. Built with Go and React. Using Firebase Firestore. Uses GitHub Actions for CI/CD",
+      "github_url": "https://github.com/ncpleslie/job-down",
+      "project_url": "https://job-down.vercel.app",
+      "image_url": "/thumbnails/job_down_showcase.png",
+      "technologies": [
+        "Go",
+        "React",
+        "Chrome Extension",
+        "TypeScript",
+        "Tailwind",
+        "Tanstack Query",
+        "Tanstack Table",
+        "Zustand",
+        "Vite",
+        "GitHub Actions",
+        "PWA"
+      ],
+      "title": "Job Down - Application Tracker",
+      "id": "job_down",
+      "is_video": false,
+      "showcase": true,
+      "year": 2024
+    },
+    {
       "description": "A highly data-driven portal for monitoring transaction data of Point-of-sale terminals for SmartPay Ltd. With interactive charts and graphs, merchants can easily see their transaction data and trends",
       "project_url": "https://announcements.asx.com.au/asxpdf/20220530/pdf/459ftrqcv7gg5d.pdf#page=7",
       "technologies": ["Vue 2", "JavaScript", "Chart.js", "Bootstrap"],
@@ -91,7 +115,6 @@
       "company": "Jade Software",
       "year": 2021
     },
-
     {
       "description": "Customer Portal is a web application to make ordering trains easier. Frontend created using Angular. Backed by a .NET backend which interfaces with the JADE platform through a SOAP API",
       "project_url": "https://uk.dbcargo.com/rail-uk-en/services/Rail-Transport-Services/Customer-Portal",
@@ -213,7 +236,7 @@
       "id": "camp_pod_website",
       "is_video": false,
       "showcase": true,
-      "year": 2023,
+      "year": 2024,
       "company": "Freelance"
     },
     {

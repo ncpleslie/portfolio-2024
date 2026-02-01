@@ -8,6 +8,7 @@ interface Props {
   href: string;
   size?: number;
   title: string;
+  "aria-label"?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   href,
   size = 20,
   title,
+  "aria-label": ariaLabel,
 } = Astro.props;
 
 const hasSlot = Astro.slots.has("default");
@@ -29,7 +31,7 @@ const hasSlot = Astro.slots.has("default");
   ]}
   target={external ? "_blank" : ""}
   rel={external ? "noopener noreferrer" : ""}
-  title={title || href}
+  aria-label={ariaLabel || (hasSlot ? undefined : title)}
   href={href}
 >
   <slot />
@@ -40,5 +42,7 @@ const hasSlot = Astro.slots.has("default");
     ]}
     name={icon}
     size={size}
+    decorative={hasSlot}
+    ariaLabel={hasSlot ? undefined : title}
   />
 </a>

@@ -11,42 +11,60 @@ interface Props {
 const { workHistory, class: className } = Astro.props;
 ---
 
-<ul
-  class:list={[
-    "flex flex-grow flex-row flex-wrap justify-center gap-6 md:gap-8 lg:flex-col",
-    className,
-  ]}
->
-  {
-    workHistory.map((work) => (
-      <li class="w-full">
-        <Card class="grid w-full md:grid-cols-3">
-          <p class="mt-[0.20rem] font-mono text-sm md:col-span-1">
-            {work.from} - {work.to}
-          </p>
-          <div class="flex flex-col gap-2 md:col-span-2">
-            <p class="font-semibold">{work.positionTitle}</p>
-            <IconLink
-              external
-              href={work.companyUrl}
-              title={work.companyUrl}
-              icon="mdi:external-link"
-            >
-              {work.company}
-            </IconLink>
-            <p class="max-w-prose text-sm text-slate-800 dark:text-gray-200">
-              {work.jobDescription}
+<section aria-labelledby="work-history-heading">
+  <h2 id="work-history-heading" class="sr-only">Work Experience</h2>
+  <ul
+    class:list={[
+      "flex flex-grow flex-row flex-wrap justify-center gap-6 md:gap-8 lg:flex-col",
+      className,
+    ]}
+  >
+    {
+      workHistory.map((work) => (
+        <li class="w-full">
+          <Card
+            class="grid w-full md:grid-cols-3"
+            aria-labelledby={`job-${work.company
+              .replace(/\s+/g, "-")
+              .toLowerCase()}`}
+          >
+            <p class="mt-[0.20rem] font-mono text-sm md:col-span-1">
+              <time datetime={work.from}>{work.from}</time> -{" "}
+              <time datetime={work.to}>{work.to}</time>
             </p>
-            <div class="mt-2 flex flex-wrap gap-1">
-              {work.technologies.map((tech: string) => (
-                <p class="rounded border-2 p-2 text-xs font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
-                  {tech}
-                </p>
-              ))}
+            <div class="flex flex-col gap-2 md:col-span-2">
+              <h3
+                id={`job-${work.company.replace(/\s+/g, "-").toLowerCase()}`}
+                class="font-semibold"
+              >
+                {work.positionTitle}
+              </h3>
+              <IconLink
+                external
+                href={work.companyUrl}
+                title={work.companyUrl}
+                aria-label={`Visit ${work.company} website`}
+                icon="mdi:external-link"
+              >
+                {work.company}
+              </IconLink>
+              <p class="max-w-prose text-sm text-slate-800 dark:text-gray-200">
+                {work.jobDescription}
+              </p>
+              <ul
+                class="mt-2 flex flex-wrap gap-1"
+                aria-label="Technologies used"
+              >
+                {work.technologies.map((tech: string) => (
+                  <li class="rounded border-2 p-2 text-xs font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        </Card>
-      </li>
-    ))
-  }
-</ul>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -130,7 +130,15 @@ const twitterOg = [
   <body
     class="overflow-x-hidden font-body text-black transition-colors duration-500 dark:bg-slate-800 dark:text-white"
   >
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:shadow-lg dark:focus:bg-slate-700 dark:focus:text-white"
+    >
+      Skip to main content
+    </a>
     <main
+      id="main-content"
+      aria-label="Main content"
       class:list={[
         "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 md:px-12 md:py-20 lg:px-8 lg:py-0",
         className,
@@ -145,7 +153,9 @@ const twitterOg = [
     <footer
       class="mx-auto mb-12 flex h-36 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-body md:mb-0 md:h-28 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
     >
-      <SocialsBar socials={socials} class="lg:hidden" />
+      <nav aria-label="Social media links">
+        <SocialsBar socials={socials} class="lg:hidden" />
+      </nav>
       <MadeWith />
     </footer>
   </body>

@@ -10,14 +10,14 @@ interface Props {
 const { class: className, details } = Astro.props;
 ---
 
-<div
+<header
   class:list={[
     "flex h-full flex-col items-center gap-8 lg:items-start",
     className,
   ]}
 >
   <div class="flex flex-col gap-2">
-    <a title={details.fullName} href="/">
+    <a aria-label="Return to homepage" href="/">
       <h1 class="fancy font-heading text-7xl hover:fancy">
         {details.fullName}
       </h1>
@@ -27,4 +27,4 @@ const { class: className, details } = Astro.props;
   </div>
   <slot />
   <SocialsBar class="justify-center" socials={details.socials} />
-</div>
+</header>

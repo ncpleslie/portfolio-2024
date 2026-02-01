@@ -10,7 +10,8 @@ interface Props {
 const { socials, class: classname } = Astro.props;
 ---
 
-<div
+<nav
+  aria-label="Social media links"
   class:list={[
     "flex w-full flex-row flex-wrap justify-center gap-6",
     classname,
@@ -20,6 +21,7 @@ const { socials, class: classname } = Astro.props;
     icon="simple-icons:github"
     href={socials.github}
     title="Check out my GitHub"
+    aria-label="Visit my GitHub profile"
     size={30}
     external
   />
@@ -27,7 +29,8 @@ const { socials, class: classname } = Astro.props;
     icon="simple-icons:linkedin"
     href={socials.linkedin}
     title="Check out my LinkedIn"
+    aria-label="Visit my LinkedIn profile"
     size={30}
     external
   />
-</div>
+</nav>

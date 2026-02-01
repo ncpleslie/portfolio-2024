@@ -10,20 +10,6 @@ import Contact from "../components/Contact.astro";
 
 export const prerender = true;
 
-function generateCSRFToken(): string {
-  return crypto.randomUUID();
-}
-
-const csrfToken = generateCSRFToken();
-
-Astro.cookies.set("csrf_token", csrfToken, {
-  httpOnly: true,
-  secure: import.meta.env.PROD,
-  sameSite: "strict",
-  path: "/",
-  maxAge: 60 * 60, // 1 hour
-});
-
 const { getShowcaseProjects, getWorkHistory, getDetails } = useContent();
 const projects = getShowcaseProjects();
 const workHistory = getWorkHistory();
@@ -60,30 +46,45 @@ const navbarLinks = [
       <Navbar links={navbarLinks} />
     </Hero>
     <div class="grid-span-1 col-start-1 lg:col-start-2">
-      <div class="mb-6 flex h-80 w-full flex-col items-center">
-        <div class="flex max-w-prose flex-col gap-4 md:pl-4">
-          <Fragment set:html={details.descriptionHtml} />
+      <section aria-labelledby="about-heading">
+        <h2 id="about-heading" class="sr-only">About Me</h2>
+        <div class="mb-6 flex h-80 w-full flex-col items-center">
+          <div class="flex max-w-prose flex-col gap-4 md:pl-4">
+            <Fragment set:html={details.descriptionHtml} />
+          </div>
         </div>
-      </div>
-      <div class="mt-24 flex justify-center md:mt-16" id="projects">
+      </section>
+      <section
+        class="mt-24 flex justify-center md:mt-16"
+        id="projects"
+        aria-labelledby="projects-heading"
+      >
         <div class="flex max-w-[592px] flex-col items-center gap-8">
+          <h2 id="projects-heading" class="sr-only">Featured Projects</h2>
           <Projects projects={projects} />
           <IconLink
             href="/projects"
             title="See more projects"
+            aria-label="View all projects including corporate work"
             icon="ep:right"
             class="self-start text-lg font-bold md:pl-4"
           >
             View more projects including corporate work
           </IconLink>
         </div>
-      </div>
-      <div class="mt-24 flex justify-center md:mt-16" id="resume">
+      </section>
+      <section
+        class="mt-24 flex justify-center md:mt-16"
+        id="resume"
+        aria-labelledby="resume-heading"
+      >
         <div class="flex max-w-[592px] flex-col items-center gap-8">
+          <h2 id="resume-heading" class="sr-only">Work Experience</h2>
           <WorkHistory workHistory={workHistory} />
           <IconLink
             href={details.resumeUrl}
             title="See Résumé"
+            aria-label="View full résumé document"
             icon="ep:right"
             class="self-start text-lg font-bold md:pl-4"
             external
@@ -91,10 +92,15 @@ const navbarLinks = [
             View full résumé
           </IconLink>
         </div>
-      </div>
-      <div class="mt-16 flex flex-col justify-center gap-8" id="contact">
-        <Contact email={details.contactEmail} csrfToken={csrfToken} />
-      </div>
+      </section>
+      <section
+        class="mt-16 flex flex-col justify-center gap-8"
+        id="contact"
+        aria-labelledby="contact-heading"
+      >
+        <h2 id="contact-heading" class="sr-only">Contact</h2>
+        <Contact email={details.contactEmail} />
+      </section>
     </div>
   </div>
 </Layout>

@@ -10,19 +10,23 @@ interface Props {
 const { projects, class: className } = Astro.props;
 ---
 
-<ul
-  class:list={[
-    "flex flex-grow flex-row flex-wrap justify-center gap-6 md:gap-8 lg:flex-col",
-    className,
-  ]}
->
-  {
-    projects.map((project, index) => {
-      return (
-        <li class="w-full">
-          <ProjectCard project={project} lazyLoad={index !== 0} />
-        </li>
-      );
-    })
-  }
-</ul>
+<section aria-labelledby="projects-heading">
+  <h2 id="projects-heading" class="sr-only">Projects</h2>
+  <ul
+    class:list={[
+      "flex flex-grow flex-row flex-wrap justify-center gap-6 md:gap-8 lg:flex-col",
+      className,
+    ]}
+    aria-label="List of projects"
+  >
+    {
+      projects.map((project, index) => {
+        return (
+          <li class="w-full">
+            <ProjectCard project={project} lazyLoad={index !== 0} />
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>

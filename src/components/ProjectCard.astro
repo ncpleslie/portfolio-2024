@@ -12,14 +12,19 @@ interface Props {
 const { project, lazyLoad } = Astro.props;
 ---
 
-<Card class="flex flex-col">
+<Card
+  class="flex flex-col"
+  aria-labelledby={`project-${project.title
+    .replace(/\s+/g, "-")
+    .toLowerCase()}`}
+>
   {
     project.imageUrl && (
       <Image
         class="aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover:md:scale-[1.03]"
         height="310"
         width="552"
-        alt={`Image of the ${project.title} project`}
+        alt={`Screenshot showing ${project.title} project interface`}
         decoding="async"
         loading={lazyLoad ? "lazy" : "eager"}
         src={project.imageUrl}
@@ -27,49 +32,56 @@ const { project, lazyLoad } = Astro.props;
     )
   }
   <div class="flex flex-col gap-2">
-    <p class="text-xl">{project.title}</p>
-    <div class="flex flex-wrap gap-2 text-sm">
+    <h3
+      id={`project-${project.title.replace(/\s+/g, "-").toLowerCase()}`}
+      class="text-xl"
+    >
+      {project.title}
+    </h3>
+    <ul class="flex flex-wrap gap-2 text-sm" aria-label="Technologies used">
       {
         project.technologies.map((tech) => (
-          <p class="rounded border-2 p-2 font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
+          <li class="rounded border-2 p-2 font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
             {tech}
-          </p>
+          </li>
         ))
       }
-    </div>
-    <p class="max-w-prose text-slate-800 dark:text-gray-200">
-      {project.description}
-    </p>
-    <div
-      class="items-flex-wrap flex w-full flex-grow flex-wrap items-center gap-2"
-    >
-      {
-        project.githubUrl && (
-          <IconLinkBtn
-            external
-            href={project.githubUrl || ""}
-            title="See this project on GitHub"
-            icon="simple-icons:github"
-            class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
-          >
-            GitHub
-          </IconLinkBtn>
-        )
-      }
+    </ul>
+  </div>
+  <p class="max-w-prose text-slate-800 dark:text-gray-200">
+    {project.description}
+  </p>
+  <div
+    class="items-flex-wrap flex w-full flex-grow flex-wrap items-center gap-2"
+  >
+    {
+      project.githubUrl && (
+        <IconLinkBtn
+          external
+          href={project.githubUrl || ""}
+          title="See this project on GitHub"
+          aria-label={`View ${project.title} source code on GitHub`}
+          icon="simple-icons:github"
+          class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
+        >
+          GitHub
+        </IconLinkBtn>
+      )
+    }
 
-      {
-        project.projectUrl && (
-          <IconLinkBtn
-            external
-            href={project.projectUrl}
-            title="See this project in action"
-            icon="mdi:external-link"
-            class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
-          >
-            View site
-          </IconLinkBtn>
-        )
-      }
-    </div>
+    {
+      project.projectUrl && (
+        <IconLinkBtn
+          external
+          href={project.projectUrl}
+          title="See this project in action"
+          aria-label={`Visit ${project.title} live website`}
+          icon="mdi:external-link"
+          class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
+        >
+          View site
+        </IconLinkBtn>
+      )
+    }
   </div>
 </Card>

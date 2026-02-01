@@ -6,22 +6,49 @@ import Icon from "./Icon.astro";
   class="group text-black transition-all dark:text-white"
   title="Toggle theme"
   id="theme-switcher"
-  aria-label="Toggle dark mode"
+  aria-label="Switch to dark mode"
+  aria-pressed="false"
 >
   <Icon
     class="pointer-events-none hidden h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:block"
     name="heroicons-outline:sun"
+    decorative={true}
   />
   <Icon
     class="pointer-events-none h-7 w-7 group-hover:scale-110 group-active:scale-95 dark:hidden"
     name="heroicons-outline:moon"
+    decorative={true}
   />
 </button>
 
+<div
+  id="theme-announcement"
+  class="sr-only"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+>
+</div>
+
 <script is:inline>
   const updateTheme = (document, theme) => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("dark", isDark);
     window.localStorage.setItem("theme", theme);
+
+    // Update button attributes for accessibility
+    const themeBtn = document.getElementById("theme-switcher");
+    const announcement = document.getElementById("theme-announcement");
+    if (themeBtn) {
+      themeBtn.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light mode" : "Switch to dark mode",
+      );
+      themeBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
+    }
+    if (announcement) {
+      announcement.textContent = `${isDark ? "Dark" : "Light"} mode enabled`;
+    }
   };
 
   const setTheme = (document) => {

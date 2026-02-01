@@ -8,9 +8,9 @@ const { RESEND_API_KEY, EMAIL_FROM, EMAIL_TO } = env;
 
 const contactSchema = z.object({
   name: z.string().min(1, "name is required").max(100),
-  email: z.string().min(1, "email is required").email(),
+  email: z.email().min(1, "email is required"),
   message: z
-    .string({ required_error: "message is required" })
+    .string({ message: "message is required" })
     .min(1, "message is required")
     .max(5000),
   csrf_token: z.string().min(1, "security token is missing"),
@@ -26,7 +26,8 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
   const parseResult = contactSchema.safeParse(contactFormData);
   if (!parseResult.success) {
-    const errors = parseResult.error.flatten().fieldErrors;
+    const flattenedErrors = parseResult.error.flatten();
+    const errors = flattenedErrors.fieldErrors;
 
     // Only return user-facing field errors (exclude security fields)
     const userFacingErrors = [];

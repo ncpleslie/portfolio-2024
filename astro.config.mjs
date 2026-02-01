@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
-import compress from "astro-compress";
+import compress from "@playform/compress";
 import { loadEnv } from "vite";
 import fileEnv from "./src/env/fileEnv";
 
@@ -27,6 +27,7 @@ export default defineConfig({
     },
     devImageService: "sharp",
     functionPerRoute: true,
+    includeFiles: [],
   }),
   image: {
     remotePatterns: [

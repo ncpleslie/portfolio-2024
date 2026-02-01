@@ -4,10 +4,9 @@ import Card from "./Card.astro";
 
 interface Props {
   email: string;
-  csrfToken: string;
 }
 
-const { email, csrfToken } = Astro.props;
+const { email } = Astro.props;
 const formTimestamp = Date.now();
 ---
 
@@ -24,8 +23,9 @@ const formTimestamp = Date.now();
       class="m-8 flex w-full flex-col items-center justify-center gap-8 rounded border-2 border-black/5 p-2 md:p-8"
       id="contact-form"
       action="javascript:void(0)"
+      aria-label="Contact form"
     >
-      <input type="hidden" name="csrf_token" value={csrfToken} />
+      <input type="hidden" name="csrf_token" id="csrf_token" value="" />
       <input type="hidden" name="form_timestamp" value={formTimestamp} />
       <input
         type="text"
@@ -84,6 +84,9 @@ const formTimestamp = Date.now();
 
       <div
         id="error-msg"
+        role="alert"
+        aria-live="assertive"
+        tabindex="-1"
         class="hidden w-full flex-col justify-center gap-2 rounded border-2 border-red-600 p-4 text-center"
       >
         <p class="w-full text-center text-xl font-medium">Oops!</p>
@@ -94,6 +97,8 @@ const formTimestamp = Date.now();
 
       <button
         id="submit"
+        type="submit"
+        aria-label="Send message"
         class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-700 dark:hover:!bg-slate-800 dark:hover:shadow-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
         >Send
         <Icon
@@ -101,12 +106,16 @@ const formTimestamp = Date.now();
           name="iconamoon:send-fill"
           size={24}
           class="group-hover/btn:animate-pulse"
+          decorative={true}
         />
       </button>
     </form>
 
     <div
       id="success-msg"
+      role="status"
+      aria-live="polite"
+      tabindex="-1"
       class="m-8 hidden w-full flex-col justify-center gap-8 rounded border-2 border-black/5 p-8 text-center"
     >
       <p class="w-full text-center text-3xl font-medium">
@@ -135,6 +144,21 @@ const formTimestamp = Date.now();
   ) as HTMLButtonElement;
   const errorMsg = document.getElementById("error-msg") as HTMLElement;
   const sendIcon = document.getElementById("send-icon") as HTMLElement;
+  const csrfInput = document.getElementById("csrf_token") as HTMLInputElement;
+
+  async function fetchCSRFToken(): Promise<void> {
+    try {
+      const response = await fetch("/api/csrf");
+      if (response.ok) {
+        const data = await response.json();
+        csrfInput.value = data.token;
+      }
+    } catch (error) {
+      console.error("Failed to fetch CSRF token:", error);
+    }
+  }
+
+  fetchCSRFToken();
 
   /**
    * Show the error message and enable the contact form button.
@@ -142,7 +166,10 @@ const formTimestamp = Date.now();
   function showErrorMsg(): void {
     toggleVisibility(errorMsg, true);
     contactFormBtn.disabled = false;
+    contactFormBtn.removeAttribute("aria-busy");
     contactFormBtn.innerHTML = "Send" + (sendIcon?.outerHTML || "");
+    // Move focus to error message for screen readers
+    errorMsg.focus();
   }
 
   /**
@@ -181,6 +208,7 @@ const formTimestamp = Date.now();
         ).disabled = true),
     );
 
+    contactFormBtn.setAttribute("aria-busy", "true");
     contactFormBtn.innerText = "Sending...";
 
     try {
@@ -206,6 +234,7 @@ const formTimestamp = Date.now();
       contactForm.reset();
       toggleVisibility(contactForm, false);
       toggleVisibility(successMsg, true);
+      contactFormBtn.removeAttribute("aria-busy");
       formInputs.forEach(
         (input) =>
           ((
@@ -213,6 +242,7 @@ const formTimestamp = Date.now();
           ).disabled = false),
       );
       contactFormBtn.innerHTML = "Send" + (sendIcon?.outerHTML || "");
+      successMsg.focus();
     } catch (error) {
       console.error("Error:", error);
       formInputs.forEach(
@@ -228,6 +258,7 @@ const formTimestamp = Date.now();
   sendAnotherBtn?.addEventListener("click", () => {
     toggleVisibility(contactForm, true);
     toggleVisibility(successMsg, false);
+    fetchCSRFToken();
   });
 
   contactForm?.addEventListener("submit", submit);

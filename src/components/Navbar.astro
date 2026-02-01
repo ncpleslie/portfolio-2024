@@ -7,25 +7,37 @@ interface Props {
 }
 
 const { links } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
-<div
+<nav
+  aria-label="Main navigation"
   class="flex min-h-[120px] w-full flex-row items-start justify-center gap-16"
 >
   {
-    links.map((link) => (
-      <a
-        id={`${link.id}_nav`}
-        title={link.alt}
-        class="flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:fancy hover:text-black active:text-black dark:text-white dark:hover:text-white dark:active:text-white hover:md:pb-4 hover:md:pt-8 lg:text-transparent dark:lg:text-transparent"
-        href={link.link}
-      >
-        {link.title}
-        <Icon class="h-10 w-10 text-black dark:text-white" name={link.icon} />
-      </a>
-    ))
+    links.map((link) => {
+      const isActive =
+        currentPath === link.link ||
+        (currentPath === "/" && link.link === "/#projects");
+      return (
+        <a
+          id={`${link.id}_nav`}
+          aria-label={link.alt}
+          aria-current={isActive ? "page" : undefined}
+          class="lg:opacity-85 dark:lg:opacity-85 flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:fancy hover:text-black active:text-black dark:text-white dark:hover:text-white dark:active:text-white hover:md:pb-4 hover:md:pt-8"
+          href={link.link}
+        >
+          <span class="sr-only lg:not-sr-only">{link.title}</span>
+          <Icon
+            class="h-10 w-10 text-black dark:text-white"
+            name={link.icon}
+            decorative={true}
+          />
+        </a>
+      );
+    })
   }
-</div>
+</nav>
 
 <script define:vars={{ links }} is:inline>
   const hoverStyle = [
@@ -33,11 +45,10 @@ const { links } = Astro.props;
     "lg:pb-4",
     "lg:pt-8",
     "lg:indent-0",
-    "lg:text-black",
-    "dark:lg:text-white",
+    "lg:opacity-100",
   ];
 
-  const transparentStyle = ["lg:text-transparent", "dark:lg:text-transparent"];
+  const transparentStyle = ["lg:opacity-85", "dark:lg:opacity-85"];
 
   const handleUpdatingActiveNavItems = (elements) => {
     elements.forEach((element) => {

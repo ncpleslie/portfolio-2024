@@ -1,9 +1,10 @@
 ---
 interface Props {
   class?: string;
+  "aria-labelledby"?: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, "aria-labelledby": ariaLabelledby } = Astro.props;
 ---
 
 <article
@@ -11,6 +12,7 @@ const { class: className } = Astro.props;
     "group gap-4 rounded-xl p-2 shadow-md transition-all duration-1000 hover:duration-300 md:p-4 md:shadow-none hover:md:bg-black/5 hover:md:shadow-md hover:md:drop-shadow-md dark:hover:md:shadow-slate-600",
     className,
   ]}
+  aria-labelledby={ariaLabelledby}
 >
   <slot />
 </article>

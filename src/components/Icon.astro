@@ -1,0 +1,31 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+  id?: string;
+}
+
+const { name, size, class: className, id } = Astro.props;
+
+let iconSize = size;
+if (!iconSize && className) {
+  // Extract size from Tailwind classes like h-10 w-10 (10 * 4 = 40px)
+  const match = className.match(/[hw]-(\d+)/);
+  if (match) {
+    iconSize = parseInt(match[1]) * 4; // Tailwind uses 4px scale
+  }
+}
+const finalSize = iconSize || 24;
+---
+
+<iconify-icon
+  icon={name}
+  width={finalSize}
+  height={finalSize}
+  class={className}
+  id={id}></iconify-icon>
+
+<script>
+  import "iconify-icon";
+</script>

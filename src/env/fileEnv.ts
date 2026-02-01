@@ -6,6 +6,18 @@
 // ./src/env-validate.ts file without that file having to use Vite's `loadEnv`
 // function, causing the `fsevents` module to be bundled in the client-side
 // bundle.
-const fileEnv: Record<string, string> = {};
+
+/**
+ * Type-safe environment variables from .env files.
+ * Populated at build time by astro.config.mjs.
+ */
+export interface FileEnv {
+  RESEND_API_KEY?: string;
+  EMAIL_FROM?: string;
+  EMAIL_TO?: string;
+  [key: string]: string | undefined;
+}
+
+const fileEnv: FileEnv = {};
 
 export default fileEnv;

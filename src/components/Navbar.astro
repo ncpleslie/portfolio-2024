@@ -28,48 +28,51 @@ const { links } = Astro.props;
 </div>
 
 <script define:vars={{ links }} is:inline>
-const hoverStyle = [
-  "lg:px-8",
-  "lg:pb-4",
-  "lg:pt-8",
-  "lg:indent-0",
-  "lg:text-black",
-  "dark:lg:text-white",
-];
+  const hoverStyle = [
+    "lg:px-8",
+    "lg:pb-4",
+    "lg:pt-8",
+    "lg:indent-0",
+    "lg:text-black",
+    "dark:lg:text-white",
+  ];
 
-const testStyle = ["lg:text-transparent", "dark:lg:text-transparent"];
+  const transparentStyle = ["lg:text-transparent", "dark:lg:text-transparent"];
 
-const handleUpdatingActiveNavItems = (elements) => {
-  elements.forEach((element) => {
-    const middle = window.innerHeight / 2 + window.scrollY;
-    const scrolledToElement = document.getElementById(`${element.id}_nav`);
+  const handleUpdatingActiveNavItems = (elements) => {
+    elements.forEach((element) => {
+      const middle = window.innerHeight / 2 + window.scrollY;
+      const scrolledToElement = document.getElementById(`${element.id}_nav`);
 
-    if (
-      middle > element.offsetTop &&
-      middle < element.offsetTop + element.offsetHeight
-    ) {
-      scrolledToElement?.classList.remove(...testStyle);
-      scrolledToElement?.classList.add(...hoverStyle);
-    } else {
-      scrolledToElement?.classList.add(...testStyle);
-      scrolledToElement?.classList.remove(...hoverStyle);
+      if (
+        middle > element.offsetTop &&
+        middle < element.offsetTop + element.offsetHeight
+      ) {
+        scrolledToElement?.classList.remove(...transparentStyle);
+        scrolledToElement?.classList.add(...hoverStyle);
+      } else {
+        scrolledToElement?.classList.add(...transparentStyle);
+        scrolledToElement?.classList.remove(...hoverStyle);
+      }
+    });
+  };
+
+  let scrollHandler;
+
+  document.addEventListener("astro:before-swap", () => {
+    if (scrollHandler) {
+      window.removeEventListener("scroll", scrollHandler);
     }
   });
-};
 
-document.addEventListener("astro:before-swap", () => {
-  window.removeEventListener("scroll", () => handleUpdatingActiveNavItems);
-});
-
-document.addEventListener(
-  "astro:page-load",
-  () => {
-    const elements = links.map((link) => document.getElementById(link.id));
-    window.addEventListener("scroll", () =>
-      handleUpdatingActiveNavItems(elements),
-    );
-    handleUpdatingActiveNavItems(elements);
-  },
-  { once: true },
-);
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      const elements = links.map((link) => document.getElementById(link.id));
+      scrollHandler = () => handleUpdatingActiveNavItems(elements);
+      window.addEventListener("scroll", scrollHandler);
+      handleUpdatingActiveNavItems(elements);
+    },
+    { once: true },
+  );
 </script>

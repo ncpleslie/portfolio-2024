@@ -129,6 +129,7 @@ const { email } = Astro.props;
   function showErrorMsg(): void {
     toggleVisibility(errorMsg, true);
     contactFormBtn.disabled = false;
+    contactFormBtn.innerHTML = "Send" + (sendIcon?.outerHTML || "");
   }
 
   /**
@@ -154,7 +155,16 @@ const { email } = Astro.props;
   async function submit(e: SubmitEvent): Promise<void> {
     e.preventDefault();
     toggleVisibility(errorMsg, false);
-    contactFormBtn.disabled = true;
+
+    // Disable all form inputs during submission
+    const formInputs = contactForm.querySelectorAll("input, textarea, button");
+    formInputs.forEach(
+      (input) =>
+        ((
+          input as HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement
+        ).disabled = true),
+    );
+
     contactFormBtn.innerText = "Sending...";
     const formData = new FormData(contactForm);
 
@@ -165,16 +175,37 @@ const { email } = Astro.props;
       });
 
       if (response.status !== 200) {
+        formInputs.forEach(
+          (input) =>
+            ((
+              input as
+                | HTMLInputElement
+                | HTMLTextAreaElement
+                | HTMLButtonElement
+            ).disabled = false),
+        );
         showErrorMsg();
         return;
       }
 
+      contactForm.reset();
       toggleVisibility(contactForm, false);
       toggleVisibility(successMsg, true);
-      contactFormBtn.disabled = false;
-      contactFormBtn.innerHTML = "Send" + sendIcon?.outerHTML;
+      formInputs.forEach(
+        (input) =>
+          ((
+            input as HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement
+          ).disabled = false),
+      );
+      contactFormBtn.innerHTML = "Send" + (sendIcon?.outerHTML || "");
     } catch (error) {
       console.error("Error:", error);
+      formInputs.forEach(
+        (input) =>
+          ((
+            input as HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement
+          ).disabled = false),
+      );
       showErrorMsg();
     }
   }

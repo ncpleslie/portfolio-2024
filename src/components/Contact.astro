@@ -4,9 +4,11 @@ import Card from "./Card.astro";
 
 interface Props {
   email: string;
+  csrfToken: string;
 }
 
-const { email } = Astro.props;
+const { email, csrfToken } = Astro.props;
+const formTimestamp = Date.now();
 ---
 
 <Card class="group/contact">
@@ -23,6 +25,17 @@ const { email } = Astro.props;
       id="contact-form"
       action="javascript:void(0)"
     >
+      <input type="hidden" name="csrf_token" value={csrfToken} />
+      <input type="hidden" name="form_timestamp" value={formTimestamp} />
+      <input
+        type="text"
+        name="website"
+        id="website"
+        tabindex="-1"
+        autocomplete="off"
+        style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+        aria-hidden="true"
+      />
       <div class="relative w-full">
         <input
           id="name"
@@ -156,8 +169,11 @@ const { email } = Astro.props;
     e.preventDefault();
     toggleVisibility(errorMsg, false);
 
-    // Disable all form inputs during submission
-    const formInputs = contactForm.querySelectorAll("input, textarea, button");
+    const formData = new FormData(contactForm);
+    // Disable all form inputs during submission (except hidden fields)
+    const formInputs = contactForm.querySelectorAll(
+      "input:not([type='hidden']), textarea, button",
+    );
     formInputs.forEach(
       (input) =>
         ((
@@ -166,7 +182,6 @@ const { email } = Astro.props;
     );
 
     contactFormBtn.innerText = "Sending...";
-    const formData = new FormData(contactForm);
 
     try {
       const response = await fetch("/api/contact", {

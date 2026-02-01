@@ -7,8 +7,8 @@ import useContent from "../hooks/useContent.hook";
 export const prerender = true;
 
 const { getProjects, getDetails } = useContent();
-const projects = getProjects();
-const { fullName } = getDetails();
+const projects = await getProjects();
+const { fullName } = await getDetails();
 ---
 
 <Layout title={"Projects"}>

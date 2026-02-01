@@ -1,0 +1,83 @@
+- order: 1
+  from: Sept 2022
+  to: Aug 2023
+  positionTitle: Engineering People Leader
+  company: Jade Software Corporation
+  companyUrl: https://jadeworld.com
+  jobDescription: Led and mentored a dynamic team of Software Engineers offering technical guidance, performance coaching, goal setting, and feedback. As well as partaking in pre-sales client conversations, requirements gathering, solution designs (Cloud, API and UML), software development and testing, and CI/CD pipeline development
+  technologies:
+    - TypeScript
+    - C#
+    - .NET
+    - xUnit
+    - Vue
+    - React
+    - Angular
+    - Vitest
+    - Jest
+    - NodeJS
+    - TailwindCSS
+    - CSS
+    - Sass
+    - Azure
+    - Azure AD
+    - API-M
+    - Azure Static Web Apps
+    - GitHub Actions
+    - UML
+    - MSSQL
+
+- order: 2
+  from: Nov 2020
+  to: Sept 2022
+  positionTitle: Software Engineer
+  company: Jade Software Corporation
+  companyUrl: https://jadeworld.com
+  jobDescription: Part of an agile work environment, using the Scrum methodology, developing cloud-native, full-stack web applications for clients from around the world
+  technologies:
+    - TypeScript
+    - Vue
+    - Angular
+    - CSS
+    - Sass
+    - TailwindCSS
+    - Chart.js
+    - C#
+    - .NET
+    - Xamarin
+    - Entity Framework (EF Core)
+    - MSSQL
+    - Domain-driven design
+    - Azure
+    - Azure Cosmos DB
+    - Azure Blob Storage
+    - UML
+
+- order: 3
+  from: July 2020
+  to: Nov 2020
+  positionTitle: IoT Software Engineer Intern
+  company: Jade Software Corporation
+  companyUrl: https://jadeworld.com
+  jobDescription: Enhanced the accessibility of everyday cooking appliances through a multi-modal interface. Using on-device natural language processing and voice recognition
+  technologies:
+    - TypeScript
+    - Vue
+    - Node JS
+    - Firebase
+    - Firebase Functions
+    - Google Cloud Services
+    - Google DialogFlow
+    - NLP.js
+
+- order: 4
+  from: Nov 2019
+  to: Feb 2020
+  positionTitle: Computer Vision Intern
+  company: Jade Software Corporation
+  companyUrl: https://jadeworld.com
+  jobDescription: Developed a Computer Vision application for running on the Edge to enhance the capabilities of security cameras. Allowing them to perform tasks such as license plate recognition, object tracking and detection
+  technologies:
+    - Python
+    - OpenCV
+    - OpenVino

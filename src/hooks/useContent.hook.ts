@@ -1,7 +1,4 @@
-import { projects } from "../projects.json";
-import { work_history } from "../work_history.json";
-import { details, metadata } from "../description.json";
-import { convertKeys, type CamelCaseObject } from "../utils/case_converter";
+import { getEntry, type CollectionEntry } from "astro:content";
 
 /**
  * Custom hook for accessing content-related data.
@@ -12,35 +9,25 @@ const useContent = () => {
   /**
    * Retrieves projects data.
    *
-   * @returns An array of projects with camelCase keys, sorted by year.
+   * @returns An array of projects sorted by year.
    */
-  const getProjects = () => {
-    return processProjects(projects);
+  const getProjects = async () => {
+    const entry = await getEntry("projects", "projects");
+    const projects = entry!.data;
+    return projects.sort((a, b) => b.year - a.year);
   };
 
   /**
    * Retrieves showcase projects.
    *
-   * @returns An array of showcase projects with camelCase keys, sorted by year.
+   * @returns An array of showcase projects sorted by year.
    */
-  const getShowcaseProjects = () => {
-    const projs = projects.filter((project) => project.showcase);
-
-    return processProjects(projs);
-  };
-
-  /**
-   * Sorts an array of projects by year and converts to camelCase.
-   *
-   * @param value The projects to process.
-   * @returns An array of projects
-   */
-  const processProjects = (value: typeof projects) => {
-    const sortedProjects = value.sort(
-      (projectA, projectB) => projectB.year - projectA.year,
-    );
-
-    return sortedProjects.map(convertKeys);
+  const getShowcaseProjects = async () => {
+    const entry = await getEntry("projects", "projects");
+    const projects = entry!.data;
+    return projects
+      .filter((project) => project.showcase === true)
+      .sort((a, b) => b.year - a.year);
   };
 
   /**
@@ -48,12 +35,10 @@ const useContent = () => {
    *
    * @returns An array of work history items sorted by order.
    */
-  const getWorkHistory = () => {
-    const snakeWorkHistory = work_history.map((history) =>
-      convertKeys(history),
-    );
-
-    return snakeWorkHistory.sort((jobA, jobB) => jobA.order - jobB.order);
+  const getWorkHistory = async () => {
+    const entry = await getEntry("workHistory", "workHistory");
+    const workHistory = entry!.data;
+    return workHistory.sort((a, b) => a.order - b.order);
   };
 
   /**
@@ -61,17 +46,19 @@ const useContent = () => {
    *
    * @returns Details data.
    */
-  const getDetails = () => {
-    return convertKeys(details);
+  const getDetails = async () => {
+    const entry = await getEntry("details", "details");
+    return entry!.data;
   };
 
   /**
    * Retrieves metadata data.
    *
-   * @returns Metadata data keys.
+   * @returns Metadata data.
    */
-  const getMetadata = () => {
-    return convertKeys(metadata);
+  const getMetadata = async () => {
+    const entry = await getEntry("metadata", "metadata");
+    return entry!.data;
   };
 
   return {
@@ -83,9 +70,15 @@ const useContent = () => {
   };
 };
 
-export type Metadata = CamelCaseObject<typeof metadata>;
-export type Details = CamelCaseObject<typeof details>;
-export type Socials = CamelCaseObject<typeof details.socials>;
-export type Project = CamelCaseObject<(typeof projects)[0]>;
-export type WorkHistory = CamelCaseObject<(typeof work_history)[0]>;
+export type Project = CollectionEntry<"projects">["data"][number];
+export type Metadata = Awaited<
+  ReturnType<ReturnType<typeof useContent>["getMetadata"]>
+>;
+export type Details = Awaited<
+  ReturnType<ReturnType<typeof useContent>["getDetails"]>
+>;
+export type Socials = Details["socials"];
+export type WorkHistory = Awaited<
+  ReturnType<ReturnType<typeof useContent>["getWorkHistory"]>
+>[number];
 export default useContent;

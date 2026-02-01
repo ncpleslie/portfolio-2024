@@ -26,17 +26,22 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
   const parseResult = contactSchema.safeParse(contactFormData);
   if (!parseResult.success) {
-    const flattenedErrors = parseResult.error.flatten();
-    const errors = flattenedErrors.fieldErrors;
+    const formatted = z.treeifyError(parseResult.error);
 
     // Only return user-facing field errors (exclude security fields)
     const userFacingErrors = [];
-    if (errors.name) userFacingErrors.push(...errors.name);
-    if (errors.email) userFacingErrors.push(...errors.email);
-    if (errors.message) userFacingErrors.push(...errors.message);
+    if (formatted.properties?.name?.errors)
+      userFacingErrors.push(...formatted.properties.name.errors);
+    if (formatted.properties?.email?.errors)
+      userFacingErrors.push(...formatted.properties.email.errors);
+    if (formatted.properties?.message?.errors)
+      userFacingErrors.push(...formatted.properties.message.errors);
 
     // If security fields are missing, show generic error instead of exposing internals
-    if (errors.csrf_token || errors.form_timestamp) {
+    if (
+      formatted.properties?.csrf_token?.errors ||
+      formatted.properties?.form_timestamp?.errors
+    ) {
       return new Response(
         JSON.stringify({
           message: "Please refresh the page and try again",

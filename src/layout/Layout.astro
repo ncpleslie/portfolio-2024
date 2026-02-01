@@ -9,8 +9,8 @@ import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 import MadeWith from "../components/MadeWith.astro";
 
 const { getDetails, getMetadata } = useContent();
-const { fullName, profession, socials } = getDetails();
-const { description, title: metadataTitle } = getMetadata();
+const { fullName, profession, socials } = await getDetails();
+const { description, title: metadataTitle } = await getMetadata();
 
 interface Props {
   title?: string;

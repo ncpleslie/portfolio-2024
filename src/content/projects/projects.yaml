@@ -1,0 +1,297 @@
+- id: job_down
+  title: Job Down - Application Tracker
+  description: A web app and extension to track your job applications from applied to hired. With a Chrome Extension and web interface to easily add jobs, screenshot the application, upload relevant documents, take notes, and track the status of the job application. Built with Go and React. Using Firebase Firestore. Uses GitHub Actions for CI/CD
+  githubUrl: https://github.com/ncpleslie/job-down
+  projectUrl: https://job-down.vercel.app
+  imageUrl: /thumbnails/job_down_showcase.png
+  technologies:
+    - Go
+    - React
+    - Chrome Extension
+    - TypeScript
+    - Tailwind
+    - Tanstack Query
+    - Tanstack Table
+    - Zustand
+    - Vite
+    - GitHub Actions
+    - PWA
+  isVideo: false
+  showcase: true
+  year: 2024
+
+- id: smartpay
+  title: SmartPay Merchant Dashboard
+  description: A highly data-driven portal for monitoring transaction data of Point-of-sale terminals for SmartPay Ltd. With interactive charts and graphs, merchants can easily see their transaction data and trends
+  projectUrl: https://announcements.asx.com.au/asxpdf/20220530/pdf/459ftrqcv7gg5d.pdf#page=7
+  technologies:
+    - Vue 2
+    - JavaScript
+    - Chart.js
+    - Bootstrap
+  isVideo: false
+  showcase: false
+  company: Jade Software
+  year: 2022
+
+- id: insurance_calculator
+  title: Zurich Insurance Calculator
+  description: A white-labeled insurance (Life, TPD) calculator for Zurich Insurance, Australia. Using Angular for frontend and .NET for the backend. Deployed to Azure. This application is highly configuration driven allowing for quick customizability and changes to the calculation engine
+  projectUrl: https://zurich.zurichcalculators.net
+  technologies:
+    - Angular
+    - TypeScript
+    - C#
+    - .NET
+    - Azure
+    - CosmosDB
+    - TeamCity
+  isVideo: false
+  showcase: false
+  company: Jade Software
+  year: 2022
+
+- id: claims_portal
+  title: Air New Zealand Claims Portal
+  description: The Air New Zealand claims portal is a web application to make it easier for pilots and cabin crew to submit, edit and review expense claims. It replaces the old process of hand-written expense reports. Developed with Vue 3 and deployed to Azure
+  technologies:
+    - Vue 3
+    - TypeScript
+    - Tailwind
+    - Azure
+    - Azure AD
+    - Static Web Apps
+    - Azure Functions
+  isVideo: false
+  showcase: false
+  company: Jade Software
+  year: 2023
+
+- id: skipton_document_repository
+  title: Skipton Document Repository
+  description: A high-availability cloud-native solution for managing over 150 million documents and ingesting over a million new documents every month. Tested and launched with minimal business interruption, whilst improving speed and user experience for document search and retrieval. APIs were designed and developed to ensure performant integration with Skipton's core Jade Platform systems
+  projectUrl: https://www.jadeworld.com/services/jade-digital/our-clients/skipton-case-study
+  technologies:
+    - C#
+    - .NET
+    - xUnit
+    - Azure
+    - CosmosDB
+    - Blob Storage
+    - Azure DevOps
+    - Vue 3
+    - TypeScript
+    - Tailwind
+  isVideo: false
+  showcase: false
+  company: Jade Software
+  year: 2022
+
+- id: virtual_employee_hub
+  title: DB Cargo Virtual Employee Hub
+  description: Virtual Employee Hub (VEH) offers an intuitive mobile app. VEH is a Xamarin-based app with a .NET backend hosted in Azure. It accesses DB Cargo's SharePoint. Ground staff and train drivers can log fleet issues with visual references attached or create reports
+  projectUrl: https://www.jadeworld.com/services/jade-digital/our-clients/db-cargo-uk-case-study
+  technologies:
+    - C#
+    - .NET
+    - Xamarin
+    - Sqlite
+    - xUnit
+    - Azure
+    - CosmosDB
+    - TeamCity
+    - SharePoint
+  isVideo: false
+  showcase: false
+  company: Jade Software
+  year: 2021
+
+- id: customer_portal
+  title: DB Cargo Customer Portal
+  description: Customer Portal is a web application to make ordering trains easier. Frontend created using Angular. Backed by a .NET backend which interfaces with the JADE platform through a SOAP API
+  projectUrl: https://uk.dbcargo.com/rail-uk-en/services/Rail-Transport-Services/Customer-Portal
+  technologies:
+    - C#
+    - .NET
+    - SOAP
+    - TypeScript
+    - Angular
+    - Azure
+    - TeamCity
+  isVideo: false
+  showcase: false
+  company: Jade Software
+  year: 2020
+
+- id: wmata_train_tracker
+  title: WMATA Train Tracker
+  description: A WMATA train tracking application for monitoring train arrival times at your station in the DMV area. Built to run on the Raspberry Pi so you can place it in convenient location and see relevant station information at a glance.
+  githubUrl: https://github.com/ncpleslie/wmata-train-tracking
+  imageUrl: /thumbnails/train_tracker_showcase.jpg
+  projectUrl: https://traintracking.nickleslie.dev
+  technologies:
+    - Go
+    - Wails
+    - Nuxt 3
+    - tRPC
+    - TypeScript
+    - Zod
+  isVideo: false
+  showcase: true
+  year: 2023
+
+- id: github_actions_workflows
+  title: GitHub Actions Workflows
+  description: A collection of useful and reusable GitHub Actions. Deploy websites to Azure, set up infrastructure, test and lint your application, and a whole lot more.
+  githubUrl: https://github.com/ncpleslie/github-actions-workflows
+  imageUrl: /thumbnails/github_actions_showcase.jpg
+  technologies:
+    - GitHub Actions
+    - Azure
+    - ARM template
+    - C# .NET
+    - JavaScript
+  isVideo: false
+  showcase: false
+  year: 2023
+
+- id: static_web_app_github_action
+  title: Azure and GitHub Actions
+  description: A GitHub Action to effortlessly set up the infrastructure and deploy an application on Azure Static Web Apps with ARM templates. A focus on enterprise standards with separate environments and infrastructure separation
+  githubUrl: https://github.com/ncpleslie/static-web-app-github-actions
+  imageUrl: /thumbnails/static_web_apps_showcase.jpg
+  technologies:
+    - Azure
+    - GitHub Actions
+    - ARM template
+  isVideo: false
+  showcase: false
+  year: 2023
+
+- id: draw_for_them
+  title: Draw For Them
+  description: Draw For Them is an ephemeral image sharing and drawing application that allows users to share their creations with other users. Built with NextJS, this application has real-time updates when users share images, add new friends, delete friends, update your profile, and view previous images sent to each other. Using a neumorphic design
+  githubUrl: https://github.com/ncpleslie/draw-for-them
+  imageUrl: /thumbnails/draw_for_them_showcase.png
+  projectUrl: https://drawforthem.nickleslie.dev
+  technologies:
+    - TypeScript
+    - NextJS
+    - React
+    - Prisma
+    - Postgres
+    - tRPC
+    - WebSockets
+    - FabricJS
+    - PWA
+    - Jest
+    - GitHub Actions
+  isVideo: false
+  showcase: true
+  year: 2022
+
+- id: nz_public_holidays
+  title: NZ Public Holidays API
+  description: A REST API for retrieving public holidays in New Zealand. Leveraging serverless edge functions with Cloudflare Workers and PlanetScale for the database
+  githubUrl: https://github.com/ncpleslie/nz-public-holidays
+  imageUrl: /thumbnails/nz_public_holidays.jpg
+  projectUrl: https://nz-public-holidays.nickleslie.workers.dev
+  technologies:
+    - Cloudflare Workers
+    - PlanetScale
+    - Prisma
+    - HonoJS
+    - TypeScript
+  isVideo: false
+  showcase: false
+  year: 2023
+
+- id: camp_pod_website
+  title: This One Time - A Podcast Website
+  description: A NextJS website for the podcast, 'This One Time At Summer Camp'. Built with NextJS and React. A ThreeJS 3D model moves as the user navigates the website
+  imageUrl: /thumbnails/podcast_showcase.jpg
+  projectUrl: https://summercamppod.com
+  technologies:
+    - React
+    - NextJS
+    - ThreeJS
+    - TypeScript
+    - Tailwind
+    - Zod
+    - tRPC
+    - Vercel
+    - Sanity
+  isVideo: false
+  showcase: true
+  company: Freelance
+  year: 2024
+
+- id: another_wordle_clone
+  title: Another Wordle Clone
+  description: Another wordle clone because I liked the game so much that playing it once a day wasn't enough
+  githubUrl: https://github.com/ncpleslie/wordle-clone
+  imageUrl: /thumbnails/wordle_showcase.jpg
+  projectUrl: https://ncpleslie.github.io/wordle-clone
+  technologies:
+    - React
+    - TypeScript
+    - Tailwind
+    - MobX
+    - Jest
+  isVideo: false
+  showcase: true
+  year: 2022
+
+- id: aws_multi-az_wordpress_website
+  title: AWS Multi-AZ WordPress Website
+  description: Created a multi-AZ WordPress website on AWS. Effectively separating the web-tier from the data-tier with no public facing instances. Data is shared across EC2 instances by utilizing EBS
+  githubUrl: https://github.com/ncpleslie/AWS_CloudFormation_WordPress_Template
+  imageUrl: /thumbnails/aws_showcase.png
+  technologies:
+    - AWS
+    - CloudFormation
+  isVideo: false
+  showcase: false
+  year: 2019
+
+- id: bella_-_the_coffee_machine_assistant
+  title: Bella - The Coffee Machine Assistant
+  description: Enhancing the accessibility of a Coffee Machine to include voice controls, for Jade Software. Showcased at the Noel Leeming Flagship store
+  videoUrl: https://www.youtube.com/embed/yoUnQg4luE8
+  projectUrl: https://jadeworld.com/resources/blog/we-built-the-worlds-first-digital-barista-but-why
+  technologies:
+    - JavaScript
+    - NodeJS
+    - Google Cloud
+  isVideo: true
+  showcase: false
+  company: Jade Software
+  year: 2019
+
+- id: date_night
+  title: Date Night
+  description: Date Night is a cross-platform mobile app designed to make your relationship easier. Users enter their date ideas and an unbiased decision is returned. Other users date ideas are displayed on the home-screen
+  githubUrl: https://github.com/ncpleslie/date_night
+  imageUrl: /thumbnails/date_night_showcase.jpg
+  technologies:
+    - Dart
+    - Flutter
+    - Firebase
+    - TypeScript
+    - NodeJS
+  isVideo: false
+  showcase: false
+  year: 2018
+
+- id: wizard_saves_the_city
+  title: Wizard Saves the City
+  description: A platform game about a wizard, some cones, and an earthquake. Featuring three unique levels, an annoying soundtrack and mobile controls
+  githubUrl: https://github.com/ncpleslie/PlatformGame
+  imageUrl: /thumbnails/phaser_game_showcase.jpg
+  projectUrl: https://ncpleslie.github.io/PlatformGame
+  technologies:
+    - JavaScript
+    - Phaser 3
+  isVideo: false
+  showcase: false
+  year: 2018

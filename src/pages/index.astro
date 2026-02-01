@@ -11,9 +11,9 @@ import Contact from "../components/Contact.astro";
 export const prerender = true;
 
 const { getShowcaseProjects, getWorkHistory, getDetails } = useContent();
-const projects = getShowcaseProjects();
-const workHistory = getWorkHistory();
-const details = getDetails();
+const projects = await getShowcaseProjects();
+const workHistory = await getWorkHistory();
+const details = await getDetails();
 
 const navbarLinks = [
   {

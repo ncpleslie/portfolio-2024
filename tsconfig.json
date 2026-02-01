@@ -4,5 +4,6 @@
     "jsx": "preserve",
     "strict": true
   },
-  "include": ["./src/env.d.ts"]
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }

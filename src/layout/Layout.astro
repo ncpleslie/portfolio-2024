@@ -2,7 +2,7 @@
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { AstroFont } from "astro-font";
 import { SEO } from "astro-seo";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import SocialsBar from "../components/SocialsBar.astro";
 import useContent from "../hooks/useContent.hook";
 import ThemeSwitcher from "../components/ThemeSwitcher.astro";
@@ -67,7 +67,7 @@ const twitterOg = [
         meta: [...twitterOg],
       }}
     />
-    <ViewTransitions />
+    <ClientRouter />
     <AstroFont
       config={[
         {

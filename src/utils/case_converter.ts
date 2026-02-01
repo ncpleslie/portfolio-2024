@@ -9,7 +9,7 @@ export function convertKeys<T>(jsonObj: T): CamelCaseObject<T> {
   const result: CamelCaseObject<T> = {} as CamelCaseObject<T>;
 
   for (const key in jsonObj) {
-    if (jsonObj?.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(jsonObj, key)) {
       const camelCaseKey = key.replace(/_([a-z])/g, (_, group) =>
         group.toUpperCase(),
       ) as keyof CamelCaseObject<T>;

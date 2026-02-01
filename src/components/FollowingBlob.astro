@@ -8,37 +8,46 @@
 </Fragment>
 
 <script is:inline>
-const blob = document.getElementById("blob");
-const blur = document.getElementById("blur");
+  const blob = document.getElementById("blob");
+  const blur = document.getElementById("blur");
 
-function throttle(callback, delay) {
+  function throttle(callback, delay) {
     let lastTime = 0;
     return function () {
-        const currentTime = new Date().getTime();
-        if (currentTime - lastTime >= delay) {
-            callback.apply(null, arguments);
-            lastTime = currentTime;
-        }
+      const currentTime = new Date().getTime();
+      if (currentTime - lastTime >= delay) {
+        callback.apply(null, arguments);
+        lastTime = currentTime;
+      }
     };
-}
+  }
 
-window.onpointermove = throttle((event) => {
+  // Blob size multiplier for offset calculation
+  const BLOB_OFFSET_MULTIPLIER = 1.5;
+  const ANIMATION_DURATION = 3000;
+
+  window.onpointermove = throttle((event) => {
+    if (!blob || !blur) return;
+
     const { clientX, clientY } = event;
-    const x = clientX - blob?.clientWidth * 1.5;
-    const y = clientY - blob?.clientHeight + window.scrollY;
+    const blobWidth = blob.clientWidth || 0;
+    const blobHeight = blob.clientHeight || 0;
 
-    blob?.animate(
-        {
-            transform: `translate(${x}px, ${y}px)`,
-        },
-        { duration: 3000, fill: "forwards" },
+    const x = clientX - blobWidth * BLOB_OFFSET_MULTIPLIER;
+    const y = clientY - blobHeight + window.scrollY;
+
+    blob.animate(
+      {
+        transform: `translate(${x}px, ${y}px)`,
+      },
+      { duration: ANIMATION_DURATION, fill: "forwards" },
     );
 
-    blur?.animate(
-        {
-            transform: `translate(${0}px, ${y}px)`,
-        },
-        { duration: 3000, fill: "forwards" },
+    blur.animate(
+      {
+        transform: `translate(${0}px, ${y}px)`,
+      },
+      { duration: ANIMATION_DURATION, fill: "forwards" },
     );
-}, 100);
+  }, 100);
 </script>

@@ -10,6 +10,20 @@ import Contact from "../components/Contact.astro";
 
 export const prerender = true;
 
+function generateCSRFToken(): string {
+  return crypto.randomUUID();
+}
+
+const csrfToken = generateCSRFToken();
+
+Astro.cookies.set("csrf_token", csrfToken, {
+  httpOnly: true,
+  secure: import.meta.env.PROD,
+  sameSite: "strict",
+  path: "/",
+  maxAge: 60 * 60, // 1 hour
+});
+
 const { getShowcaseProjects, getWorkHistory, getDetails } = useContent();
 const projects = getShowcaseProjects();
 const workHistory = getWorkHistory();
@@ -79,7 +93,7 @@ const navbarLinks = [
         </div>
       </div>
       <div class="mt-16 flex flex-col justify-center gap-8" id="contact">
-        <Contact email={details.contactEmail} />
+        <Contact email={details.contactEmail} csrfToken={csrfToken} />
       </div>
     </div>
   </div>

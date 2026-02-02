@@ -2,10 +2,10 @@
 import Layout from "../layout/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Navbar from "../components/Navbar.astro";
-import Projects from "../components/Projects.astro";
+import Projects from "../components/projects/Projects.astro";
 import WorkHistory from "../components/WorkHistory.astro";
 import useContent from "../hooks/useContent.hook";
-import IconLinkBtn from "../components/IconLinkBtn.astro";
+import IconLinkBtn from "../components/ui/IconLinkBtn.astro";
 import Contact from "../components/Contact.astro";
 
 export const prerender = true;
@@ -96,7 +96,7 @@ const navbarLinks = [
           <h2 id="resume-heading" class="sr-only">Work Experience</h2>
           <WorkHistory workHistory={workHistory} />
           <IconLinkBtn
-            href={details.resumeUrl}
+            href={"/resume"}
             title="See Résumé"
             aria-label="View full résumé document"
             icon="ep:right"

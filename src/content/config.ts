@@ -48,7 +48,6 @@ const detailsCollection = defineCollection({
       linkedin: z.string().url(),
       github: z.string().url(),
     }),
-    resumeUrl: z.string(),
     contactEmail: z.string().email(),
     keyTechnologies: z.array(z.string()).optional(),
     descriptionHtml: z.string(),
@@ -63,9 +62,61 @@ const metadataCollection = defineCollection({
   }),
 });
 
+const resumeCollection = defineCollection({
+  type: "data",
+  schema: z.object({
+    personal: z.object({
+      fullName: z.string(),
+      title: z.string(),
+      location: z.string(),
+      email: z.string().email(),
+      website: z.string().url(),
+      websiteDisplay: z.string(),
+      linkedin: z.string().url(),
+      linkedinDisplay: z.string(),
+      github: z.string().url(),
+      githubDisplay: z.string(),
+    }),
+    experience: z.array(
+      z.object({
+        company: z.string(),
+        companyUrl: z.string().url(),
+        positions: z.array(
+          z.object({
+            title: z.string(),
+            startDate: z.string(),
+            endDate: z.string(),
+          }),
+        ),
+        responsibilities: z.array(z.string()),
+        technologies: z.array(z.string()),
+      }),
+    ),
+    projects: z.array(
+      z.object({
+        title: z.string(),
+        technologies: z.array(z.string()),
+        description: z.string(),
+        projectUrl: z.string().url().optional(),
+        githubUrl: z.string().url().optional(),
+      }),
+    ),
+    skills: z.array(z.string()),
+    education: z.array(
+      z.object({
+        degree: z.string(),
+        institution: z.string(),
+        major: z.string(),
+        achievement: z.string(),
+      }),
+    ),
+  }),
+});
+
 export const collections = {
   projects: projectsCollection,
   workHistory: workHistoryCollection,
   details: detailsCollection,
   metadata: metadataCollection,
+  resume: resumeCollection,
 };

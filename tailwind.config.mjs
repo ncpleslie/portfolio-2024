@@ -19,6 +19,7 @@ export default {
         heading: ["Monoton", "sans-serif"],
         body: ["Roboto", "sans-serif"],
         "sub-heading": ["'Share Tech Mono'", "sans-serif"],
+        resume: ["Merriweather", "Georgia", "serif"],
       },
       colors: {
         "accent-one": withOpacity("--color-accent-one"),
@@ -155,6 +156,13 @@ export default {
               outlineOffset: "2px",
               borderRadius: "4px",
             },
+
+          // Hide elements when printing
+          "@media print": {
+            ".no-print": {
+              display: "none !important",
+            },
+          },
         });
     }),
   ],

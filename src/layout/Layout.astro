@@ -5,7 +5,7 @@ import { SEO } from "astro-seo";
 import { ClientRouter } from "astro:transitions";
 import useContent from "../hooks/useContent.hook";
 import ThemeSwitcher from "../components/ThemeSwitcher.astro";
-import MadeWith from "../components/MadeWith.astro";
+import MadeWith from "../components/ui/MadeWith.astro";
 
 const { getDetails, getMetadata } = useContent();
 const { fullName, profession } = await getDetails();
@@ -14,15 +14,21 @@ const { description, title: metadataTitle } = await getMetadata();
 interface Props {
   title?: string;
   class?: string;
+  useRawTitle?: boolean;
 }
 
-const { title, class: className } = Astro.props;
+const { title, class: className, useRawTitle = false } = Astro.props;
+
+const pageTitle =
+  useRawTitle && title
+    ? title
+    : title
+      ? `${title} | ${fullName} - ${profession}`
+      : `${fullName} - ${profession}`;
 
 const openGraph = {
   basic: {
-    title: title
-      ? `${title} | ${fullName} - ${profession}`
-      : `${fullName} - ${profession}`,
+    title: pageTitle,
     type: "website",
     image: "/metadata_thumbnail.jpg",
     url: Astro.url.href,
@@ -56,9 +62,7 @@ const twitterOg = [
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
-      title={title
-        ? `${title} | ${fullName} - ${profession}`
-        : `${fullName} - ${profession}`}
+      title={pageTitle}
       description={description}
       openGraph={openGraph}
       extend={{
@@ -122,6 +126,25 @@ const twitterOg = [
           selector: "body",
           fallback: "sans-serif",
         },
+        {
+          name: "Merriweather",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCZM.woff2",
+            },
+            {
+              style: "normal",
+              weight: "700",
+              path: "https://fonts.gstatic.com/s/merriweather/v30/u-4n0qyriQwlOrhSvowK_l52xwNZVcf6.woff2",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "serif",
+        },
       ]}
     />
     <SpeedInsights />
@@ -144,13 +167,13 @@ const twitterOg = [
       ]}
       transition:animate="fade"
     >
-      <div class="absolute right-10 top-10">
+      <div class="no-print absolute right-6 top-6">
         <ThemeSwitcher />
       </div>
       <slot />
     </main>
     <footer
-      class="mx-auto mb-12 flex h-36 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-body md:mb-0 md:h-28 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
+      class="no-print mx-auto mb-12 flex h-36 max-w-screen-xl flex-row flex-wrap justify-center px-2 py-12 font-body md:mb-0 md:h-28 md:justify-end md:px-12 md:py-20 lg:px-8 lg:py-0"
     >
       <MadeWith />
     </footer>

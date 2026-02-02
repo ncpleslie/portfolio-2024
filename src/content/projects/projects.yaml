@@ -1,7 +1,7 @@
 - id: censys
   title: Censys - Internet Intelligence & Attack Surface Management
   description: Developing data-intensive web applications for Censys's cybersecurity platform, including Attack Surface Management and the Search platform. Built features for asset discovery, data exploration, query building, and real-time visualization. Focused on improving data accessibility, scalability, and user experience for security teams and researchers analyzing billions of internet hosts and certificates
-  projectUrl: https://censys.com
+  projectUrl: https://platform.censys.com
   imageUrl: /thumbnails/censys_showcase.jpg
   technologies:
     - React

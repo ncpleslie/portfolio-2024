@@ -19,11 +19,12 @@ interface Props {
 
 const { title, class: className, useRawTitle = false } = Astro.props;
 
-const pageTitle = useRawTitle && title
-  ? title
-  : title
-    ? `${title} | ${fullName} - ${profession}`
-    : `${fullName} - ${profession}`;
+const pageTitle =
+  useRawTitle && title
+    ? title
+    : title
+      ? `${title} | ${fullName} - ${profession}`
+      : `${fullName} - ${profession}`;
 
 const openGraph = {
   basic: {

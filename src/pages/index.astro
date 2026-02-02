@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar.astro";
 import Projects from "../components/Projects.astro";
 import WorkHistory from "../components/WorkHistory.astro";
 import useContent from "../hooks/useContent.hook";
-import IconLink from "../components/IconLink.astro";
+import IconLinkBtn from "../components/IconLinkBtn.astro";
 import Contact from "../components/Contact.astro";
 
 export const prerender = true;
@@ -57,7 +57,7 @@ const navbarLinks = [
                   <h3 class="mb-3 text-lg font-semibold">Key Technologies</h3>
                   <div class="flex flex-wrap gap-2">
                     {details.keyTechnologies.map((tech) => (
-                      <span class="rounded-md bg-gray-200 px-3 py-1 text-sm font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+                      <span class="bg-bg-secondary text-text-secondary rounded-md px-3 py-1 text-sm font-medium">
                         {tech}
                       </span>
                     ))}
@@ -76,15 +76,15 @@ const navbarLinks = [
         <div class="flex max-w-[592px] flex-col items-center gap-8">
           <h2 id="projects-heading" class="sr-only">Featured Projects</h2>
           <Projects projects={projects} />
-          <IconLink
+          <IconLinkBtn
             href="/projects"
             title="See more projects"
             aria-label="View all projects including corporate work"
             icon="ep:right"
-            class="self-start text-lg font-bold md:pl-4"
+            class="dark:from-bg-secondary dark:to-bg-secondary w-full bg-gradient-to-r from-blue-100 to-purple-100 text-base font-semibold md:text-lg"
           >
             View more projects including corporate work
-          </IconLink>
+          </IconLinkBtn>
         </div>
       </section>
       <section
@@ -95,16 +95,16 @@ const navbarLinks = [
         <div class="flex max-w-[592px] flex-col items-center gap-8">
           <h2 id="resume-heading" class="sr-only">Work Experience</h2>
           <WorkHistory workHistory={workHistory} />
-          <IconLink
+          <IconLinkBtn
             href={details.resumeUrl}
             title="See Résumé"
             aria-label="View full résumé document"
             icon="ep:right"
-            class="self-start text-lg font-bold md:pl-4"
+            class="dark:from-bg-secondary dark:to-bg-secondary w-full bg-gradient-to-r from-blue-100 to-purple-100 text-base font-semibold md:text-lg"
             external
           >
             View full résumé
-          </IconLink>
+          </IconLinkBtn>
         </div>
       </section>
       <section

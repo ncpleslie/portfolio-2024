@@ -31,7 +31,7 @@ const { fullName } = await getDetails();
         <h1>All Projects</h1>
       </caption>
       <thead
-        class="sticky top-0 z-10 border-b bg-white/95 px-6 py-5 backdrop-blur-sm dark:bg-slate-800/95"
+        class="bg-bg-primary/95 sticky top-0 z-10 border-b px-6 py-5 backdrop-blur-sm"
       >
         <tr>
           <th class="hidden py-4 pr-8 md:table-cell" scope="col">
@@ -87,7 +87,7 @@ const { fullName } = await getDetails();
                 </td>
                 <td class="py-4 pr-4 align-top font-semibold leading-tight">
                   <span class="hidden sm:block">{project.title}</span>
-                  <span class="hidden min-w-[20ch] font-normal text-slate-800 dark:text-gray-200 sm:block">
+                  <span class="text-text-secondary hidden min-w-[20ch] font-normal sm:block">
                     {project.description}
                   </span>
                   <span class="block sm:hidden">

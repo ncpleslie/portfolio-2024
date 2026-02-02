@@ -20,7 +20,7 @@ const formTimestamp = Date.now();
     <p>or give me a bell using the form below</p>
 
     <form
-      class="m-8 flex w-full flex-col items-center justify-center gap-8 rounded border-2 border-black/5 p-2 md:p-8"
+      class="border-border-primary/20 m-8 flex w-full flex-col items-center justify-center gap-8 rounded border-2 p-2 md:p-8"
       id="contact-form"
       action="javascript:void(0)"
       aria-label="Contact form"
@@ -41,13 +41,13 @@ const formTimestamp = Date.now();
           id="name"
           name="name"
           type="text"
-          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1 dark:bg-slate-600 dark:text-white"
+          class="border-border-primary text-text-primary ring-text-primary bg-bg-secondary peer mx-0 my-4 w-full rounded border-0 border-b-2 p-4 placeholder-transparent focus:shadow-lg focus:ring-1"
           placeholder="John Doe"
           required
         />
         <label
           for="name"
-          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600 dark:text-white dark:peer-placeholder-shown:text-white dark:peer-focus:text-white"
+          class="text-text-secondary peer-placeholder-shown:text-text-secondary peer-focus:text-text-tertiary absolute -top-2.5 left-2 text-xl transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-focus:-top-3.5 peer-focus:text-sm"
           >Name</label
         >
       </div>
@@ -57,13 +57,13 @@ const formTimestamp = Date.now();
           id="email"
           name="email"
           type="email"
-          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent ring-black focus:shadow-lg focus:ring-1 dark:bg-slate-600 dark:text-white"
+          class="border-border-primary text-text-primary ring-text-primary bg-bg-secondary peer mx-0 my-4 w-full rounded border-0 border-b-2 p-4 placeholder-transparent focus:shadow-lg focus:ring-1"
           placeholder="john@doe.com"
           required
         />
         <label
           for="email"
-          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600 dark:text-white dark:peer-placeholder-shown:text-white dark:peer-focus:text-white"
+          class="text-text-secondary peer-placeholder-shown:text-text-secondary peer-focus:text-text-tertiary absolute -top-2.5 left-2 text-xl transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-focus:-top-3.5 peer-focus:text-sm"
           >Email</label
         >
       </div>
@@ -72,12 +72,12 @@ const formTimestamp = Date.now();
         <textarea
           id="message"
           name="message"
-          class="peer mx-0 my-4 w-full rounded border-0 border-b-2 border-gray-300 p-4 text-black placeholder-transparent focus:shadow-lg dark:bg-slate-600 dark:text-white"
+          class="border-border-primary text-text-primary bg-bg-secondary peer mx-0 my-4 w-full rounded border-0 border-b-2 p-4 placeholder-transparent focus:shadow-lg"
           placeholder=" "
           required></textarea>
         <label
           for="message"
-          class="absolute -top-2.5 left-2 text-xl text-gray-800 transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-placeholder-shown:text-gray-800 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600 dark:text-white dark:peer-placeholder-shown:text-white dark:peer-focus:text-white"
+          class="text-text-secondary peer-placeholder-shown:text-text-secondary peer-focus:text-text-tertiary absolute -top-2.5 left-2 text-xl transition-all peer-placeholder-shown:top-7 peer-placeholder-shown:text-xl peer-focus:-top-3.5 peer-focus:text-sm"
           >Your Message</label
         >
       </div>
@@ -99,7 +99,7 @@ const formTimestamp = Date.now();
         id="submit"
         type="submit"
         aria-label="Send message"
-        class="group/btn flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-700 dark:hover:!bg-slate-800 dark:hover:shadow-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
+        class="group/btn hover:bg-bg-hover group-hover:bg-bg-hover flex h-fit w-full flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:shadow-xl active:scale-90"
         >Send
         <Icon
           id="send-icon"
@@ -116,7 +116,7 @@ const formTimestamp = Date.now();
       role="status"
       aria-live="polite"
       tabindex="-1"
-      class="m-8 hidden w-full flex-col justify-center gap-8 rounded border-2 border-black/5 p-8 text-center"
+      class="border-border-primary/20 m-8 hidden w-full flex-col justify-center gap-8 rounded border-2 p-8 text-center"
     >
       <p class="w-full text-center text-3xl font-medium">
         Thanks for contacting me!
@@ -125,7 +125,7 @@ const formTimestamp = Date.now();
 
       <button
         id="send-another"
-        class="group/btn flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:bg-white hover:shadow-xl active:scale-90 group-hover:bg-white dark:shadow-slate-700 dark:hover:!bg-slate-800 dark:hover:shadow-slate-800 dark:hover:outline dark:hover:outline-1 dark:hover:outline-slate-600 dark:group-hover:bg-slate-600"
+        class="group/btn hover:bg-bg-primary group-hover:bg-bg-primary flex h-fit flex-grow items-center justify-center gap-4 rounded-xl p-2 text-xl shadow-md transition-all hover:scale-105 hover:shadow-xl active:scale-90"
       >
         Want to send me another message?
       </button>

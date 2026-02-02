@@ -21,7 +21,7 @@ const { project, lazyLoad } = Astro.props;
   {
     project.imageUrl && (
       <Image
-        class="aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover:md:scale-[1.03]"
+        class="aspect-video h-full w-full rounded-xl object-contain drop-shadow-md transition-all duration-500 group-hover:md:scale-[1.01]"
         height="310"
         width="552"
         alt={`Screenshot showing ${project.title} project interface`}
@@ -41,14 +41,14 @@ const { project, lazyLoad } = Astro.props;
     <ul class="flex flex-wrap gap-2 text-sm" aria-label="Technologies used">
       {
         project.technologies.map((tech) => (
-          <li class="rounded border-2 p-2 font-bold uppercase group-hover:bg-gray-50 dark:group-hover:bg-slate-600">
+          <li class="group-hover:bg-bg-secondary border-border-primary rounded border-2 p-2 font-bold uppercase">
             {tech}
           </li>
         ))
       }
     </ul>
   </div>
-  <p class="max-w-prose text-slate-800 dark:text-gray-200">
+  <p class="text-text-secondary max-w-prose">
     {project.description}
   </p>
   <div
@@ -62,7 +62,7 @@ const { project, lazyLoad } = Astro.props;
           title="See this project on GitHub"
           aria-label={`View ${project.title} source code on GitHub`}
           icon="simple-icons:github"
-          class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
+          class="group-hover:bg-bg-hover"
         >
           GitHub
         </IconLinkBtn>
@@ -77,7 +77,7 @@ const { project, lazyLoad } = Astro.props;
           title="See this project in action"
           aria-label={`Visit ${project.title} live website`}
           icon="mdi:external-link"
-          class="group-hover:bg-white dark:bg-slate-600 dark:lg:bg-transparent"
+          class="group-hover:bg-bg-hover"
         >
           View site
         </IconLinkBtn>

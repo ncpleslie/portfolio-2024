@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  href: string;
+  text: string;
+  ariaLabel?: string;
+}
+
+const { href, text, ariaLabel } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="no-print">
+  <a
+    class="group/back flex flex-row items-center gap-2 transition-all hover:fancy"
+    aria-label={ariaLabel || `Back to ${text}`}
+    href={href}
+  >
+    <Icon
+      class="h-5 w-5 transition-all group-hover/back:-translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
+      name="ep:back"
+      decorative={true}
+    />{text}</a
+  >
+</nav>

@@ -1,5 +1,5 @@
 ---
-import Icon from "./Icon.astro";
+import Icon from "./ui/Icon.astro";
 import { type Link } from "../types/link";
 
 interface Props {
@@ -24,12 +24,12 @@ const currentPath = Astro.url.pathname;
           id={`${link.id}_nav`}
           aria-label={link.alt}
           aria-current={isActive ? "page" : undefined}
-          class="lg:opacity-85 flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-text-primary transition-all duration-200 hover:fancy active:text-text-primary hover:md:pb-4 hover:md:pt-8"
+          class="lg:opacity-85 text-text-primary active:text-text-primary flex flex-col items-center justify-center gap-0 rounded-xl text-xl transition-all duration-200 hover:fancy hover:md:pb-4 hover:md:pt-8"
           href={link.link}
         >
           <span class="sr-only lg:not-sr-only">{link.title}</span>
           <Icon
-            class="h-10 w-10 text-text-primary"
+            class="text-text-primary h-10 w-10"
             name={link.icon}
             decorative={true}
           />

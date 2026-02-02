@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import Icon from "../components/Icon.astro";
+import Icon from "../components/ui/Icon.astro";
+import Breadcrumb from "../components/ui/Breadcrumb.astro";
 import Layout from "../layout/Layout.astro";
 import useContent from "../hooks/useContent.hook";
 
@@ -12,20 +13,8 @@ const { fullName } = await getDetails();
 ---
 
 <Layout title={"Projects"}>
-  <div class="md:mt-4 lg:mt-24">
-    <nav aria-label="Breadcrumb">
-      <a
-        class="group/back flex flex-row items-center gap-2 transition-all hover:fancy"
-        aria-label="Back to home page"
-        href="/"
-      >
-        <Icon
-          class="h-5 w-5 transition-all group-hover/back:-translate-x-2 group-hover/back:scale-110 group-hover/back:animate-pulse"
-          name="ep:back"
-          decorative={true}
-        />{fullName}</a
-      >
-    </nav>
+  <div class="md:mt-4">
+    <Breadcrumb href="/" text={fullName} ariaLabel="Back to home page" />
     <table class="mt-4 w-full table-auto border-collapse pb-24 text-left">
       <caption class="mb-12 w-full text-start text-4xl">
         <h1>All Projects</h1>
@@ -119,9 +108,9 @@ const { fullName } = await getDetails();
                   {project.company}
                 </td>
                 <td class="hidden py-4 pr-4 text-center align-middle lg:table-cell">
-                  <ul class="flex min-w-[15ch] flex-row flex-wrap">
+                  <ul class="flex min-w-[15ch] flex-row flex-wrap gap-1">
                     {project.technologies.map((tech) => (
-                      <li class="rounded border-2 p-1 text-xs font-bold uppercase">
+                      <li class="rounded border-[1px] p-1 text-xs font-bold uppercase">
                         {tech}
                       </li>
                     ))}

@@ -61,12 +61,23 @@ const useContent = () => {
     return entry!.data;
   };
 
+  /**
+   * Retrieves resume data.
+   *
+   * @returns Resume data.
+   */
+  const getResume = async () => {
+    const entry = await getEntry("resume", "resume");
+    return entry!.data;
+  };
+
   return {
     getProjects,
     getShowcaseProjects,
     getWorkHistory,
     getDetails,
     getMetadata,
+    getResume,
   };
 };
 
@@ -81,4 +92,7 @@ export type Socials = Details["socials"];
 export type WorkHistory = Awaited<
   ReturnType<ReturnType<typeof useContent>["getWorkHistory"]>
 >[number];
+export type Resume = Awaited<
+  ReturnType<ReturnType<typeof useContent>["getResume"]>
+>;
 export default useContent;

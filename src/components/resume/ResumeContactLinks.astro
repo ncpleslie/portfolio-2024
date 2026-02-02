@@ -1,0 +1,32 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<div
+  class="flex flex-wrap items-center justify-center gap-2 text-xs print:gap-1 print:text-[10px]"
+>
+  {
+    links.map((link, index) => (
+      <>
+        <a
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          class="underline transition-colors hover:fancy"
+        >
+          {link.label}
+        </a>
+        {index < links.length - 1 && <span class="text-text-tertiary">|</span>}
+      </>
+    ))
+  }
+</div>

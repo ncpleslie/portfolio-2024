@@ -1,0 +1,82 @@
+---
+import {
+  formatDateRange,
+  parseDescriptionToBulletPoints,
+} from "../../utils/resume.utils";
+
+interface Position {
+  title: string;
+  startDate: string;
+  endDate: string;
+}
+
+interface Props {
+  positions: Position[];
+  company: string;
+  companyUrl?: string;
+  description: string;
+  technologies?: string[];
+}
+
+const { positions, company, companyUrl, description, technologies } =
+  Astro.props;
+
+const bulletPoints = parseDescriptionToBulletPoints(description);
+---
+
+<div class="mb-2 print:mb-1.5">
+  <div class="mb-0.5 flex flex-col print:mb-0">
+    {
+      positions.map((position, index) => (
+        <div
+          class="flex items-start justify-between"
+          class:list={{ "mb-0.5": index < positions.length - 1 }}
+        >
+          <h3 class="text-sm font-bold print:text-xs">{position.title}</h3>
+          <span class="text-text-secondary ml-4 whitespace-nowrap text-xs italic print:text-[10px]">
+            {formatDateRange(position.startDate, position.endDate)}
+          </span>
+        </div>
+      ))
+    }
+    {
+      companyUrl ? (
+        <a
+          href={companyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-text-secondary hover:text-text-primary text-xs italic print:text-[10px]"
+        >
+          {company}
+        </a>
+      ) : (
+        <p class="text-text-secondary text-xs italic print:text-[10px]">
+          {company}
+        </p>
+      )
+    }
+  </div>
+
+  {
+    bulletPoints.length > 0 && (
+      <ul class="ml-4 list-disc space-y-0.5 print:space-y-0">
+        {bulletPoints.map((point) => (
+          <li class="text-text-primary text-xs leading-snug print:text-[10px] print:leading-tight">
+            {point}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    technologies && technologies.length > 0 && (
+      <div class="mt-1 print:mt-0.5">
+        <p class="text-text-secondary text-[10px] leading-relaxed print:text-[9px]">
+          <span class="font-semibold">Technologies:</span>{" "}
+          {technologies.join(", ")}
+        </p>
+      </div>
+    )
+  }
+</div>

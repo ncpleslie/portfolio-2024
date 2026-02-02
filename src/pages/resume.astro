@@ -1,0 +1,161 @@
+---
+import Layout from "../layout/Layout.astro";
+import ResumeSection from "../components/resume/ResumeSection.astro";
+import ResumeExperienceItem from "../components/resume/ResumeExperienceItem.astro";
+import ResumeProjectItem from "../components/resume/ResumeProjectItem.astro";
+import ResumeEducationItem from "../components/resume/ResumeEducationItem.astro";
+import ResumeHeader from "../components/resume/ResumeHeader.astro";
+import Breadcrumb from "../components/ui/Breadcrumb.astro";
+import Icon from "../components/ui/Icon.astro";
+import { getEntry } from "astro:content";
+import useContent from "../hooks/useContent.hook";
+
+export const prerender = true;
+
+const resumeEntry = await getEntry("resume", "resume");
+const resume = resumeEntry!.data;
+
+const { getDetails } = useContent();
+const { fullName } = await getDetails();
+
+const contactLinks = [
+  { href: `mailto:${resume.personal.email}`, label: resume.personal.email },
+  { href: resume.personal.linkedin, label: resume.personal.linkedinDisplay },
+  { href: resume.personal.github, label: resume.personal.githubDisplay },
+  { href: resume.personal.website, label: resume.personal.websiteDisplay },
+];
+---
+
+<Layout title="Resume - Nick Leslie">
+  <style>
+    @media print {
+      /* Page setup */
+      @page {
+        margin: 0.5in;
+        margin-top: 0.25in;
+        size: letter;
+      }
+
+      body {
+        background: white !important;
+        color: black !important;
+        min-height: 0 !important;
+        height: auto !important;
+      }
+
+      main {
+        min-height: 0 !important;
+        height: auto !important;
+        padding-bottom: 0 !important;
+      }
+
+      .min-h-screen {
+        min-height: 0 !important;
+      }
+
+      .resume-section {
+        page-break-inside: avoid;
+      }
+
+      .resume-item {
+        page-break-inside: avoid;
+      }
+
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      a {
+        color: inherit !important;
+        text-decoration: underline !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      span,
+      li {
+        color: black !important;
+      }
+
+      hr {
+        border-color: black !important;
+      }
+    }
+  </style>
+
+  <div class="bg-bg-primary min-h-screen print:bg-white">
+    <div class="no-print flex gap-4 px-4 py-4 md:px-8">
+      <Breadcrumb href="/" text={fullName} ariaLabel="Back to home page" />
+
+      <button
+        onclick="window.print()"
+        class="ml-auto inline-flex items-center gap-2 rounded-md bg-accent-one px-4 py-2 text-white transition-colors hover:bg-accent-two"
+      >
+        <Icon name="mdi:printer" />
+        <span>Print Resume</span>
+      </button>
+    </div>
+
+    <main
+      class="font-resume mx-auto mb-12 max-w-4xl px-4 py-8 text-[11px] leading-tight print:mb-0 print:max-w-full print:px-0 print:py-0 md:px-8"
+    >
+      <ResumeHeader
+        fullName={resume.personal.fullName}
+        title={resume.personal.title}
+        location={resume.personal.location}
+        contactLinks={contactLinks}
+      />
+      <ResumeSection title="Experience">
+        {
+          resume.experience.map((job) => (
+            <ResumeExperienceItem
+              positions={job.positions}
+              company={job.company}
+              companyUrl={job.companyUrl}
+              description={job.responsibilities.join("\n")}
+              technologies={job.technologies}
+            />
+          ))
+        }
+      </ResumeSection>
+      <ResumeSection title="Projects">
+        {
+          resume.projects.map((project) => (
+            <ResumeProjectItem
+              title={project.title}
+              technologies={project.technologies}
+              description={project.description}
+              projectUrl={project.projectUrl}
+              githubUrl={project.githubUrl}
+            />
+          ))
+        }
+      </ResumeSection>
+      <ResumeSection title="Technical Skills">
+        <div class="text-xs leading-snug print:text-[10px]">
+          <p>
+            {resume.skills.join(", ")}
+          </p>
+        </div>
+      </ResumeSection>
+      <ResumeSection title="Education">
+        {
+          resume.education.map((edu) => (
+            <ResumeEducationItem
+              degree={edu.degree}
+              institution={edu.institution}
+              major={edu.major}
+              achievement={edu.achievement}
+            />
+          ))
+        }
+      </ResumeSection>
+    </main>
+  </div>
+</Layout>

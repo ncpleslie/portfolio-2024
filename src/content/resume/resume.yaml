@@ -1,0 +1,184 @@
+personal:
+  fullName: Nicholas Leslie
+  title: Full Stack Software Engineer
+  location: Washington, District of Columbia, United States
+  email: ncpleslie@gmail.com
+  website: https://nickleslie.dev
+  websiteDisplay: nickleslie.dev
+  linkedin: https://linkedin.com/in/nicholas-leslie
+  linkedinDisplay: linkedin.com/in/nicholas-leslie
+  github: https://github.com/ncpleslie
+  githubDisplay: github.com/ncpleslie
+
+experience:
+  - company: Censys
+    companyUrl: https://censys.com/
+    positions:
+      - title: Software Engineer
+        startDate: May 2024
+        endDate: Present
+    responsibilities:
+      - Build data-intensive web applications for cybersecurity intelligence platform serving enterprise customers
+      - Develop features improving data accessibility and platform capabilities for security teams analyzing attack surfaces
+      - Collaborate on full-stack development using modern web technologies and cloud infrastructure
+    technologies:
+      - TypeScript
+      - React
+      - Remix
+      - Go
+      - Docker
+      - GitHub Actions
+
+  - company: Jade Software Corporation
+    companyUrl: https://www.jadeworld.com/
+    positions:
+      - title: Engineering People Leader
+        startDate: September 2022
+        endDate: August 2023
+      - title: Software Engineer
+        startDate: December 2019
+        endDate: September 2022
+    responsibilities:
+      - Led team of 5 engineers through technical mentorship, code reviews, and agile delivery practices
+      - Architected and delivered enterprise software projects from pre-sale through production deployment
+      - Served as technical SME, driving developer experience improvements and platform innovation initiatives
+      - Developed cloud-native web applications for global clients including Air New Zealand, Skipton Building Society, and DB Cargo
+      - Designed and implemented RESTful APIs, microservices, and responsive front-end applications
+      - Delivered high-quality software through test-driven development, CI/CD pipelines, and agile methodologies
+    technologies:
+      - TypeScript
+      - Angular
+      - Vue
+      - C#
+      - .NET
+      - Azure
+      - CosmosDB
+
+projects:
+  - title: Censys Platform
+    technologies:
+      - TypeScript
+      - React
+      - Remix
+      - Go
+      - PostgreSQL
+      - Docker
+      - GitHub Actions
+      - Vitest
+    description: Core cybersecurity intelligence platform providing internet-wide scanning data and asset discovery. Developed data-intensive features for security teams to analyze and protect their attack surface.
+    projectUrl: https://platform.censys.com/
+
+  - title: Censys Attack Surface Management (ASM)
+    technologies:
+      - TypeScript
+      - React
+      - Jest
+    description: Attack Surface Management platform enabling organizations to discover, monitor, and secure their internet-facing assets. Built data visualization features and risk management capabilities for threat intelligence.
+    projectUrl: https://censys.com/product/attack-surface-management/
+
+  - title: Skipton Document Management System
+    technologies:
+      - TypeScript
+      - Vue 3
+      - Tailwind CSS
+      - C#
+      - .Net
+      - EF Core
+      - xUnit
+      - Azure
+      - CosmosDB
+      - Blob Storage
+      - Azure DevOps
+    description: Built enterprise document storage system for UK financial sector. Manages 180M+ documents with millions ingested monthly. Contributed significantly to backend services using Azure CosmosDB and Blob Storage.
+    projectUrl: https://www.jadeworld.com/jade-services/our-clients/skipton-case-study
+
+  - title: Air New Zealand Crew Claims Portal
+    technologies:
+      - TypeScript
+      - Vue 3
+      - Tailwind
+      - Vitest
+      - Node
+      - GitHub
+      - GitHub Actions
+      - Azure
+      - API-M
+      - Static Web Apps
+    description: Led team to deliver secure expense claims portal for airline crew members. Implemented authentication, form workflows, and Azure API Management integration.
+
+  - title: This One Time - Podcast Website
+    technologies:
+      - TypeScript
+      - Next
+      - React
+      - Sanity
+      - Three JS
+      - Tailwind CSS
+      - Vercel
+    description: Built podcast website featuring interactive 3D scroll-triggered background using Three.js and headless CMS integration with Sanity.
+    projectUrl: https://summercamppod.com/
+
+  - title: WMATA Train Tracker
+    technologies:
+      - Go
+      - Wails
+      - SQLC
+      - SQLite
+      - TypeScript
+      - Vue 3
+      - Tailwind CSS
+      - Nuxt 3
+      - tRPC
+      - Zod
+      - GitHub Actions
+    description: Desktop application for DC Metro train tracking. Built cross-platform app using Go backend with Wails framework and Vue 3 frontend with type-safe tRPC API.
+    githubUrl: https://github.com/ncpleslie/WMATA-Tracker
+
+  # - title: Job Down - Application Tracker
+  #   technologies:
+  #     - Go
+  #     - TypeScript
+  #     - React
+  #     - Chrome Extension
+  #     - Tailwind CSS
+  #     - Firebase
+  #     - GitHub Actions
+  #   description: Full-stack job application tracker with Chrome Extension for auto-capturing job postings. Go backend with Firebase integration and React web interface.
+  #   githubUrl: https://github.com/ncpleslie/job-down
+
+skills:
+  - TypeScript
+  - JavaScript
+  - C#
+  - Go
+  - SQL
+  - HTML/CSS
+  - React
+  - Vue
+  - Angular
+  - Next.js
+  - Nuxt
+  - Node.js
+  - .NET
+  - ASP.NET
+  - Entity Framework
+  - Tailwind CSS
+  - Docker
+  - Git
+  - GitHub Actions
+  - Azure
+  - AWS
+  - Firebase
+  - PostgreSQL
+  - MySQL
+  - MSSQL
+  - CosmosDB
+  - xUnit
+  - Jest
+  - Vitest
+
+education:
+  - degree: Bachelor of Information and Communication Technology
+    institution: Ara Institute of Canterbury
+    major: Major in Software Engineering
+    achievement: First Class with Distinction

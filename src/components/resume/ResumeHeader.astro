@@ -1,0 +1,32 @@
+---
+import ResumeContactLinks from "./ResumeContactLinks.astro";
+
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  fullName: string;
+  title: string;
+  location: string;
+  contactLinks: Link[];
+}
+
+const { fullName, title, location, contactLinks } = Astro.props;
+---
+
+<header class="mb-4 text-center print:mb-2">
+  <h1
+    class="mb-1 text-2xl font-bold uppercase tracking-wide print:mb-0.5 print:text-xl"
+  >
+    {fullName}
+  </h1>
+  <p class="text-text-secondary mb-0.5 text-sm print:mb-0 print:text-xs">
+    {title}
+  </p>
+  <p class="text-text-secondary mb-1 text-xs print:mb-0.5 print:text-[10px]">
+    {location}
+  </p>
+  <ResumeContactLinks links={contactLinks} />
+</header>

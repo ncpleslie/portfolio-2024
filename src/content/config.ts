@@ -50,6 +50,7 @@ const detailsCollection = defineCollection({
     }),
     resumeUrl: z.string(),
     contactEmail: z.string().email(),
+    keyTechnologies: z.array(z.string()).optional(),
     descriptionHtml: z.string(),
   }),
 });

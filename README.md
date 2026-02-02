@@ -4,9 +4,9 @@ A portfolio website created with [Astro](https://astro.build/) and deployed to [
 
 ## Development
 
-All content is stored in `JSON` files for ease of configuration. These can be found in the [src](./src) directory.
+All content is stored in `YAML` files for ease of configuration. These can be found in the [src](./src/content) directory.
 
-This application uses [resend](https://resend.com/) for handling emails when a message is sent through the contact field. 
+This application uses [resend](https://resend.com/) for handling emails when a message is sent through the contact field.
 Ensure there is a `.env` in the root of the application.
 Include the following:
 
@@ -16,7 +16,6 @@ RESEND_DOMAIN=mydomain.com
 EMAIL_FROM=My domain <myemail@example.com>
 EMAIL_TO=myemail@example.com
 ```
-
 
 ```
 pnpm dev

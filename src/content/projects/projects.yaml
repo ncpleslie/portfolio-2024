@@ -1,6 +1,25 @@
+- id: censys
+  title: Censys - Internet Intelligence & Attack Surface Management
+  description: Developing data-intensive web applications for Censys's cybersecurity platform, including Attack Surface Management and the Search platform. Built features for asset discovery, data exploration, query building, and real-time visualization. Focused on improving data accessibility, scalability, and user experience for security teams and researchers analyzing billions of internet hosts and certificates
+  projectUrl: https://censys.com
+  imageUrl: /thumbnails/censys_showcase.jpg
+  technologies:
+    - React
+    - Remix
+    - TypeScript
+    - Go
+    - gRPC
+    - GraphQL
+    - Docker
+    - GitHub Actions
+  isVideo: false
+  showcase: true
+  company: Censys
+  year: 2026
+
 - id: job_down
   title: Job Down - Application Tracker
-  description: A web app and extension to track your job applications from applied to hired. With a Chrome Extension and web interface to easily add jobs, screenshot the application, upload relevant documents, take notes, and track the status of the job application. Built with Go and React. Using Firebase Firestore. Uses GitHub Actions for CI/CD
+  description: A full-stack job application tracking platform with Chrome Extension integration. Features automated application capture, document management, status tracking, and analytics. Built with Go backend and React frontend, leveraging Firebase Firestore for real-time sync across devices
   githubUrl: https://github.com/ncpleslie/job-down
   projectUrl: https://job-down.vercel.app
   imageUrl: /thumbnails/job_down_showcase.png
@@ -20,10 +39,27 @@
   showcase: true
   year: 2024
 
+- id: video_speed_controller
+  title: FastForwarder - Video Speed Controller
+  description: Cross-browser extension for precise video playback control with customizable keyboard shortcuts. Features granular speed adjustment, and universal compatibility with all HTML5 video players. Available for Chrome and Firefox
+  githubUrl: https://github.com/ncpleslie/fastforwarder
+  projectUrl: https://addons.mozilla.org/en-US/firefox/addon/fastforwarder/
+  imageUrl: /thumbnails/fastforwarder_showcase.jpg
+  technologies:
+    - TypeScript
+    - WebExtensions API
+    - Chrome Extension
+    - Firefox Add-on
+    - HTML5 Video API
+  isVideo: false
+  showcase: true
+  year: 2023
+
 - id: smartpay
   title: SmartPay Merchant Dashboard
-  description: A highly data-driven portal for monitoring transaction data of Point-of-sale terminals for SmartPay Ltd. With interactive charts and graphs, merchants can easily see their transaction data and trends
+  description: Real-time transaction analytics dashboard for SmartPay Ltd merchants. Features interactive data visualizations for monitoring POS terminal performance, transaction trends, and business insights. Built with Vue 2 and Chart.js to handle high-volume transaction data
   projectUrl: https://announcements.asx.com.au/asxpdf/20220530/pdf/459ftrqcv7gg5d.pdf#page=7
+  imageUrl: /thumbnails/jade_showcase.jpg
   technologies:
     - Vue 2
     - JavaScript
@@ -38,6 +74,7 @@
   title: Zurich Insurance Calculator
   description: A white-labeled insurance (Life, TPD) calculator for Zurich Insurance, Australia. Using Angular for frontend and .NET for the backend. Deployed to Azure. This application is highly configuration driven allowing for quick customizability and changes to the calculation engine
   projectUrl: https://zurich.zurichcalculators.net
+  imageUrl: /thumbnails/jade_showcase.jpg
   technologies:
     - Angular
     - TypeScript
@@ -53,7 +90,8 @@
 
 - id: claims_portal
   title: Air New Zealand Claims Portal
-  description: The Air New Zealand claims portal is a web application to make it easier for pilots and cabin crew to submit, edit and review expense claims. It replaces the old process of hand-written expense reports. Developed with Vue 3 and deployed to Azure
+  description: Modern expense claims platform for Air New Zealand pilots and cabin crew, replacing manual paper-based workflows. Built with Vue 3, featuring Azure AD authentication, serverless architecture, and streamlined approval processes. Deployed to Azure Static Web Apps for global availability
+  imageUrl: /thumbnails/jade_showcase.jpg
   technologies:
     - Vue 3
     - TypeScript
@@ -69,8 +107,9 @@
 
 - id: skipton_document_repository
   title: Skipton Document Repository
-  description: A high-availability cloud-native solution for managing over 150 million documents and ingesting over a million new documents every month. Tested and launched with minimal business interruption, whilst improving speed and user experience for document search and retrieval. APIs were designed and developed to ensure performant integration with Skipton's core Jade Platform systems
+  description: Enterprise-scale document management system handling 150M+ documents with 1M+ monthly ingestion rate. Built high-availability cloud-native architecture with sub-second search performance and zero-downtime migration from legacy systems. Designed and implemented performant APIs for seamless integration with Skipton's core platform
   projectUrl: https://www.jadeworld.com/services/jade-digital/our-clients/skipton-case-study
+  imageUrl: /thumbnails/jade_skipton_showcase.jpg
   technologies:
     - C#
     - .NET
@@ -83,14 +122,15 @@
     - TypeScript
     - Tailwind
   isVideo: false
-  showcase: false
+  showcase: true
   company: Jade Software
   year: 2022
 
 - id: virtual_employee_hub
   title: DB Cargo Virtual Employee Hub
-  description: Virtual Employee Hub (VEH) offers an intuitive mobile app. VEH is a Xamarin-based app with a .NET backend hosted in Azure. It accesses DB Cargo's SharePoint. Ground staff and train drivers can log fleet issues with visual references attached or create reports
+  description: Cross-platform mobile application for DB Cargo ground staff and train drivers to report fleet issues in real-time. Features offline-first architecture with photo capture, SharePoint integration, and .NET backend. Streamlined field reporting with visual documentation and automatic sync
   projectUrl: https://www.jadeworld.com/services/jade-digital/our-clients/db-cargo-uk-case-study
+  imageUrl: /thumbnails/jade_showcase.jpg
   technologies:
     - C#
     - .NET
@@ -108,8 +148,9 @@
 
 - id: customer_portal
   title: DB Cargo Customer Portal
-  description: Customer Portal is a web application to make ordering trains easier. Frontend created using Angular. Backed by a .NET backend which interfaces with the JADE platform through a SOAP API
+  description: B2B web platform simplifying train booking and logistics management for DB Cargo customers. Built with Angular and .NET, integrating with legacy JADE platform via SOAP APIs. Modernized customer experience while maintaining enterprise system compatibility
   projectUrl: https://uk.dbcargo.com/rail-uk-en/services/Rail-Transport-Services/Customer-Portal
+  imageUrl: /thumbnails/jade_showcase.jpg
   technologies:
     - C#
     - .NET
@@ -125,7 +166,7 @@
 
 - id: wmata_train_tracker
   title: WMATA Train Tracker
-  description: A WMATA train tracking application for monitoring train arrival times at your station in the DMV area. Built to run on the Raspberry Pi so you can place it in convenient location and see relevant station information at a glance.
+  description: Real-time transit tracking application for Washington DC Metro system. Built with Go and Wails for cross-platform desktop deployment, optimized for Raspberry Pi kiosks. Features live arrival predictions, station status, and low-resource consumption for always-on displays
   githubUrl: https://github.com/ncpleslie/wmata-train-tracking
   imageUrl: /thumbnails/train_tracker_showcase.jpg
   projectUrl: https://traintracking.nickleslie.dev
@@ -142,7 +183,7 @@
 
 - id: github_actions_workflows
   title: GitHub Actions Workflows
-  description: A collection of useful and reusable GitHub Actions. Deploy websites to Azure, set up infrastructure, test and lint your application, and a whole lot more.
+  description: Open-source collection of reusable CI/CD workflows for automating deployments, infrastructure provisioning, and quality checks. Features Azure deployment automation, ARM template validation, testing pipelines, and enterprise-grade practices. Designed for team collaboration and consistency
   githubUrl: https://github.com/ncpleslie/github-actions-workflows
   imageUrl: /thumbnails/github_actions_showcase.jpg
   technologies:
@@ -152,7 +193,7 @@
     - C# .NET
     - JavaScript
   isVideo: false
-  showcase: false
+  showcase: true
   year: 2023
 
 - id: static_web_app_github_action
@@ -170,7 +211,7 @@
 
 - id: draw_for_them
   title: Draw For Them
-  description: Draw For Them is an ephemeral image sharing and drawing application that allows users to share their creations with other users. Built with NextJS, this application has real-time updates when users share images, add new friends, delete friends, update your profile, and view previous images sent to each other. Using a neumorphic design
+  description: Real-time collaborative drawing and ephemeral image sharing platform. Features WebSocket-based live updates, friend management, profile customization, and interactive canvas using FabricJS. Built with Next.js, tRPC, and Prisma with PostgreSQL, showcasing modern full-stack architecture and neumorphic UI design
   githubUrl: https://github.com/ncpleslie/draw-for-them
   imageUrl: /thumbnails/draw_for_them_showcase.png
   projectUrl: https://drawforthem.nickleslie.dev
@@ -187,7 +228,7 @@
     - Jest
     - GitHub Actions
   isVideo: false
-  showcase: true
+  showcase: false
   year: 2022
 
 - id: nz_public_holidays
@@ -208,7 +249,7 @@
 
 - id: camp_pod_website
   title: This One Time - A Podcast Website
-  description: A NextJS website for the podcast, 'This One Time At Summer Camp'. Built with NextJS and React. A ThreeJS 3D model moves as the user navigates the website
+  description: Interactive podcast website featuring immersive 3D animations using Three.js. Built with Next.js and Sanity CMS for content management, delivering smooth parallax effects and dynamic 3D model interactions as users navigate. Freelance project showcasing creative frontend development
   imageUrl: /thumbnails/podcast_showcase.jpg
   projectUrl: https://summercamppod.com
   technologies:
@@ -239,7 +280,7 @@
     - MobX
     - Jest
   isVideo: false
-  showcase: true
+  showcase: false
   year: 2022
 
 - id: aws_multi-az_wordpress_website
@@ -259,6 +300,7 @@
   description: Enhancing the accessibility of a Coffee Machine to include voice controls, for Jade Software. Showcased at the Noel Leeming Flagship store
   videoUrl: https://www.youtube.com/embed/yoUnQg4luE8
   projectUrl: https://jadeworld.com/resources/blog/we-built-the-worlds-first-digital-barista-but-why
+  imageUrl: /thumbnails/jade_showcase.jpg
   technologies:
     - JavaScript
     - NodeJS

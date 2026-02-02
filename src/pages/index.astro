@@ -48,9 +48,23 @@ const navbarLinks = [
     <div class="grid-span-1 col-start-1 lg:col-start-2">
       <section aria-labelledby="about-heading">
         <h2 id="about-heading" class="sr-only">About Me</h2>
-        <div class="mb-6 flex h-80 w-full flex-col items-center">
+        <div class="mb-6 flex w-full flex-col items-center">
           <div class="flex max-w-prose flex-col gap-4 md:pl-4">
             <Fragment set:html={details.descriptionHtml} />
+            {
+              details.keyTechnologies && details.keyTechnologies.length > 0 && (
+                <div class="mt-4">
+                  <h3 class="mb-3 text-lg font-semibold">Key Technologies</h3>
+                  <div class="flex flex-wrap gap-2">
+                    {details.keyTechnologies.map((tech) => (
+                      <span class="rounded-md bg-gray-200 px-3 py-1 text-sm font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            }
           </div>
         </div>
       </section>

@@ -1,10 +1,28 @@
 - order: 1
+  from: May 2024
+  to: Present
+  positionTitle: Full-Stack Software Engineer
+  company: Censys
+  companyUrl: https://censys.com
+  jobDescription: Developing data-intensive web applications for Attack Surface Management and the Censys Platform. Focused on improving data accessibility, building scalable features, enhancing user experience, and empowering security teams to discover and protect their internet-facing assets
+  technologies:
+    - React
+    - Remix
+    - TypeScript
+    - Go
+    - gRPC
+    - PostgreSQL
+    - Docker
+    - GitHub Actions
+    - RESTful APIs
+
+- order: 2
   from: Sept 2022
   to: Aug 2023
   positionTitle: Engineering People Leader
   company: Jade Software Corporation
   companyUrl: https://jadeworld.com
-  jobDescription: Led and mentored a dynamic team of Software Engineers offering technical guidance, performance coaching, goal setting, and feedback. As well as partaking in pre-sales client conversations, requirements gathering, solution designs (Cloud, API and UML), software development and testing, and CI/CD pipeline development
+  jobDescription: Led and mentored a team of Software Engineers, providing technical guidance, performance coaching, and career development. Contributed to full-stack development while driving solution architecture for cloud-native applications, API design, and CI/CD pipeline optimization. Collaborated with clients on pre-sales technical requirements and solution designs
   technologies:
     - TypeScript
     - C#
@@ -27,13 +45,13 @@
     - UML
     - MSSQL
 
-- order: 2
+- order: 3
   from: Nov 2020
   to: Sept 2022
   positionTitle: Software Engineer
   company: Jade Software Corporation
   companyUrl: https://jadeworld.com
-  jobDescription: Part of an agile work environment, using the Scrum methodology, developing cloud-native, full-stack web applications for clients from around the world
+  jobDescription: Developed cloud-native, full-stack web applications for global enterprise clients including Air New Zealand and DB Cargo. Built scalable solutions using modern frameworks, implemented domain-driven design patterns, and delivered features within an Agile/Scrum environment
   technologies:
     - TypeScript
     - Vue
@@ -53,13 +71,13 @@
     - Azure Blob Storage
     - UML
 
-- order: 3
+- order: 4
   from: July 2020
   to: Nov 2020
   positionTitle: IoT Software Engineer Intern
   company: Jade Software Corporation
   companyUrl: https://jadeworld.com
-  jobDescription: Enhanced the accessibility of everyday cooking appliances through a multi-modal interface. Using on-device natural language processing and voice recognition
+  jobDescription: Built an IoT platform enabling voice-controlled cooking appliances using multi-modal interfaces. Implemented on-device natural language processing and voice recognition, leveraging Google Cloud services and DialogFlow for intelligent, conversational interactions
   technologies:
     - TypeScript
     - Vue
@@ -70,13 +88,13 @@
     - Google DialogFlow
     - NLP.js
 
-- order: 4
+- order: 5
   from: Nov 2019
   to: Feb 2020
   positionTitle: Computer Vision Intern
   company: Jade Software Corporation
   companyUrl: https://jadeworld.com
-  jobDescription: Developed a Computer Vision application for running on the Edge to enhance the capabilities of security cameras. Allowing them to perform tasks such as license plate recognition, object tracking and detection
+  jobDescription: Developed edge-computing Computer Vision solution for intelligent security cameras. Implemented real-time license plate recognition, object detection, and tracking using OpenCV and Intel OpenVino, enabling on-device processing without cloud dependencies
   technologies:
     - Python
     - OpenCV

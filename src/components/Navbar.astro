@@ -24,12 +24,12 @@ const currentPath = Astro.url.pathname;
           id={`${link.id}_nav`}
           aria-label={link.alt}
           aria-current={isActive ? "page" : undefined}
-          class="lg:opacity-85 dark:lg:opacity-85 flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-black transition-all duration-200 hover:fancy hover:text-black active:text-black dark:text-white dark:hover:text-white dark:active:text-white hover:md:pb-4 hover:md:pt-8"
+          class="lg:opacity-85 flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-text-primary transition-all duration-200 hover:fancy active:text-text-primary hover:md:pb-4 hover:md:pt-8"
           href={link.link}
         >
           <span class="sr-only lg:not-sr-only">{link.title}</span>
           <Icon
-            class="h-10 w-10 text-black dark:text-white"
+            class="h-10 w-10 text-text-primary"
             name={link.icon}
             decorative={true}
           />
@@ -48,7 +48,7 @@ const currentPath = Astro.url.pathname;
     "lg:opacity-100",
   ];
 
-  const transparentStyle = ["lg:opacity-85", "dark:lg:opacity-85"];
+  const transparentStyle = ["lg:opacity-85"];
 
   const handleUpdatingActiveNavItems = (elements) => {
     elements.forEach((element) => {

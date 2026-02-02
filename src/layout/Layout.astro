@@ -14,15 +14,20 @@ const { description, title: metadataTitle } = await getMetadata();
 interface Props {
   title?: string;
   class?: string;
+  useRawTitle?: boolean;
 }
 
-const { title, class: className } = Astro.props;
+const { title, class: className, useRawTitle = false } = Astro.props;
+
+const pageTitle = useRawTitle && title
+  ? title
+  : title
+    ? `${title} | ${fullName} - ${profession}`
+    : `${fullName} - ${profession}`;
 
 const openGraph = {
   basic: {
-    title: title
-      ? `${title} | ${fullName} - ${profession}`
-      : `${fullName} - ${profession}`,
+    title: pageTitle,
     type: "website",
     image: "/metadata_thumbnail.jpg",
     url: Astro.url.href,
@@ -56,9 +61,7 @@ const twitterOg = [
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
-      title={title
-        ? `${title} | ${fullName} - ${profession}`
-        : `${fullName} - ${profession}`}
+      title={pageTitle}
       description={description}
       openGraph={openGraph}
       extend={{

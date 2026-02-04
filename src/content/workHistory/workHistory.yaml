@@ -17,9 +17,9 @@
     - RESTful APIs
 
 - order: 2
-  from: Sept 2022
+  from: Nov 2019
   to: Aug 2023
-  positionTitle: Engineering People Leader
+  positionTitle: Engineering People Leader and Software Engineer
   company: Jade Software Corporation
   companyUrl: https://jadeworld.com
   jobDescription: Led and mentored a team of Software Engineers, providing technical guidance, performance coaching, and career development. Contributed to full-stack development while driving solution architecture for cloud-native applications, API design, and CI/CD pipeline optimization. Collaborated with clients on pre-sales technical requirements and solution designs
@@ -44,58 +44,57 @@
     - GitHub Actions
     - UML
     - MSSQL
+# - order: 3
+#   from: Nov 2020
+#   to: Sept 2022
+#   positionTitle: Software Engineer
+#   company: Jade Software Corporation
+#   companyUrl: https://jadeworld.com
+#   jobDescription: Developed cloud-native, full-stack web applications for global enterprise clients including Air New Zealand and DB Cargo. Built scalable solutions using modern frameworks, implemented domain-driven design patterns, and delivered features within an Agile/Scrum environment
+#   technologies:
+#     - TypeScript
+#     - Vue
+#     - Angular
+#     - CSS
+#     - Sass
+#     - TailwindCSS
+#     - Chart.js
+#     - C#
+#     - .NET
+#     - Xamarin
+#     - Entity Framework (EF Core)
+#     - MSSQL
+#     - Domain-driven design
+#     - Azure
+#     - Azure Cosmos DB
+#     - Azure Blob Storage
+#     - UML
 
-- order: 3
-  from: Nov 2020
-  to: Sept 2022
-  positionTitle: Software Engineer
-  company: Jade Software Corporation
-  companyUrl: https://jadeworld.com
-  jobDescription: Developed cloud-native, full-stack web applications for global enterprise clients including Air New Zealand and DB Cargo. Built scalable solutions using modern frameworks, implemented domain-driven design patterns, and delivered features within an Agile/Scrum environment
-  technologies:
-    - TypeScript
-    - Vue
-    - Angular
-    - CSS
-    - Sass
-    - TailwindCSS
-    - Chart.js
-    - C#
-    - .NET
-    - Xamarin
-    - Entity Framework (EF Core)
-    - MSSQL
-    - Domain-driven design
-    - Azure
-    - Azure Cosmos DB
-    - Azure Blob Storage
-    - UML
+# - order: 4
+#   from: July 2020
+#   to: Nov 2020
+#   positionTitle: IoT Software Engineer Intern
+#   company: Jade Software Corporation
+#   companyUrl: https://jadeworld.com
+#   jobDescription: Built an IoT platform enabling voice-controlled cooking appliances using multi-modal interfaces. Implemented on-device natural language processing and voice recognition, leveraging Google Cloud services and DialogFlow for intelligent, conversational interactions
+#   technologies:
+#     - TypeScript
+#     - Vue
+#     - Node JS
+#     - Firebase
+#     - Firebase Functions
+#     - Google Cloud Services
+#     - Google DialogFlow
+#     - NLP.js
 
-- order: 4
-  from: July 2020
-  to: Nov 2020
-  positionTitle: IoT Software Engineer Intern
-  company: Jade Software Corporation
-  companyUrl: https://jadeworld.com
-  jobDescription: Built an IoT platform enabling voice-controlled cooking appliances using multi-modal interfaces. Implemented on-device natural language processing and voice recognition, leveraging Google Cloud services and DialogFlow for intelligent, conversational interactions
-  technologies:
-    - TypeScript
-    - Vue
-    - Node JS
-    - Firebase
-    - Firebase Functions
-    - Google Cloud Services
-    - Google DialogFlow
-    - NLP.js
-
-- order: 5
-  from: Nov 2019
-  to: Feb 2020
-  positionTitle: Computer Vision Intern
-  company: Jade Software Corporation
-  companyUrl: https://jadeworld.com
-  jobDescription: Developed edge-computing Computer Vision solution for intelligent security cameras. Implemented real-time license plate recognition, object detection, and tracking using OpenCV and Intel OpenVino, enabling on-device processing without cloud dependencies
-  technologies:
-    - Python
-    - OpenCV
-    - OpenVino
+# - order: 5
+#   from: Nov 2019
+#   to: Feb 2020
+#   positionTitle: Computer Vision Intern
+#   company: Jade Software Corporation
+#   companyUrl: https://jadeworld.com
+#   jobDescription: Developed edge-computing Computer Vision solution for intelligent security cameras. Implemented real-time license plate recognition, object detection, and tracking using OpenCV and Intel OpenVino, enabling on-device processing without cloud dependencies
+#   technologies:
+#     - Python
+#     - OpenCV
+#     - OpenVino

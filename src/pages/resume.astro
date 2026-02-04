@@ -78,7 +78,14 @@ const contactLinks = [
       h6,
       p,
       span,
-      li {
+      li,
+      div {
+        color: black !important;
+      }
+
+      .text-text-primary,
+      .text-text-secondary,
+      .text-text-tertiary {
         color: black !important;
       }
 
@@ -88,7 +95,7 @@ const contactLinks = [
     }
   </style>
 
-  <div class="bg-bg-primary min-h-screen print:bg-white">
+  <div class="min-h-screen bg-bg-primary print:bg-white">
     <div class="no-print flex gap-4 px-4 py-4 md:px-8">
       <Breadcrumb href="/" text={fullName} ariaLabel="Back to home page" />
 
@@ -102,7 +109,7 @@ const contactLinks = [
     </div>
 
     <main
-      class="font-resume mx-auto mb-12 max-w-4xl px-4 py-8 text-[11px] leading-tight print:mb-0 print:max-w-full print:px-0 print:py-0 md:px-8"
+      class="mx-auto mb-12 max-w-4xl px-4 py-8 font-resume text-[11px] leading-tight print:mb-0 print:max-w-full print:px-0 print:py-0 md:px-8"
     >
       <ResumeHeader
         fullName={resume.personal.fullName}

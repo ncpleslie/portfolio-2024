@@ -18,9 +18,15 @@ experience:
         startDate: May 2024
         endDate: Present
     responsibilities:
-      - Build data-intensive web applications for cybersecurity intelligence platform serving enterprise customers
-      - Develop features improving data accessibility and platform capabilities for security teams analyzing attack surfaces
-      - Collaborate on full-stack development using modern web technologies and cloud infrastructure
+      - >-
+        Build data-intensive web applications for cybersecurity intelligence
+        platform serving enterprise customers
+      - >-
+        Develop features improving data accessibility and platform capabilities
+        for security teams analyzing attack surfaces
+      - >-
+        Collaborate on full-stack development using modern web technologies
+        and cloud infrastructure
     technologies:
       - TypeScript
       - React
@@ -39,12 +45,24 @@ experience:
         startDate: December 2019
         endDate: September 2022
     responsibilities:
-      - Led team of 5 engineers through technical mentorship, code reviews, and agile delivery practices
-      - Architected and delivered enterprise software projects from pre-sale through production deployment
-      - Served as technical SME, driving developer experience improvements and platform innovation initiatives
-      - Developed cloud-native web applications for global clients including Air New Zealand, Skipton Building Society, and DB Cargo
-      - Designed and implemented RESTful APIs, microservices, and responsive front-end applications
-      - Delivered high-quality software through test-driven development, CI/CD pipelines, and agile methodologies
+      - >-
+        Led team of 5 engineers through technical mentorship, code reviews,
+        and agile delivery practices
+      - >-
+        Architected and delivered enterprise software projects from pre-sale
+        through production deployment
+      - >-
+        Served as technical SME, driving developer experience improvements and
+        platform innovation initiatives
+      - >-
+        Developed cloud-native web applications for global clients including
+        Air New Zealand, Skipton Building Society, and DB Cargo
+      - >-
+        Designed and implemented RESTful APIs, microservices, and responsive
+        front-end applications
+      - >-
+        Delivered high-quality software through test-driven development,
+        CI/CD pipelines, and agile methodologies
     technologies:
       - TypeScript
       - Angular
@@ -65,7 +83,10 @@ projects:
       - Docker
       - GitHub Actions
       - Vitest
-    description: Core cybersecurity intelligence platform providing internet-wide scanning data and asset discovery. Developed data-intensive features for security teams to analyze and protect their attack surface.
+    description: >-
+      Core cybersecurity intelligence platform providing internet-wide scanning
+      data and asset discovery. Developed data-intensive features for security
+      teams to analyze and protect their attack surface.
     projectUrl: https://platform.censys.com/
 
   - title: Censys Attack Surface Management (ASM)
@@ -73,7 +94,10 @@ projects:
       - TypeScript
       - React
       - Jest
-    description: Attack Surface Management platform enabling organizations to discover, monitor, and secure their internet-facing assets. Built data visualization features and risk management capabilities for threat intelligence.
+    description: >-
+      Attack Surface Management platform enabling organizations to discover,
+      monitor, and secure their internet-facing assets. Built data visualization
+      features and risk management capabilities for threat intelligence.
     projectUrl: https://censys.com/product/attack-surface-management/
 
   - title: Skipton Document Management System
@@ -89,7 +113,10 @@ projects:
       - CosmosDB
       - Blob Storage
       - Azure DevOps
-    description: Built enterprise document storage system for UK financial sector. Manages 180M+ documents with millions ingested monthly. Contributed significantly to backend services using Azure CosmosDB and Blob Storage.
+    description: >-
+      Built enterprise document storage system for UK financial sector.
+      Manages 180M+ documents with millions ingested monthly. Contributed
+      significantly to backend services using Azure CosmosDB and Blob Storage.
     projectUrl: https://www.jadeworld.com/jade-services/our-clients/skipton-case-study
 
   - title: Air New Zealand Crew Claims Portal
@@ -104,7 +131,10 @@ projects:
       - Azure
       - API-M
       - Static Web Apps
-    description: Led team to deliver secure expense claims portal for airline crew members. Implemented authentication, form workflows, and Azure API Management integration.
+    description: >-
+      Led team to deliver secure expense claims portal for airline crew members.
+      Implemented authentication, form workflows, and Azure API Management
+      integration.
 
   - title: This One Time - Podcast Website
     technologies:
@@ -115,7 +145,9 @@ projects:
       - Three JS
       - Tailwind CSS
       - Vercel
-    description: Built podcast website featuring interactive 3D scroll-triggered background using Three.js and headless CMS integration with Sanity.
+    description: >-
+      Built podcast website featuring interactive 3D scroll-triggered background
+      using Three.js and headless CMS integration with Sanity.
     projectUrl: https://summercamppod.com/
 
   - title: WMATA Train Tracker
@@ -131,7 +163,10 @@ projects:
       - tRPC
       - Zod
       - GitHub Actions
-    description: Desktop application for DC Metro train tracking. Built cross-platform app using Go backend with Wails framework and Vue 3 frontend with type-safe tRPC API.
+    description: >-
+      Desktop application for DC Metro train tracking. Built cross-platform app
+      using Go backend with Wails framework and Vue 3 frontend with type-safe
+      tRPC API.
     githubUrl: https://github.com/ncpleslie/WMATA-Tracker
 
   # - title: Job Down - Application Tracker

@@ -14,24 +14,31 @@ experience:
   - company: Censys
     companyUrl: https://censys.com/
     positions:
-      - title: Software Engineer
+      - title: Senior Software Engineer
         startDate: May 2024
         endDate: Present
     responsibilities:
       - >-
-        Build data-intensive web applications for cybersecurity intelligence
-        platform serving enterprise customers
+        Optimized CI/CD pipelines reducing build time from ~17 to ~4 minutes,
+        saving over 36 days of cumulative build time and accelerating team velocity
       - >-
-        Develop features improving data accessibility and platform capabilities
-        for security teams analyzing attack surfaces
+        Champion technical debt reduction through systematic legacy code modernization,
+        package upgrades, and dependency management ensuring platform stability
       - >-
-        Collaborate on full-stack development using modern web technologies
-        and cloud infrastructure
+        Architect and deliver complex end-to-end features for data-intensive
+        cybersecurity intelligence platform serving enterprise customers
+      - >-
+        Lead user experience improvements across the platform, improving data
+        discoverability, interface intuitiveness, and implementing WCAG standards
+      - >-
+        Build full-stack features using Go microservices, gRPC APIs, and modern
+        React applications for security teams to understand everything on the internet
     technologies:
       - TypeScript
       - React
       - Remix
       - Go
+      - gRPC
       - Docker
       - GitHub Actions
 
@@ -86,7 +93,7 @@ projects:
     description: >-
       Core cybersecurity intelligence platform providing internet-wide scanning
       data and asset discovery. Developed data-intensive features for security
-      teams to analyze and protect their attack surface.
+      teams to analyze and understand everything on the internet.
     projectUrl: https://platform.censys.com/
 
   - title: Censys Attack Surface Management (ASM)

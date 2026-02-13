@@ -150,11 +150,11 @@ const twitterOg = [
     <SpeedInsights />
   </head>
   <body
-    class="text-text-primary bg-bg-primary overflow-x-hidden font-body transition-colors duration-500"
+    class="overflow-x-hidden bg-bg-primary font-body text-text-primary transition-colors duration-500"
   >
     <a
       href="#main-content"
-      class="focus:bg-bg-primary focus:text-text-primary sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:px-4 focus:py-2 focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-bg-primary focus:px-4 focus:py-2 focus:text-text-primary focus:shadow-lg"
     >
       Skip to main content
     </a>
@@ -162,7 +162,7 @@ const twitterOg = [
       id="main-content"
       aria-label="Main content"
       class:list={[
-        "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 md:px-12 md:py-20 lg:px-8 lg:py-0",
+        "transition-fade static z-10 mx-auto min-h-screen max-w-screen-xl px-2 py-12 print:py-2 md:px-12 md:py-20 lg:px-8 lg:py-0",
         className,
       ]}
       transition:animate="fade"

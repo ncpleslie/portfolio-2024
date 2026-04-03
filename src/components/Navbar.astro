@@ -24,12 +24,12 @@ const currentPath = Astro.url.pathname;
           id={`${link.id}_nav`}
           aria-label={link.alt}
           aria-current={isActive ? "page" : undefined}
-          class="lg:opacity-85 text-text-primary active:text-text-primary flex flex-col items-center justify-center gap-0 rounded-xl text-xl transition-all duration-200 hover:fancy hover:md:pb-4 hover:md:pt-8"
+          class="lg:opacity-85 flex flex-col items-center justify-center gap-0 rounded-xl text-xl text-text-primary transition-all duration-200 active:text-text-primary hover:md:pb-4 hover:md:pt-2"
           href={link.link}
         >
           <span class="sr-only lg:not-sr-only">{link.title}</span>
           <Icon
-            class="text-text-primary h-10 w-10"
+            class="h-10 w-10 text-text-primary"
             name={link.icon}
             decorative={true}
           />
@@ -40,13 +40,7 @@ const currentPath = Astro.url.pathname;
 </nav>
 
 <script define:vars={{ links }} is:inline>
-  const hoverStyle = [
-    "lg:px-8",
-    "lg:pb-4",
-    "lg:pt-8",
-    "lg:indent-0",
-    "lg:opacity-100",
-  ];
+  const hoverStyle = ["lg:pb-4", "lg:indent-0", "lg:opacity-100"];
 
   const transparentStyle = ["lg:opacity-85"];
 

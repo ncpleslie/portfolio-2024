@@ -124,7 +124,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       } satisfies ContactResponse),
       { status: 200 },
     );
-  } catch (error) {
+  } catch {
     return new Response(
       JSON.stringify({
         message: "An unknown error has occurred",

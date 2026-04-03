@@ -84,13 +84,9 @@ export default {
           "--color-border": "71, 85, 105", // slate-600 - subtle borders
         },
       });
-      addUtilities({
+      (addUtilities({
         ".fancy": {
-          background: `linear-gradient(
-            90deg,
-            ${theme("colors.accent-one")},
-            ${theme("colors.accent-two")}
-          )`,
+          background: `${theme("colors.accent-one")}`,
           textShadow: "none",
           backgroundClip: "text",
           "-webkit-background-clip": "text",
@@ -114,9 +110,7 @@ export default {
             "z-index": "-10",
             translate: "-50% -50%",
             "border-radius": "50%",
-            background: `linear-gradient(to right, ${theme(
-              "colors.accent-one",
-            )}, ${theme("colors.accent-two")})`,
+            background: `${theme("colors.accent-one")}`,
             transform: "translateZ(0)",
             "backface-visibility": "hidden",
           },
@@ -135,11 +129,7 @@ export default {
           },
 
           ".fancy": {
-            background: `linear-gradient(
-          90deg,
-          ${theme("colors.accent-one")},
-          ${theme("colors.accent-two")}
-        )`,
+            background: `${theme("colors.accent-one")}`,
             textShadow: "none",
             backgroundClip: "text",
             "-webkit-background-clip": "text",
@@ -163,7 +153,7 @@ export default {
               display: "none !important",
             },
           },
-        });
+        }));
     }),
   ],
 };

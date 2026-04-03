@@ -22,16 +22,16 @@ experience:
         Optimized CI/CD pipelines reducing build time from ~17 to ~4 minutes,
         saving over 36 days of cumulative build time and accelerating team velocity
       - >-
-        Champion technical debt reduction through systematic legacy code modernization,
+        Champions technical debt reduction through legacy code modernization,
         package upgrades, and dependency management ensuring platform stability
       - >-
-        Architect and deliver complex end-to-end features for data-intensive
+        Architects and delivers complex end-to-end features for the data-intensive
         cybersecurity intelligence platform serving enterprise customers
       - >-
-        Lead user experience improvements across the platform, improving data
+        Leads user experience improvements across the platform, improving data
         discoverability, interface intuitiveness, and implementing WCAG standards
       - >-
-        Build full-stack features using Go microservices, gRPC APIs, and modern
+        Builds full-stack features using Go microservices, gRPC APIs, and modern
         React applications for security teams to understand everything on the internet
     technologies:
       - TypeScript
@@ -53,11 +53,11 @@ experience:
         endDate: September 2022
     responsibilities:
       - >-
-        Led team of 5 engineers through technical mentorship, code reviews,
+        Led a team of 5 engineers through technical mentorship, code reviews,
         and agile delivery practices
       - >-
         Architected and delivered enterprise software projects from pre-sale
-        through production deployment
+        through production deployments
       - >-
         Served as technical SME, driving developer experience improvements and
         platform innovation initiatives
@@ -85,8 +85,8 @@ projects:
       - TypeScript
       - React
       - Remix
+      - React Router 7
       - Go
-      - PostgreSQL
       - Docker
       - GitHub Actions
       - Vitest
